@@ -1,0 +1,44 @@
+/* OuiCycle / Les Roues Solidaires — Typography
+   One family: Poppins. Personality comes from WEIGHT + a tight, confident
+   headline set. Headlines are ExtraBold/Black, near-black, with a single
+   keyword dropped into a yellow highlighter. Labels are SemiBold uppercase
+   with wide tracking. Body is Regular, generous line-height, warm gray. */
+
+:root{
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-sans);   /* headlines use Poppins 800/900 */
+  --font-body: var(--font-sans);
+
+  /* Weights */
+  --fw-light: 300;      /* @kind font */
+  --fw-regular: 400;    /* @kind font */
+  --fw-medium: 500;     /* @kind font */
+  --fw-semibold: 600;   /* @kind font */
+  --fw-bold: 700;       /* @kind font */
+  --fw-extrabold: 800;  /* @kind font */
+  --fw-black: 900;      /* @kind font */
+
+  /* Type scale (rem, 16px base) */
+  --fs-display: 3.75rem;   /* 60 — hero headline */
+  --fs-h1: 2.75rem;        /* 44 */
+  --fs-h2: 2rem;           /* 32 */
+  --fs-h3: 1.5rem;         /* 24 */
+  --fs-h4: 1.25rem;        /* 20 */
+  --fs-lead: 1.1875rem;    /* 19 — intro paragraph */
+  --fs-body: 1rem;         /* 16 */
+  --fs-sm: 0.875rem;       /* 14 */
+  --fs-xs: 0.75rem;        /* 12 */
+  --fs-label: 0.75rem;     /* 12 — eyebrow labels */
+
+  /* Line heights */
+  --lh-tight: 1.04;   /* @kind other */
+  --lh-snug: 1.15;    /* @kind other */
+  --lh-normal: 1.55;  /* @kind other */
+  --lh-relaxed: 1.7;  /* @kind other */
+
+  /* Tracking */
+  --ls-tight: -0.02em; /* @kind other */
+  --ls-normal: 0;      /* @kind other */
+  --ls-label: 0.16em;  /* @kind other */
+  --ls-wide: 0.22em;   /* @kind other */
+}

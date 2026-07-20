@@ -1,0 +1,29 @@
+<!-- Picto Sensoriel — Les Roues Solidaires
+     Inline SVG à coller directement dans le HTML/JSX (pas en <img src>,
+     sinon le survol ne pourra pas déclencher l'animation interne).
+     Colle le <style> une seule fois par page, et le <svg> autant de fois que nécessaire. -->
+
+<style>
+  .lrs-picto-sensoriel .lrs-spark {
+    animation: lrs-picto-spark 2.2s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+  .lrs-picto-sensoriel:hover .lrs-spark {
+    animation-play-state: running;
+  }
+  @keyframes lrs-picto-spark {
+    0%, 100% { opacity: .95; transform: scale(1); }
+    50%      { opacity: .5;  transform: scale(.92); }
+  }
+</style>
+
+<svg class="lrs-picto-sensoriel" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <path d="M100,52 C144,52 180,74 196,100 C180,126 144,148 100,148 C56,148 20,126 4,100 C20,74 56,52 100,52 Z" fill="#F4D9D3" stroke="#C64B3B" stroke-width="9"/>
+  <circle cx="100" cy="100" r="38" fill="#C64B3B"/>
+  <line class="lrs-spark" x1="144.83" y1="50.21" x2="159.55" y2="33.86" stroke="#C64B3B" stroke-width="9" stroke-linecap="round" style="animation-delay:0s"/>
+  <line class="lrs-spark" x1="144.83" y1="149.79" x2="159.55" y2="166.14" stroke="#C64B3B" stroke-width="9" stroke-linecap="round" style="animation-delay:0.25s"/>
+  <line class="lrs-spark" x1="54.5" y1="49.47" x2="43.79" y2="37.58" stroke="#C64B3B" stroke-width="9" stroke-linecap="round" style="animation-delay:0.5s"/>
+  <line class="lrs-spark" x1="54.5" y1="150.53" x2="43.79" y2="162.42" stroke="#C64B3B" stroke-width="9" stroke-linecap="round" style="animation-delay:0.75s"/>
+  <circle class="lrs-spark" cx="100" cy="18" r="4" fill="#C64B3B" style="animation-delay:0s"/>
+  <circle class="lrs-spark" cx="100" cy="182" r="3" fill="#C64B3B" style="animation-delay:0.4s"/>
+</svg>

@@ -1,0 +1,117 @@
+/* ============================================================
+   04 · LE DISPOSITIF
+   Titre principal + intro (inchangés), puis 2 sous-parties :
+   (1) « 2 axes » — carrousel de 2 bulles (texte crème débordant
+       sur une bulle photo, flèche CTA, swipe + fondu)
+   (2) « 4 plans » — 4 bulles côte à côte, liquid glass léger
+   ============================================================ */
+
+.plans{background:var(--oc-white);position:relative;overflow:hidden;padding-bottom:90px}   /* bandeau blanc + coins ; bas resserré (on entrevoit la section suivante) */
+.plans > .container{position:relative;z-index:1}
+.plans__corner{position:absolute;z-index:0;width:clamp(96px,9vw,150px);height:auto;pointer-events:none}
+.plans__corner--tr{top:34px;right:34px}
+.plans__corner--bl{bottom:34px;left:34px;transform:rotate(180deg)}
+
+/* ---- Titre principal (centré) + intro (gauche) ---- */
+.plans__head{text-align:center;max-width:900px;margin:0 auto var(--sp-16)}   /* + d'air titre → intro */
+.plans__title{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h1);   /* 44px */
+  line-height:1.15;letter-spacing:-.015em;color:var(--oc-ink);
+}
+.plans__title .mark{
+  padding:.02em .22em;border-radius:var(--r-sm);color:var(--oc-ink);   /* fond plein → coins arrondis (cohérent site) */
+  background:var(--oc-yellow);
+  box-decoration-break:clone;-webkit-box-decoration-break:clone;
+}
+.plans__intro{
+  max-width:880px;margin:0 0 var(--sp-20);
+  font-size:var(--fs-lead);line-height:1.65;font-weight:var(--fw-regular);color:var(--oc-gray-700);
+}
+
+/* Soulignement « rectangle arrondi très mince », derrière le texte */
+.u-line{position:relative;isolation:isolate;white-space:nowrap}
+.u-line::after{
+  content:"";position:absolute;z-index:-1;
+  left:-.03em;right:-.03em;bottom:.06em;height:3px;border-radius:var(--r-pill);
+  background:var(--oc-yellow);box-shadow:0 0 5px rgba(255,195,0,.4);
+}
+
+/* ============================================================
+   Sous-partie 1 — LES 2 AXES (carrousel)
+   ============================================================ */
+.axes{margin-bottom:var(--sp-24)}
+.axes__title{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h2);   /* 32px */
+  line-height:1.2;letter-spacing:-.02em;color:var(--oc-ink);margin-bottom:var(--sp-12);
+}
+
+.axes__carousel{position:relative;overflow:hidden;border-radius:30px}
+.axes__track{display:flex}
+.axes__track.is-anim{transition:transform .55s var(--ease)}
+.axes__slide{flex:0 0 100%;transition:opacity .55s var(--ease)}
+.axes__slide[aria-hidden="true"]{opacity:.2}
+
+/* une slide : bulle texte crème + bulle photo (chevauchement léger) */
+.axis{position:relative;display:flex;align-items:stretch;min-height:420px}
+.axis__text{
+  position:relative;z-index:2;flex:0 0 58%;
+  display:flex;flex-direction:column;justify-content:flex-start;   /* texte remonté */
+  background:#FCF0CC;border-radius:28px;padding:44px 48px;
+  box-shadow:0 18px 40px -22px rgba(37,33,26,.30);
+}
+.axis__photo{
+  flex:1;margin-left:-40px;border-radius:28px;overflow:hidden;position:relative;
+}
+.axis__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.axis__head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+.axis__num{font-weight:var(--fw-black);font-size:2rem;line-height:1;color:var(--oc-yellow-deep)}
+.axis__title{font-weight:var(--fw-extrabold);font-size:var(--fs-h3);letter-spacing:-.01em;color:var(--oc-ink)}
+.axis__body{font-size:var(--fs-lead);line-height:1.6;font-weight:var(--fw-regular);color:var(--oc-gray-800)}
+
+/* flèche CTA (style dynamique du site) */
+.axis__nav{
+  position:absolute;z-index:4;width:56px;height:56px;border-radius:var(--r-pill);
+  display:grid;place-items:center;cursor:pointer;border:none;
+  background:var(--oc-yellow);color:var(--on-accent);
+  font-size:1.4rem;line-height:1;
+  box-shadow:var(--shadow-yellow);
+  transition:transform var(--dur) var(--ease),background var(--dur) var(--ease),box-shadow var(--dur) var(--ease);
+}
+.axis__nav:hover{transform:translateY(-3px);background:var(--oc-yellow-deep);box-shadow:0 14px 30px rgba(245,168,0,.42)}
+.axis__nav:active{transform:translateY(0) scale(.96)}
+.axis__nav--next{right:26px;bottom:26px}
+.axis__nav--prev{left:26px;bottom:26px}
+
+/* ============================================================
+   Sous-partie 2 — LES 4 PLANS (4 bulles côte à côte, glass léger)
+   ============================================================ */
+.plans4__title{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h2);   /* 32px */
+  line-height:1.2;letter-spacing:-.02em;color:var(--oc-ink);margin-bottom:var(--sp-12);
+}
+.plans4__grid{align-items:stretch}
+.plan4{
+  grid-column:span 3;display:flex;flex-direction:column;
+  /* Liquid glass LÉGER (beaucoup moins opaque que la bulle crème) */
+  background:linear-gradient(160deg,rgba(255,255,255,.55),rgba(255,255,255,.28));
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:20px;padding:26px 24px;
+  box-shadow:0 14px 32px -18px rgba(37,33,26,.20),inset 0 1px 0 rgba(255,255,255,.8);
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease);
+}
+.plan4:hover{transform:translateY(-6px);box-shadow:0 22px 40px -18px rgba(37,33,26,.28),inset 0 1px 0 rgba(255,255,255,.9)}
+.plan4__picto{
+  width:46px;height:46px;flex:none;display:grid;place-items:center;margin-bottom:16px;
+  transition:transform var(--dur) var(--ease-back);
+}
+.plan4__picto svg{width:40px;height:40px}
+.plan4:hover .plan4__picto{transform:translateY(-4px)}
+.plan4--moteur    .plan4__picto{color:#E8A200}
+.plan4--cognitif  .plan4__picto{color:#2E8C6A}
+.plan4--sensoriel .plan4__picto{color:#C64B3B}
+.plan4--social    .plan4__picto{color:#34517E}
+.plan4__title{font-weight:var(--fw-bold);font-size:1.125rem;letter-spacing:-.01em;color:var(--oc-ink);margin-bottom:10px}
+.plan4__body{font-size:.9375rem;line-height:1.5;color:var(--oc-gray-800)}
+
+/* ---- CTA « En savoir plus » : centré, bien détaché des bulles ---- */
+.plans__cta{text-align:center;margin-top:var(--sp-24)}

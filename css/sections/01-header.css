@@ -1,0 +1,83 @@
+/* ============================================================
+   01 · HEADER — sticky, crème translucide + blur
+   Gauche : sélecteur segmenté deux-logos (LRS actif / OuiCycle ↗)
+   Centre : nav · Droite : CTA primaire
+   ============================================================ */
+
+.site-header{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:var(--sp-6);
+  padding:14px var(--page-pad);
+  background:rgba(255,252,244,.78);
+  border-bottom:1px solid rgba(231,226,215,.55);
+  backdrop-filter:blur(14px) saturate(1.3);
+  -webkit-backdrop-filter:blur(14px) saturate(1.3);
+  transition:background .3s var(--ease),backdrop-filter .3s var(--ease),box-shadow .3s var(--ease);
+}
+/* au scroll : PLUS transparent (fluidité) — le flou renforcé maintient
+   le contraste du texte (nav en near-black), cible AA préservée. */
+.site-header.is-scrolled{
+  background:rgba(255,252,244,.55);
+  backdrop-filter:blur(24px) saturate(1.5);
+  -webkit-backdrop-filter:blur(24px) saturate(1.5);
+  box-shadow:0 6px 22px -14px rgba(37,33,26,.28);
+}
+
+/* ---- Double logo LRS · OuiCycle — posés sur le bandeau, sans cadre ---- */
+.brand-switch{
+  flex:none;display:flex;align-items:center;gap:16px;
+}
+.brand-switch__item{
+  position:relative;display:inline-flex;align-items:center;gap:6px;
+  transition:transform var(--dur) var(--ease),opacity var(--dur) var(--ease);
+}
+.brand-logo{
+  width:auto;display:block;
+  /* emboss discret : logo posé/gravé sur le bandeau crème */
+  filter:drop-shadow(0 1px 1px rgba(37,33,26,.16));
+}
+/* viewBox détourés sur le contenu → hauteur égale = taille visuelle égale */
+.brand-logo--lrs{height:30px}
+.brand-logo--oc{height:30px}
+
+/* LRS = marque active : soulignement jaune "vous êtes ici" */
+.brand-switch__item--current::after{
+  content:"";position:absolute;left:2px;right:2px;bottom:-7px;height:3px;
+  background:var(--oc-yellow);border-radius:3px;
+}
+
+/* fin filet de séparation (relie les deux marques sans les enfermer) */
+.brand-switch__divider{
+  width:1px;height:26px;
+  background:var(--oc-border-strong);
+}
+
+/* OuiCycle = bascule (même taille, flèche ↗ = lien externe) */
+.brand-switch__item--alt:hover{transform:translateY(-1px)}
+.brand-switch__ext{
+  font-size:var(--fs-sm);font-weight:var(--fw-bold);
+  color:var(--oc-yellow-deep);line-height:1;
+  transition:transform var(--dur) var(--ease);
+}
+.brand-switch__item--alt:hover .brand-switch__ext{transform:translate(2px,-2px)}
+
+/* ---- Navigation centrale ---- */
+.site-nav{display:flex;gap:30px}
+.site-nav a{
+  position:relative;
+  font-size:var(--fs-sm);font-weight:var(--fw-medium);
+  color:var(--oc-text);            /* near-black : contraste préservé même header transparent */
+  padding-bottom:3px;
+  transition:color var(--dur) var(--ease);
+}
+.site-nav a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:var(--oc-yellow);border-radius:2px;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform var(--dur) var(--ease);
+}
+.site-nav a:hover{color:var(--oc-text)}
+.site-nav a:hover::after{transform:scaleX(1)}
+.site-nav a[aria-current="page"]{color:var(--oc-text);font-weight:var(--fw-semibold)}
+.site-nav a[aria-current="page"]::after{transform:scaleX(1)}

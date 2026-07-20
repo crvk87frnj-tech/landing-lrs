@@ -1,0 +1,136 @@
+/* ============================================================
+   BASE — reset, fondations, grille 12 colonnes, boutons
+   Les Roues Solidaires · landing
+   Tokens importés depuis le design system OuiCycle (tokens/).
+   ============================================================ */
+
+@import url("./tokens/fonts.css");
+@import url("./tokens/colors.css");
+@import url("./tokens/typography.css");
+@import url("./tokens/spacing.css");
+
+/* ---- Reset minimal ---- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  font-size:var(--fs-body);
+  line-height:var(--lh-normal);
+  color:var(--text-strong);
+  background:var(--surface-page);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+h1,h2,h3,h4,p{margin:0}
+img,svg,video{display:block;max-width:100%}
+button{font-family:inherit}
+a{color:inherit;text-decoration:none}
+
+/* ============================================================
+   LAYOUT — conteneur 1200px + grille 12 colonnes
+   Marges page 40px. Gouttière 24px. Rien "à la louche".
+   ============================================================ */
+:root{
+  --page-pad:40px;        /* marge gauche/droite du canvas */
+  --col-count:12;
+  --col-gutter:24px;
+  /* Fond de page : beige/crème chaud — pas blanc, sans gêner la lecture */
+  --surface-page:#F5F1E6;
+}
+.container{
+  width:100%;
+  max-width:var(--container);   /* 1200px */
+  margin-inline:auto;
+  padding-inline:var(--page-pad);
+}
+.grid12{
+  display:grid;
+  grid-template-columns:repeat(var(--col-count),1fr);
+  gap:var(--col-gutter);
+}
+/* helpers de span explicites — jamais d'alignement à l'œil */
+.col-4{grid-column:span 4}
+.col-5{grid-column:span 5}
+.col-6{grid-column:span 6}
+.col-7{grid-column:span 7}
+.col-8{grid-column:span 8}
+
+/* Rythme vertical des sections pleines */
+.section{padding-block:var(--sp-24)} /* 96px */
+
+/* ============================================================
+   TYPOGRAPHIE — échelle modulaire (ratio ~1.28, base 16px)
+   Hiérarchie portée par le POIDS, jamais par la couleur (DS).
+   ============================================================ */
+.eyebrow{
+  font-size:var(--fs-label);       /* 12 */
+  font-weight:var(--fw-semibold);  /* 600 */
+  letter-spacing:var(--ls-label);  /* .16em */
+  text-transform:uppercase;
+  color:var(--text-meta);
+}
+.mark{                              /* surligneur jaune sur 1 mot-clé */
+  background:var(--oc-yellow);
+  color:var(--on-accent);
+  padding:0 .28em;
+  border-radius:var(--r-xs);
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.mark--soft{background:var(--oc-yellow-soft)}
+
+/* ============================================================
+   BOUTONS — pilules. Hover = légère surélévation + jaune
+   approfondi + glow chaud. Press = settle 1px + scale .985.
+   Subtil, jamais déroutant.
+   ============================================================ */
+.btn{
+  --btn-lift:0px;
+  display:inline-flex;align-items:center;gap:.55em;
+  font-family:var(--font-sans);font-weight:var(--fw-semibold);
+  font-size:var(--fs-body);line-height:1;
+  border:1.8px solid transparent;border-radius:var(--r-pill);
+  padding:14px 26px;cursor:pointer;
+  transform:translateY(var(--btn-lift));
+  transition:transform var(--dur) var(--ease),
+             box-shadow var(--dur) var(--ease),
+             background-color var(--dur) var(--ease),
+             color var(--dur) var(--ease);
+  will-change:transform;
+}
+.btn .arrow{transition:transform var(--dur) var(--ease)}
+.btn:hover .arrow{transform:translateX(3px)}
+
+/* primaire — jaune */
+.btn--primary{background:var(--oc-yellow);color:var(--on-accent);box-shadow:var(--shadow-yellow)}
+.btn--primary:hover{--btn-lift:-2px;background:var(--oc-yellow-deep);box-shadow:0 14px 30px rgba(245,168,0,.38)}
+.btn--primary:active{--btn-lift:0px;transform:translateY(0) scale(.985)}
+
+/* sur fond sombre — jaune qui glow */
+.btn--on-dark{background:var(--oc-yellow);color:var(--on-accent);box-shadow:0 12px 30px rgba(245,168,0,.36)}
+.btn--on-dark:hover{--btn-lift:-2px;background:var(--oc-yellow-deep);box-shadow:0 16px 36px rgba(245,168,0,.46)}
+.btn--on-dark:active{--btn-lift:0px;transform:translateY(0) scale(.985)}
+
+/* contour — CTA secondaires (sortants vers OuiCycle, etc.) */
+.btn--outline{background:transparent;color:var(--oc-text);border-color:var(--oc-text)}
+.btn--outline:hover{--btn-lift:-2px;background:var(--oc-text);color:var(--oc-white);box-shadow:var(--shadow-md)}
+.btn--outline:active{--btn-lift:0px;transform:translateY(0) scale(.985)}
+
+.btn--sm{padding:10px 18px;font-size:var(--fs-sm)}
+
+/* defs SVG (filtres) hors flux */
+.oc-defs{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ---- Accessibilité : focus visible homogène ---- */
+:where(a,button,[tabindex]):focus-visible{
+  outline:none;box-shadow:var(--ring);border-radius:var(--r-sm);
+}
+
+/* ---- Respect de prefers-reduced-motion (global) ---- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+}

@@ -1,0 +1,26 @@
+<!-- Picto Moteur — Les Roues Solidaires
+     Inline SVG à coller directement dans le HTML/JSX (pas en <img src>,
+     sinon le survol ne pourra pas déclencher l'animation interne).
+     Colle le <style> une seule fois par page, et le <svg> autant de fois que nécessaire. -->
+
+<style>
+  .lrs-picto-moteur .lrs-echo {
+    transform: translate(6px, 5px);
+  }
+  .lrs-picto-moteur:hover .lrs-echo {
+    animation: lrs-picto-jitter 0.5s steps(6) infinite;
+  }
+  @keyframes lrs-picto-jitter {
+    0%, 100% { transform: translate(6px, 5px); }
+    16%      { transform: translate(11px, 3px); }
+    33%      { transform: translate(5px, 9px); }
+    50%      { transform: translate(10px, 6px); }
+    66%      { transform: translate(7px, 2px); }
+    83%      { transform: translate(9px, 8px); }
+  }
+</style>
+
+<svg class="lrs-picto-moteur" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <path class="lrs-echo" d="M112,28 L58,108 L94,108 L78,172 L146,86 L104,86 Z" fill="#FFE89E"/>
+  <path d="M112,28 L58,108 L94,108 L78,172 L146,86 L104,86 Z" fill="#FFC50A"/>
+</svg>

@@ -1,0 +1,73 @@
+/* ============================================================
+   06 · TRI PAR STRUCTURE
+   Registre décision : « vous êtes concerné ». Titre + sous-titre
+   à gauche, avec un mot qui tourne (pilule jaune). 3 cartes-portes
+   cliquables, DROITES (non penchées), ombrées, avec lévitation au
+   survol. CTA élargi vers « Pour qui ».
+   ============================================================ */
+
+/* rapproché de la section précédente (moins d'espace vide) */
+.structure{padding-top:var(--sp-10)}
+
+/* ---- En-tête (gauche) ---- */
+.structure__head{max-width:960px;margin-bottom:var(--sp-12)}
+.structure__title{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h1);   /* 44px */
+  line-height:1.22;letter-spacing:-.02em;color:var(--oc-ink);
+}
+.structure__sub{margin-top:16px;font-size:var(--fs-lead);color:var(--oc-gray-700)}
+
+/* mot qui tourne : pilule jaune, largeur mini pour éviter les sauts */
+.rotor{
+  display:inline-block;min-width:210px;text-align:center;
+  padding:0 .3em;border-radius:14px;
+  background:var(--oc-yellow);color:var(--on-accent);
+  box-shadow:0 6px 16px -6px rgba(245,168,0,.5);
+}
+.rotor__word{display:inline-block;transition:opacity .18s var(--ease),transform .18s var(--ease)}
+
+/* ---- Cartes-portes ---- */
+.structure__grid{align-items:stretch;margin-top:var(--sp-4)}
+.audience-card{
+  grid-column:span 4;display:flex;flex-direction:column;
+  /* Liquid Glass : blanc translucide + liseré lumineux */
+  background:linear-gradient(155deg,rgba(255,255,255,.92),rgba(255,255,255,.60));
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:48px 12px 12px 12px;      /* un seul coin arrondi (courbe OuiCycle) */
+  padding:30px;min-height:300px;
+  text-decoration:none;color:inherit;
+  box-shadow:0 22px 44px -22px rgba(37,33,26,.26),inset 0 1px 0 rgba(255,255,255,.9);
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease);
+}
+.audience-card:hover,
+.audience-card:focus-visible{
+  transform:translateY(-8px);                     /* lévitation */
+  box-shadow:0 30px 54px -22px rgba(37,33,26,.32);
+}
+.audience-card__icon{
+  width:60px;height:60px;flex:none;display:grid;place-items:center;
+  border-radius:20px 6px 6px 6px;background:var(--oc-yellow-soft);color:var(--oc-ink);
+  margin-bottom:22px;transition:transform .22s var(--ease-back);
+}
+.audience-card__icon svg{width:30px;height:30px}
+.audience-card:hover .audience-card__icon{transform:scale(1.06) rotate(-3deg)}
+.audience-card__title{font-weight:var(--fw-extrabold);font-size:1.375rem;color:var(--oc-ink);margin-bottom:16px;letter-spacing:-.01em}
+.audience-card__benefits{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.audience-card__benefits li{
+  position:relative;padding-left:22px;
+  font-size:.9375rem;line-height:1.5;color:var(--oc-gray-800);
+}
+.audience-card__benefits li::before{
+  content:"";position:absolute;left:2px;top:.55em;
+  width:8px;height:8px;border-radius:50%;background:var(--oc-yellow);
+}
+.audience-card__arrow{
+  margin-top:auto;padding-top:18px;
+  font-weight:var(--fw-semibold);font-size:var(--fs-sm);color:var(--oc-yellow-deep);
+  display:inline-flex;align-items:center;gap:6px;
+}
+.audience-card__arrow span{transition:transform var(--dur) var(--ease)}
+.audience-card:hover .audience-card__arrow span{transform:translateX(4px)}
+
+/* ---- CTA élargi ---- */
+.structure__cta{text-align:center;margin-top:var(--sp-16)}

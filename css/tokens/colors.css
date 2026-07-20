@@ -1,0 +1,72 @@
+/* OuiCycle / Les Roues Solidaires — Color system
+   Sunlit, human, optimistic. Yellow does the talking; near-black carries
+   authority; warm cream & taupe hold the quiet space. The four "picto"
+   accents map to the four therapeutic dimensions and are used sparingly,
+   as small headings, dots and hand-drawn connectors — never as fills. */
+
+:root{
+  /* ---- Brand yellows (the core signal) ---- */
+  --oc-yellow: #FFC300;        /* primary — highlights, buttons, numerals */
+  --oc-yellow-deep: #F5A800;   /* gold/amber — pressed states, depth, logo tint */
+  --oc-yellow-soft: #FFE89E;   /* soft — tints, glows, secondary fills */
+  --oc-yellow-wash: #FFF6D6;   /* faintest — panel washes */
+
+  /* ---- Ink & paper ---- */
+  --oc-black: #000000;
+  --oc-ink: #15151C;           /* near-black navy — dark cards, CTA banners */
+  --oc-ink-2: #24242E;         /* raised surface on dark */
+  --oc-white: #FFFFFF;
+  --oc-paper: #FFFDF7;         /* warm page paper */
+  --oc-cream: #FFF9E9;         /* testimonial / soft cards */
+
+  /* ---- Warm neutral (taupe) ramp — for CTAs, columns, stat blocks ---- */
+  --oc-gray-100: #F3F0EA;
+  --oc-gray-200: #E8E3D9;
+  --oc-gray-300: #D8D2C6;
+  --oc-gray-400: #C3BCAE;
+  --oc-gray-500: #9A9384;
+  --oc-gray-600: #6E685C;
+  --oc-gray-700: #4A4640;
+  --oc-gray-800: #2E2B27;
+
+  /* ---- Text ---- */
+  --oc-text: #1A1A22;          /* primary text on light */
+  --oc-text-muted: #5C5A54;    /* body/secondary */
+  --oc-text-faint: #8A877F;    /* captions, meta */
+  --oc-text-on-dark: #F7F4EC;
+  --oc-text-on-yellow: #1A1A22;
+
+  /* ---- The four dimensions (crayon pictos) ---- */
+  --oc-moteur: #E8A200;        /* Moteur — gold */
+  --oc-moteur-tint: #FBE7BE;
+  --oc-sensoriel: #C64B3B;     /* Sensoriel — terracotta red */
+  --oc-sensoriel-tint: #F4D9D3;
+  --oc-cognitif: #2E8C6A;      /* Cognitif — green */
+  --oc-cognitif-tint: #CFE7DC;
+  --oc-social: #34517E;        /* Lien social — blue */
+  --oc-social-tint: #D3DCEA;
+
+  /* ---- Lines & focus ---- */
+  --oc-border: #E7E2D7;
+  --oc-border-strong: #D2CCBF;
+  --oc-border-dark: rgba(255,255,255,.12);
+  --oc-focus: #34517E;
+
+  /* ---- Semantic aliases (prefer these in components) ---- */
+  --surface-page: var(--oc-paper);
+  --surface-card: var(--oc-white);
+  --surface-soft: var(--oc-cream);
+  --surface-muted: var(--oc-gray-200);
+  --surface-dark: var(--oc-ink);
+  --surface-brand: var(--oc-yellow);
+
+  --text-strong: var(--oc-text);
+  --text-body: var(--oc-text-muted);
+  --text-meta: var(--oc-text-faint);
+  --text-invert: var(--oc-text-on-dark);
+
+  --accent: var(--oc-yellow);
+  --accent-press: var(--oc-yellow-deep);
+  --highlight: var(--oc-yellow);
+  --on-accent: var(--oc-text-on-yellow);
+}

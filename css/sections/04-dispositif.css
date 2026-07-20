@@ -1,0 +1,65 @@
+/* ============================================================
+   03 · LE DISPOSITIF
+   Kicker léger + titre éditorial · grand visuel véhicule dominant
+   · texte d'interaction (span 8) + CTA contour sortant (span 4).
+   Fond paper (défaut). Aligné gauche, sur le conteneur.
+   ============================================================ */
+
+/* Espace réduit + position relative (pour la roue en fond) */
+.dispositif{position:relative;overflow:hidden;padding-top:var(--sp-12)}
+.dispositif > .container{position:relative;z-index:1}
+
+/* Roue de marque : décor de fond, haut-droite, coupée par le bord de page */
+.dispositif__roue{
+  position:absolute;z-index:0;
+  top:24px;right:-72px;             /* dans la section (pas de coupe en haut) ; coupée à droite */
+  width:clamp(210px,20vw,340px);height:auto;
+  opacity:.14;                      /* jaune très pâle : filigrane à peine perceptible */
+  pointer-events:none;user-select:none;
+}
+
+/* Titre : homogène en gras, marques renforcées (pas d'italique, pas de "funky") */
+.dispositif__title{
+  max-width:940px;
+  font-weight:var(--fw-bold);            /* 700 — tout le titre en gras */
+  font-size:var(--fs-h1);                /* 44px */
+  line-height:1.14;
+  letter-spacing:var(--ls-tight);        /* -.02em */
+  color:var(--oc-ink);
+}
+/* "OuiCycle" souligné : trait jaune DERRIÈRE le mot (descendante du "y" visible),
+   avec un reflet qui balaie doucement (luisant dynamique léger). */
+.dispositif__title .t-underline{position:relative;isolation:isolate;white-space:nowrap}
+.dispositif__title .t-underline::after{
+  content:"";position:absolute;z-index:-1;      /* derrière le texte */
+  left:-.03em;right:-.03em;bottom:.06em;
+  height:3px;border-radius:var(--r-pill);   /* extrémités arrondies (DS) */
+  background:linear-gradient(90deg,var(--oc-yellow) 0 42%,var(--oc-yellow-soft) 50%,var(--oc-yellow) 58% 100%);
+  background-size:220% 100%;
+  box-shadow:0 0 6px rgba(255,195,0,.4);
+  animation:oc-shine 3.6s ease-in-out infinite alternate;
+}
+@keyframes oc-shine{from{background-position:118% 0}to{background-position:-18% 0}}
+
+/* ---- Grand visuel véhicule (pleine largeur, dominant) ---- */
+.dispositif__visual{
+  margin:36px 0 0;
+  height:480px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow-md);
+}
+.dispositif__visual img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 88%;   /* rogne le HAUT, garde le bas */
+}
+
+/* ---- Sous le visuel : texte + CTA sortant ---- */
+.dispositif__foot{margin-top:32px;align-items:end}
+.dispositif__lead{
+  font-size:1.3125rem;                   /* 21px */
+  line-height:var(--lh-normal);
+  font-weight:var(--fw-medium);          /* 500 — moins gras */
+  color:var(--oc-gray-800);
+}
+.dispositif__cta{display:flex;justify-content:flex-end;align-items:flex-end}

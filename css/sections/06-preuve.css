@@ -1,0 +1,52 @@
+/* ============================================================
+   05 · PREUVE DE RÉSULTAT — bandeau de réassurance COMPACT
+   Registre émotion : la citation est le point focal. Bande courte
+   (on lit vite). Citation span 6 (bulle blanche, coin « bulle ») +
+   2 chiffres span 3 (dont 400+ animé en compteur 350→400).
+   ============================================================ */
+
+.preuve{padding-block:56px;background:#FDF0C4}   /* bande courte, fond jaune pâle "catchy" */
+
+/* En-tête inline : kicker + titre sur la même ligne */
+.preuve__head{margin-bottom:24px}
+.preuve__title{
+  font-weight:var(--fw-extrabold);font-size:1.625rem;   /* 26px */
+  line-height:1.15;letter-spacing:-.01em;color:var(--oc-ink);
+}
+.preuve__title .mark{
+  padding:.02em .22em;border-radius:var(--r-sm);color:var(--oc-ink);   /* fond plein → coins arrondis (cohérent site) */
+  background:var(--oc-yellow);
+  box-decoration-break:clone;-webkit-box-decoration-break:clone;
+}
+
+/* Grille : citation focale + 2 chiffres, hauteurs égales */
+.preuve__grid{align-items:stretch}
+
+/* ---- Citation (point focal) ---- */
+.preuve__quote{
+  grid-column:span 6;margin:0;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  background:var(--oc-white);border:1px solid var(--oc-border);
+  border-radius:22px 22px 22px 6px;      /* coin « bulle » (signature DS) */
+  padding:28px 32px;box-shadow:var(--shadow-md);
+}
+.preuve__quote-text{
+  font-weight:var(--fw-bold);font-size:1.3125rem;   /* 21px */
+  line-height:1.35;letter-spacing:-.01em;color:var(--oc-ink);
+}
+.preuve__quote-attr{margin-top:12px;font-weight:var(--fw-medium);font-size:.8125rem;color:var(--text-meta)}
+
+/* ---- Chiffres ---- */
+.preuve__stat{
+  grid-column:span 3;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  border-radius:22px;padding:24px 20px;
+}
+.preuve__stat--light{background:var(--oc-white);border:1px solid var(--oc-border);box-shadow:var(--shadow-sm)}
+.preuve__stat--dark{background:var(--oc-ink)}
+.preuve__num{font-weight:var(--fw-black);font-size:2.5rem;line-height:1;font-variant-numeric:tabular-nums}
+.preuve__stat--light .preuve__num{color:var(--oc-yellow-deep)}
+.preuve__stat--dark  .preuve__num{color:var(--oc-yellow)}
+.preuve__label{margin-top:6px;font-weight:var(--fw-medium);font-size:.9375rem}
+.preuve__stat--light .preuve__label{color:var(--oc-gray-700)}
+.preuve__stat--dark  .preuve__label{color:var(--oc-text-on-dark)}
