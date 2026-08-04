@@ -82,3 +82,36 @@
   box-shadow:0 12px 30px rgba(0,0,0,.34);
 }
 .hero__cta.btn--primary:hover{box-shadow:0 16px 38px rgba(0,0,0,.40),0 0 0 rgba(245,168,0,.4)}
+
+/* ============================================================
+   HERO — MOBILE / TABLETTE (< 760px)
+   Contenu ancré en bas (zone du pouce) · titre fluide qui wrappe
+   naturellement · CTA pleine largeur · scrim renforcé vers le bas ·
+   hauteur en svh (stable sous la barre d'adresse mobile).
+   ============================================================ */
+@media (max-width:760px){
+  .hero{
+    height:82vh;              /* repli navigateurs sans svh */
+    height:82svh;
+    min-height:500px;max-height:none;
+  }
+  .hero__inner{
+    justify-content:flex-end;
+    padding-bottom:max(var(--sp-20), calc(env(safe-area-inset-bottom) + var(--sp-16)));
+  }
+  .hero__text{max-width:none}
+  .hero__title br{display:none}          /* wrap naturel plutôt qu'une longue ligne forcée */
+  .hero__title{font-size:clamp(1.8rem, 7vw, 2.7rem);line-height:1.1}
+  .hero__subtitle{margin-top:var(--sp-4);max-width:40ch;font-size:var(--fs-body)}
+  .hero__punch{margin-top:var(--sp-2);font-size:var(--fs-h4)}
+  .hero__cta{
+    position:static;width:auto;align-self:flex-start;margin-top:var(--sp-10);
+    padding:11px 22px;font-size:var(--fs-sm);
+  }
+  .hero__scrim{
+    background:linear-gradient(to top,
+      rgba(15,17,13,.82) 0%, rgba(15,17,13,.5) 32%,
+      rgba(15,17,13,.12) 60%, rgba(15,17,13,0) 86%);
+  }
+  .hero__scrim::after{display:none}
+}

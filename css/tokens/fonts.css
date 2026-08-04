@@ -1,4 +1,29 @@
-/* Poppins — version web (Google Fonts), toutes graisses 100→900 + italiques.
-   Fournie par le client. Nécessite une connexion (CDN Google Fonts).
-   Les .ttf locaux restent dans assets/fonts/ comme repli hors-ligne éventuel. */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Poppins — auto-hébergé (woff2, repli .ttf). Une seule famille sur toute la marque.
+   Graisses 300→900 + italique 400 = exactement ce que le site utilise (audité).
+   Plus aucune dépendance à Google Fonts (perf + RGPD). font-display:swap pour
+   reproduire le comportement de chargement d'avant (&display=swap). */
+
+@font-face{font-family:"Poppins";font-style:normal;font-weight:300;font-display:swap;
+  src:url("../../assets/fonts/Poppins-Light.woff2") format("woff2"),
+      url("../../assets/fonts/Poppins-Light.ttf") format("truetype")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:400;font-display:swap;
+  src:url("../../assets/fonts/Poppins-Regular.woff2") format("woff2"),
+      url("../../assets/fonts/Poppins-Regular.ttf") format("truetype")}
+@font-face{font-family:"Poppins";font-style:italic;font-weight:400;font-display:swap;
+  src:url("../../assets/fonts/Poppins-Italic.woff2") format("woff2"),
+      url("../../assets/fonts/Poppins-Italic.ttf") format("truetype")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;
+  src:url("../../assets/fonts/Poppins-Medium.woff2") format("woff2"),
+      url("../../assets/fonts/Poppins-Medium.ttf") format("truetype")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;
+  src:url("../../assets/fonts/Poppins-SemiBold.woff2") format("woff2"),
+      url("../../assets/fonts/Poppins-SemiBold.ttf") format("truetype")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:700;font-display:swap;
+  src:url("../../assets/fonts/Poppins-Bold.woff2") format("woff2"),
+      url("../../assets/fonts/Poppins-Bold.ttf") format("truetype")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:800;font-display:swap;
+  src:url("../../assets/fonts/Poppins-ExtraBold.woff2") format("woff2"),
+      url("../../assets/fonts/Poppins-ExtraBold.ttf") format("truetype")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:900;font-display:swap;
+  src:url("../../assets/fonts/Poppins-Black.woff2") format("woff2"),
+      url("../../assets/fonts/Poppins-Black.ttf") format("truetype")}

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Les Roues Solidaires — Se remettre en mouvement, ensemble</title>
+<title>Les Roues Solidaires · Se remettre en mouvement, ensemble</title>
 <meta name="description" content="À bord du OuiCycle, retrouvez le plaisir de sortir, de pédaler et d'échanger. À votre rythme. Un dispositif de cyclothérapie inclusive pour EHPAD, collectivités et établissements médico-sociaux.">
 
 <link rel="stylesheet" href="css/base.css">
@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="css/sections/05-plans.css">
 <link rel="stylesheet" href="css/sections/06-preuve.css">
 <link rel="stylesheet" href="css/sections/07-structure.css">
+<link rel="stylesheet" href="css/sections/08-final.css">
+<link rel="stylesheet" href="css/sections/09-footer.css">
 </head>
 <body>
 
@@ -23,7 +25,7 @@
 <header class="site-header" id="site-header">
   <!-- double logo : LRS (marque active) · OuiCycle (bascule) — sans cadre -->
   <div class="brand-switch" role="group" aria-label="Les Roues Solidaires, une marque OuiCycle">
-    <a href="#" class="brand-switch__item brand-switch__item--current" aria-current="page" aria-label="Les Roues Solidaires — page actuelle">
+    <a href="#" class="brand-switch__item brand-switch__item--current" aria-current="page" aria-label="Les Roues Solidaires, page actuelle">
       <img src="assets/logos/lrs-noir.svg" alt="Les Roues Solidaires" class="brand-logo brand-logo--lrs">
     </a>
     <span class="brand-switch__divider" aria-hidden="true"></span>
@@ -34,16 +36,25 @@
   </div>
 
   <!-- navigation -->
-  <nav class="site-nav" aria-label="Navigation principale">
-    <a href="#dispositif" aria-current="page">Le dispositif</a>
-    <a href="#pour-qui">Pour qui</a>
-    <a href="#financement">Financement</a>
-    <a href="#preuves">Nos preuves</a>
-    <a href="#contact">Contact</a>
+  <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+    <a href="dispositif.html">Le dispositif</a>
+    <a href="pour-qui.html">Pour qui</a>
+    <a href="financement.html">Financement</a>
+    <a href="preuves.html">Nos preuves</a>
+    <a href="le-ouicycle.html">Le OuiCycle</a>
+    <a href="a-propos.html">À propos</a>
   </nav>
 
-  <!-- CTA primaire -->
-  <a href="#contact" class="btn btn--primary btn--sm">Prendre rendez-vous</a>
+  <!-- CTA primaire + menu (hamburger < 900px) -->
+  <div class="header-actions">
+    <a href="contact.html" class="btn btn--primary btn--sm">
+      <span class="cta-full">Prendre rendez-vous</span>
+      <span class="cta-short">Prendre RDV</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+    </button>
+  </div>
 </header>
 
 <main>
@@ -61,13 +72,13 @@
 
   <div class="hero__inner container">
     <div class="hero__text">
-      <h1 class="hero__title">Se remettre en<br>mouvement, ensemble</h1>
+      <h1 class="hero__title">Se remettre en <br>mouvement, ensemble</h1>
       <p class="hero__subtitle">
-        À bord du OuiCycle, retrouvez le plaisir de sortir, de pédaler et d'échanger.
-        <span class="hero__punch">À votre rythme.</span>
+        À bord du OuiCycle, retrouvez le plaisir de sortir, de pédaler et d'échanger.
+        <span class="hero__punch">À votre rythme.</span>
       </p>
     </div>
-    <a href="#contact" class="btn btn--primary hero__cta">Réservez une démo <span class="arrow" aria-hidden="true">→</span></a>
+    <a href="contact.html" class="btn btn--primary hero__cta">Réservez une démo <span class="arrow" aria-hidden="true">→</span></a>
   </div>
 </section>
 
@@ -77,7 +88,8 @@
 <section class="partners" aria-label="Ils nous font confiance">
   <div class="partners__glass">
     <span class="partners__label">Déjà déployé avec</span>
-    <ul class="partners__logos">
+    <div class="partners__row">
+      <ul class="partners__logos">
       <li><img src="assets/logos/trim/idf.png"     alt="Région Île-de-France" class="plogo plogo--idf"></li>
       <li><img src="assets/logos/trim/korian.png"  alt="Korian" class="plogo plogo--korian"></li>
       <li><img src="assets/logos/trim/parisco.png" alt="Paris&amp;Co" class="plogo plogo--parisco"></li>
@@ -85,6 +97,8 @@
       <li><img src="assets/logos/trim/ag2r.png"    alt="AG2R La Mondiale" class="plogo plogo--ag2r"></li>
       <li><img src="assets/logos/trim/univi.png"   alt="Univi" class="plogo plogo--univi"></li>
     </ul>
+      <button class="partners__next" type="button" aria-label="Faire défiler les partenaires" hidden><span aria-hidden="true">&#8594;</span></button>
+    </div>
   </div>
 </section>
 
@@ -94,16 +108,16 @@
 <section class="dispositif section" id="dispositif">
   <img class="dispositif__roue" src="assets/logos/roue.png" alt="" aria-hidden="true">
   <div class="container">
-    <h2 class="dispositif__title">Les Roues Solidaires, un dispositif <span class="t-underline">social</span> né du OuiCycle.</h2>
+    <h2 class="dispositif__title">Les Roues Solidaires, un dispositif <span class="t-underline">social</span> né du OuiCycle.</h2>
 
     <figure class="dispositif__visual">
       <img src="assets/media/dispositif-vehicule.jpg" alt="Le OuiCycle en sortie dans la ville : le conducteur-animateur souriant et des passagers à bord.">
     </figure>
 
     <div class="dispositif__foot grid12">
-      <p class="dispositif__lead col-8">Un véhicule qui remet l'usager au centre. Des sorties qui rendent<br>la pratique du vélo <span class="mark">enfin inclusive.</span></p>
+      <p class="dispositif__lead col-8">Un véhicule qui remet l'usager au centre. Des sorties qui rendent <br>la pratique du vélo <span class="mark">enfin inclusive.</span></p>
       <div class="dispositif__cta col-4">
-        <a href="#" class="btn btn--outline" target="_blank" rel="noopener">Découvrir le OuiCycle <span class="arrow" aria-hidden="true">→</span></a>
+        <a href="#" class="btn btn--outline" target="_blank" rel="noopener">Découvrir le OuiCycle <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
@@ -117,14 +131,14 @@
   <img class="plans__corner plans__corner--bl" src="assets/logos/corner.svg" alt="" aria-hidden="true">
   <div class="container">
     <header class="plans__head">
-      <h2 class="plans__title">La pratique du vélo sans ses <span class="mark">inconvénients</span></h2>
+      <h2 class="plans__title">La pratique du vélo sans ses <span class="mark">inconvénients</span></h2>
     </header>
 
-    <p class="plans__intro">Notre solution, des sorties en OuiCycle et des séances de cyclothérapie régulières. Le tout encadré par un conducteur-animateur, dans un cadre sécurisé et stimulant.<br>Notre dispositif est modulable, pour épouser les spécificités de vos publics.</p>
+    <p class="plans__intro">Notre solution, des sorties en OuiCycle et des séances de cyclothérapie régulières. Le tout encadré par un conducteur-animateur, dans un cadre sécurisé et stimulant.<br>Notre dispositif est modulable, pour épouser les spécificités de vos publics.</p>
 
     <!-- Sous-partie 1 : les 2 axes (carrousel) -->
     <div class="axes">
-      <h3 class="axes__title">1 service unique, pensé autour de <span class="u-line">2 axes</span></h3>
+      <h3 class="axes__title">1 service unique, pensé autour de <span class="u-line">2 axes</span></h3>
       <div class="axes__carousel">
         <div class="axes__track" data-axes-track>
 
@@ -132,10 +146,13 @@
             <article class="axis">
               <div class="axis__text">
                 <div class="axis__head"><span class="axis__num">1.</span><h4 class="axis__title">Cyclothérapie</h4></div>
-                <p class="axis__body">Une forme d'activité physique adaptée. Un maintien dans l'autonomie et du renforcement musculaire à bord d'un vélo collectif, pensé pour les publics fragiles. Parmi d'autres paramètres, le tonus musculaire des bénéficiaires est mesuré et documenté. Les Roues Solidaires sont un vrai <span class="u-line">outil de soin</span>.</p>
+                <div class="axis__body">
+                  <p>Une forme d'activité physique adaptée. Un maintien dans l'autonomie et du renforcement musculaire à bord d'un vélo collectif, pensé pour les publics fragiles.</p>
+                  <p>Parmi d'autres paramètres, le tonus musculaire des bénéficiaires est mesuré et documenté.</p>
+                  <p>Les Roues Solidaires offrent un véritable <span class="u-line">outil de soin</span>.</p>
+                </div>
               </div>
               <figure class="axis__photo"><img src="assets/media/plans-ludique.jpg" alt="Une résidente à bord du OuiCycle, en séance."></figure>
-              <button class="axis__nav axis__nav--next" data-axes-next aria-label="Voir l'axe suivant">→</button>
             </article>
           </div>
 
@@ -143,46 +160,63 @@
             <article class="axis">
               <div class="axis__text">
                 <div class="axis__head"><span class="axis__num">2.</span><h4 class="axis__title">Ballades ludiques</h4></div>
-                <p class="axis__body">Le OuiCycle est aussi conçu pour se réunir : le collectif est à l'honneur. L'ergonomie du véhicule et son accessibilité radicale, ce sont autant de contraintes en moins à l'accès au plaisir. Intergénérationnel, il réunit des familles et transporte des enfants.</p>
+                <div class="axis__body">
+                  <p>Le OuiCycle est aussi conçu pour se réunir : le collectif est à l'honneur.</p>
+                  <p>L'ergonomie du véhicule et son accessibilité radicale, ce sont autant de contraintes en moins à l'accès au plaisir. Intergénérationnel, il réunit des familles et transporte des enfants.</p>
+                </div>
               </div>
               <figure class="axis__photo"><img src="assets/media/ballades-ludiques.jpg" alt="Le OuiCycle en balade dans la ville, passagers souriants."></figure>
-              <button class="axis__nav axis__nav--prev" data-axes-prev aria-label="Revenir à l'axe précédent">←</button>
             </article>
           </div>
 
         </div>
       </div>
+
+      <!-- Navigation centrée SOUS le carrousel : 1 flèche par page -->
+      <div class="axes__nav">
+        <button class="axis__nav axis__nav--prev" data-axes-prev aria-label="Axe précédent" hidden>←</button>
+        <button class="axis__nav axis__nav--next" data-axes-next aria-label="Axe suivant">→</button>
+      </div>
     </div>
 
     <!-- Sous-partie 2 : les 4 plans (côte à côte) -->
     <div class="plans4">
-      <h3 class="plans4__title">La cyclothérapie agit sur 4 plans :</h3>
+      <h3 class="plans4__title">Notre dispositif de cyclothérapie agit sur 4 plans :</h3>
       <div class="plans4__grid grid12">
         <article class="plan4 plan4--moteur">
           <span class="plan4__picto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></svg></span>
           <h4 class="plan4__title">Moteur</h4>
-          <p class="plan4__body">Chacun pédale à son rythme : l'activité physique, c'est du plaisir avant tout.</p>
+          <p class="plan4__body">Chacun pédale à son rythme : l'activité physique, c'est du plaisir avant tout.</p>
         </article>
+        <div class="plans4__more" id="plans4-more" data-plans-panel>
+        <div class="plans4__more-clip">
         <article class="plan4 plan4--cognitif">
           <span class="plan4__picto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8"/><path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8"/><path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5"/><path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0"/><path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5"/><path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10"/></svg></span>
           <h4 class="plan4__title">Cognitif</h4>
-          <p class="plan4__body">Échanger, passer par des lieux familiers c'est stimuler ses fonctions cognitives.</p>
+          <p class="plan4__body">Échanger, passer par des lieux familiers c'est stimuler ses fonctions cognitives.</p>
         </article>
         <article class="plan4 plan4--sensoriel">
           <span class="plan4__picto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"/></svg></span>
           <h4 class="plan4__title">Sensoriel</h4>
-          <p class="plan4__body">Sons, lumière, grand air : l'usager profite pleinement de l'environnement.</p>
+          <p class="plan4__body">Sons, lumière, grand air : l'usager profite pleinement de l'environnement.</p>
         </article>
         <article class="plan4 plan4--social">
           <span class="plan4__picto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg></span>
           <h4 class="plan4__title">Social</h4>
-          <p class="plan4__body">Une sortie en groupe, c'est la garantie d'une expérience collective et fédératrice.</p>
+          <p class="plan4__body">Une sortie en groupe, c'est la garantie d'une expérience collective et fédératrice.</p>
         </article>
+        </div>
+        </div>
+      </div>
+      <div class="plans4__toggle-wrap">
+        <button type="button" class="plans4__toggle" data-plans-toggle aria-expanded="false" aria-controls="plans4-more" aria-label="Voir les 3 autres plans">
+          <svg class="plans4__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6l6 -6"/></svg>
+        </button>
       </div>
     </div>
 
     <div class="plans__cta">
-      <a href="#" class="btn btn--outline">En savoir plus sur le dispositif <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="dispositif.html" class="btn btn--outline">En savoir plus sur le dispositif <span class="arrow" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -193,13 +227,13 @@
 <section class="preuve section" id="preuves">
   <div class="container">
     <div class="preuve__head">
-      <h2 class="preuve__title">Une solution qui fait ses <span class="mark">preuves.</span></h2>
+      <h2 class="preuve__title">Une solution qui fait ses <span class="mark">preuves.</span></h2>
     </div>
 
     <div class="preuve__grid grid12">
       <blockquote class="preuve__quote">
-        <p class="preuve__quote-text">«&#8239;Je revis&#8239;! C'est quand la prochaine séance&#8239;?&#8239;»</p>
-        <footer class="preuve__quote-attr">— Dominique, résidente d'un EHPAD Emeis</footer>
+        <p class="preuve__quote-text">«&#8239;Je revis&#8239;! C'est quand la prochaine séance&#8239;?&#8239;»</p>
+        <footer class="preuve__quote-attr">Dominique, résidente d'un EHPAD Emeis</footer>
       </blockquote>
 
       <div class="preuve__stat preuve__stat--light">
@@ -221,58 +255,114 @@
 <section class="structure section" id="pour-qui">
   <div class="container">
     <header class="structure__head">
-      <h2 class="structure__title">Les Roues Solidaires dans votre <span class="rotor"><span class="rotor__word" data-rotor>Structure</span></span></h2>
-      <p class="structure__sub">Un dispositif unique, des usages sur mesure.</p>
+      <h2 class="structure__title">Les Roues Solidaires dans votre&#8239;:<br><span class="rotor"><span class="rotor__word" data-rotor>Structure</span></span></h2>
+      <p class="structure__sub">Un dispositif unique, des usages sur mesure.</p>
     </header>
 
     <div class="structure__grid grid12">
-      <a class="audience-card" href="#pour-qui">
+      <a class="audience-card" href="pour-qui-ehpad.html">
         <span class="audience-card__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h9"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M9 16h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M5 21v-16c0 -.53 .211 -1.039 .586 -1.414c.375 -.375 .884 -.586 1.414 -.586h10c.53 0 1.039 .211 1.414 .586c.375 .375 .586 .884 .586 1.414v7"/><path d="M16 19h6"/><path d="M19 16v6"/></svg>
         </span>
         <h3 class="audience-card__title">EHPAD</h3>
         <ul class="audience-card__benefits">
-          <li>De l'activité physique adaptée pour vos résidents.</li>
-          <li>+ d'attractivité pour vous.</li>
+          <li>De l'activité physique adaptée pour vos résidents</li>
+          <li>Plus d'attractivité pour votre établissement</li>
         </ul>
-        <span class="audience-card__arrow">Découvrir <span aria-hidden="true">→</span></span>
+        <span class="audience-card__arrow">Découvrir <span aria-hidden="true">&#8594;</span></span>
       </a>
 
-      <a class="audience-card" href="#pour-qui">
+      <a class="audience-card" href="pour-qui-residence-autonomie.html">
+        <span class="audience-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l18 0"/><path d="M3 10l18 0"/><path d="M5 6l7 -3l7 3"/><path d="M4 10l0 11"/><path d="M20 10l0 11"/><path d="M8 14l0 3"/><path d="M12 14l0 3"/><path d="M16 14l0 3"/></svg>
+        </span>
+        <h3 class="audience-card__title">Résidence autonomie</h3>
+        <ul class="audience-card__benefits">
+          <li>Maintenir vos résidents dans l'autonomie</li>
+          <li>Un temps fort partagé chaque semaine</li>
+        </ul>
+        <span class="audience-card__arrow">Découvrir <span aria-hidden="true">&#8594;</span></span>
+      </a>
+
+      <div class="audience-card audience-card--soon" aria-label="Collectivités, page bientôt disponible">
         <span class="audience-card__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"/><path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M17 10h2a2 2 0 0 1 2 2v1"/><path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M3 13v-1a2 2 0 0 1 2 -2h2"/></svg>
         </span>
         <h3 class="audience-card__title">Collectivités</h3>
         <ul class="audience-card__benefits">
-          <li>Un levier d'inclusion pour vos administrés.</li>
-          <li>Une solution visible par vos administrés.</li>
+          <li>Un levier d'inclusion pour vos administrés</li>
+          <li>Une action visible sur votre territoire</li>
         </ul>
-        <span class="audience-card__arrow">Découvrir <span aria-hidden="true">→</span></span>
-      </a>
-
-      <a class="audience-card" href="#pour-qui">
-        <span class="audience-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l18 0"/><path d="M3 10l18 0"/><path d="M5 6l7 -3l7 3"/><path d="M4 10l0 11"/><path d="M20 10l0 11"/><path d="M8 14l0 3"/><path d="M12 14l0 3"/><path d="M16 14l0 3"/></svg>
-        </span>
-        <h3 class="audience-card__title">Établissements médico-sociaux</h3>
-        <ul class="audience-card__benefits">
-          <li>Maintenir vos résidents dans l'autonomie.</li>
-          <li>Leur offrir un instant de plaisir chaque semaine.</li>
-        </ul>
-        <span class="audience-card__arrow">Découvrir <span aria-hidden="true">→</span></span>
-      </a>
+        <span class="audience-card__soon"><span>Bientôt</span></span>
+      </div>
+    
     </div>
 
     <div class="structure__cta">
-      <a href="#pour-qui" class="btn btn--outline">Trouvez votre structure <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="pour-qui.html" class="btn btn--outline">Trouvez votre structure <span class="arrow" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- ░░ section suivante (07 CTA final) à venir ░░ -->
+<!-- ========================================================
+     07 · CTA FINAL (fond sombre)
+     ======================================================== -->
+<section class="final section" id="contact" aria-label="Passer à l'action">
+  <div class="container">
+    <div class="final__inner">
+      <h2 class="final__title">Saisissez l'occasion de&nbsp;découvrir le&nbsp;OuiCycle <span class="final__num">en&nbsp;vrai</span>.</h2>
+      <p class="final__sub">Rien ne remplace une démonstration sur site. On vient à vous, sans engagement.</p>
+      <a href="contact.html" class="btn btn--on-dark final__cta">Réservez une démo <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
 
 </main>
 
+<!-- ========================================================
+     FOOTER
+     ======================================================== -->
+<footer class="footer" aria-label="Pied de page">
+  <div class="container">
+    <div class="footer__grid grid12">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="assets/logos/lrs-jaune.svg" alt="Les Roues Solidaires">
+        <p class="footer__tagline">La cyclothérapie inclusive, à bord du OuiCycle. Se remettre en mouvement, ensemble.</p>
+        <p class="footer__parent">Une marque <a href="#" target="_blank" rel="noopener">OuiCycle&nbsp;↗</a></p>
+      </div>
+
+      <nav class="footer__col footer__col--nav" aria-label="Navigation pied de page">
+        <p class="footer__title">Naviguer</p>
+        <ul class="footer__list">
+          <li><a href="dispositif.html">Le dispositif</a></li>
+          <li><a href="pour-qui.html">Pour qui</a></li>
+          <li><a href="preuves.html">Nos preuves</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col footer__col--contact">
+        <p class="footer__title">Contact</p>
+        <div class="footer__contact">
+          <a href="mailto:contact@ouicycle.fr">contact@ouicycle.fr</a>
+          <a href="contact.html" class="footer__cta">Réservez une démo <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__legal">
+      <span>© 2026 OuiCycle · Les Roues Solidaires. Tous droits réservés.</span>
+      <div class="footer__legal-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <script src="js/main.js"></script>
+<script src="js/header.js"></script>
 </body>
 </html>

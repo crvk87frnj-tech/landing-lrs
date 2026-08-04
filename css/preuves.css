@@ -1,0 +1,346 @@
+/* ============================================================
+   PAGE — NOS PREUVES
+   « Des résultats terrain ». Mêmes tokens, même grille 12 colonnes,
+   même échelle typo que la landing / dispositif / pour-qui.
+   Réutilise les primitives partagées : .pq-hero (en-tête), .pq-quote
+   (citation gris 700), .pq-h2 / .pq-title (titres de section).
+   Classes propres à la page préfixées .pv-*.
+   ============================================================ */
+
+figure{margin:0}
+
+/* Rythme vertical homogène (= .section landing : 96px) */
+.pv-section{padding-block:var(--sp-24)}
+
+/* Titre de section : IDENTIQUE aux autres pages (44px extrabold near-black) */
+.pv-h2{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h1);   /* 44px */
+  line-height:1.2;letter-spacing:var(--ls-tight);color:var(--oc-ink);margin:0;
+}
+.pv-title .mark{
+  position:relative;isolation:isolate;color:var(--oc-ink);
+  padding:0 .18em;background:transparent;border-radius:0;
+}
+.pv-title .mark::before{
+  content:"";position:absolute;z-index:-1;left:0;right:0;top:17%;bottom:17%;
+  background:var(--oc-yellow);border-radius:var(--r-sm);
+}
+
+/* ============================================================
+   01 · HERO — reprend .pq-hero (label notch, padding, photo plein-bord).
+   Rythme aéré : label (64px) → titre → lead (40px) → sommaire (48px).
+   ============================================================ */
+
+/* Sommaire « Sur cette page » — épuré : sous-titre + filet + puces */
+.pv-toc{margin-top:var(--sp-12);max-width:320px}
+.pv-toc__label{
+  margin:0 0 var(--sp-3);padding-bottom:var(--sp-3);
+  font-size:var(--fs-h4);font-weight:var(--fw-semibold);color:var(--oc-ink);
+  border-bottom:1.5px solid var(--oc-ink);
+}
+.pv-toc__list{
+  list-style:none;margin:var(--sp-5) 0 0;padding:0;
+  display:flex;flex-direction:column;gap:14px;
+}
+.pv-toc__list li{position:relative;padding-left:22px}
+.pv-toc__list li::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:8px;height:8px;border-radius:50%;background:var(--oc-yellow-deep);
+}
+.pv-toc__list a{
+  font-size:var(--fs-lead);font-weight:var(--fw-medium);color:var(--oc-ink);
+  transition:color var(--dur) var(--ease);
+}
+.pv-toc__list a:hover{color:var(--oc-yellow-deep)}
+
+/* ============================================================
+   02 · BANDEAU CHIFFRES-CLÉS
+   Compteurs DÉCERCLÉS (gris 300 → jaune profond au scroll, motif
+   .pq-step__num), séparés par un filet fin (moonwalkers). Front-load.
+   ============================================================ */
+.pv-kpis{padding-block:var(--sp-16);background:var(--oc-white)}
+.pv-kpis__grid{
+  list-style:none;margin:0 auto;padding:0;max-width:1040px;
+  display:grid;grid-template-columns:repeat(3,1fr);
+}
+.pv-kpi{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:var(--sp-4) var(--sp-8);
+}
+.pv-kpi + .pv-kpi{border-left:1.5px solid var(--oc-ink)}   /* filet fin encre (moonwalkers) */
+.pv-kpi__num{
+  font-family:var(--font-display);font-weight:var(--fw-black);
+  font-size:clamp(3.5rem,7vw,5.5rem);line-height:1;font-variant-numeric:tabular-nums;
+  color:var(--oc-gray-300);transition:color .6s var(--ease);
+}
+.pv-kpi__num.is-lit{color:var(--oc-yellow-deep)}
+.pv-kpi__num--ink{color:var(--oc-ink)}   /* 3e chiffre (9 communes) : encre, sans effet gris→jaune */
+.pv-kpi__label{
+  margin-top:var(--sp-3);font-weight:var(--fw-semibold);
+  font-size:var(--fs-h4);line-height:1.3;color:var(--oc-ink);max-width:16ch;
+}
+
+/* ============================================================
+   04 · TÉMOIGNAGES — segmented control + bulles gris 700
+   ============================================================ */
+.pv-voices__intro{
+  max-width:72ch;margin:var(--sp-6) 0 var(--sp-12);
+  font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-text-muted);
+}
+
+/* Segmented control (onglets par profil) */
+.pv-tabs__nav{
+  display:flex;flex-wrap:wrap;gap:6px;width:max-content;max-width:100%;
+  margin-bottom:var(--sp-12);padding:6px;border-radius:var(--r-pill);
+  background:var(--oc-gray-100);border:1px solid var(--oc-border);
+}
+.pv-tab{
+  border:none;background:transparent;cursor:pointer;
+  font-family:var(--font-sans);font-weight:var(--fw-semibold);font-size:var(--fs-body);
+  color:var(--oc-gray-700);padding:11px 22px;border-radius:var(--r-pill);
+  transition:background var(--dur) var(--ease),color var(--dur) var(--ease);
+}
+.pv-tab:hover{color:var(--oc-ink)}
+.pv-tab.is-active{background:var(--oc-yellow-soft);color:var(--oc-ink);box-shadow:var(--shadow-sm)}
+
+.pv-panel{display:none}
+.pv-panel.is-active{display:block;animation:pv-fade .3s var(--ease)}
+@keyframes pv-fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Grille de citations (bulles pq-quote pleine largeur de colonne) */
+.pv-quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;align-items:start}
+.pv-quotes .pq-quote{max-width:none;width:100%;margin:0}
+.pv-quotes .pq-quote__text:last-child{margin-bottom:0}   /* citations sans auteur : pas de marge morte */
+/* Voix des résidents : plus courtes → plus présentes */
+.pv-quotes--short .pq-quote__text{font-size:var(--fs-h4);line-height:1.4}
+
+/* ============================================================
+   05 · CO-CONSTRUCTION & SOUTIENS — mur de labels « liquid glass »
+   Dalle de verre SIMULÉE (pas de backdrop-filter, cf. brief) :
+   dégradé translucide + liseré lumineux + ombre douce.
+   ============================================================ */
+.pv-support__intro{
+  max-width:70ch;margin:var(--sp-6) 0 var(--sp-12);
+  font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-text-muted);
+}
+.pv-glasswall{display:flex;flex-direction:column;gap:var(--sp-8)}
+.pv-glass{
+  padding:var(--sp-8) var(--sp-10);border-radius:var(--r-2xl);
+  background:linear-gradient(160deg,rgba(255,255,255,.78),rgba(255,253,247,.5));
+  border:1px solid rgba(255,255,255,.75);
+  box-shadow:
+    0 22px 50px -28px rgba(37,33,26,.30),
+    inset 0 1px 0 rgba(255,255,255,.9),
+    inset 0 -1px 0 rgba(37,33,26,.04);
+}
+.pv-glass__label{
+  margin:0 0 var(--sp-6);text-align:center;
+  font-size:var(--fs-label);font-weight:var(--fw-bold);
+  letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--oc-gray-700);
+}
+.pv-glass__logos{
+  list-style:none;margin:0;padding:0;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:28px 46px;
+}
+.pv-glass__logos li{display:flex;align-items:center;justify-content:center}
+
+/* Normalisation optique (dimensions réelles → poids visuel équivalent) */
+.pv-logo{width:auto;height:auto;max-width:170px;object-fit:contain;max-height:46px}
+.pv-logo--greentech{max-height:60px}
+.pv-logo--solar{max-height:58px}
+.pv-logo--ademe{max-height:56px}
+.pv-logo--ars{max-height:52px}
+.pv-logo--cnsa{max-height:56px}
+.pv-logo--afnor{max-height:44px}
+.pv-logo--carsat{max-height:40px}
+.pv-logo--gerondif{max-height:32px}
+.pv-logo--agircarrco{max-height:34px}
+.pv-logo--bpifrance{max-height:38px}
+.pv-logo--interreg{max-height:32px}
+.pv-logo--perqo{max-height:34px}
+.pv-logo--parisco{max-height:28px}
+
+.pv-support__cta{display:flex;justify-content:center;margin-top:var(--sp-12)}
+
+/* Wordmark de repli (logo indisponible) — ex. CNSA : composé en Poppins */
+.pv-logo--wordmark{
+  display:inline-flex;align-items:center;
+  font-family:var(--font-display);font-weight:var(--fw-extrabold);
+  font-size:1.5rem;letter-spacing:.02em;color:var(--oc-ink);line-height:1;max-height:none;
+}
+
+/* ============================================================
+   06 · COMMENT ON MESURE L'IMPACT — 4 modalités illustrées
+   Réutilise les illustrations HTML (iframes 1200×800 mises à l'échelle)
+   et la palette du bloc « mesures » du dispositif.
+   ============================================================ */
+.pv-measures{background:var(--oc-white)}
+.pv-measures__amorce{
+  max-width:60ch;margin:var(--sp-6) 0 var(--sp-12);
+  font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-text-muted);
+}
+.pv-measures__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.pv-measures__nav,.pv-measures__count{display:none}   /* carrousel = mobile uniquement (desktop = grille 2 col) */
+.pv-measure{
+  display:flex;flex-direction:column;
+  background:var(--oc-gray-100);border:1px solid var(--oc-border-strong);
+  border-radius:var(--r-xl);padding:26px 28px;min-height:320px;
+}
+.pv-measure__head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.pv-measure__num{font-family:var(--font-display);font-weight:var(--fw-black);font-size:1.4rem;line-height:1;opacity:.9}
+.pv-measure__title{font-weight:var(--fw-bold);font-size:var(--fs-h3);margin:0}
+.pv-measure__body{font-size:var(--fs-body);line-height:var(--lh-normal);color:var(--oc-ink);margin:0 0 18px}
+.pv-measure__illus{
+  margin-top:auto;aspect-ratio:3 / 2;border-radius:var(--r-md);
+  overflow:hidden;position:relative;background:#0b0e14;
+}
+.pv-measure__illus iframe{
+  position:absolute;top:0;left:0;border:0;pointer-events:none;
+  width:1200px;height:800px;transform-origin:top left;opacity:0;transition:opacity .3s var(--ease);
+}
+.pv-measure--tonus .pv-measure__num,.pv-measure--tonus .pv-measure__title{color:var(--oc-yellow-deep)}
+.pv-measure--cardiaque .pv-measure__num,.pv-measure--cardiaque .pv-measure__title{color:var(--oc-sensoriel)}
+.pv-measure--bienetre .pv-measure__num,.pv-measure--bienetre .pv-measure__title{color:var(--oc-cognitif)}
+.pv-measure--restitution{background:var(--oc-social);border-color:var(--oc-social)}
+.pv-measure--restitution .pv-measure__num,.pv-measure--restitution .pv-measure__title{color:#fff}
+.pv-measure--restitution .pv-measure__body{color:rgba(255,255,255,.9)}
+.pv-measures__transparence{
+  max-width:70ch;margin:var(--sp-12) 0 0;
+  font-size:var(--fs-body);line-height:var(--lh-normal);color:var(--oc-text-muted);
+}
+
+/* ============================================================
+   07 · RÉFÉRENCES CLIENTS — bande « liquid glass », défile au survol
+   Tous les partenaires réunis. Marquee en pause ; tourne au survol
+   (boucle sans couture via duplicata) → bloc court.
+   ============================================================ */
+.pv-clients{margin-top:var(--sp-12)}
+.pv-clients__glass{
+  position:relative;overflow:hidden;border-radius:var(--r-2xl);
+  padding:24px clamp(20px,3vw,44px);
+  background:linear-gradient(160deg,rgba(255,255,255,.78),rgba(255,253,247,.5));
+  border:1px solid rgba(255,255,255,.75);
+  box-shadow:
+    0 22px 50px -28px rgba(37,33,26,.30),
+    inset 0 1px 0 rgba(255,255,255,.9),
+    inset 0 -1px 0 rgba(37,33,26,.04);
+  /* fondu des deux bords de la bande */
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+}
+.pv-clients__track{
+  list-style:none;margin:0;padding:0;width:max-content;
+  display:flex;align-items:center;gap:clamp(44px,6vw,84px);
+  animation:pv-marquee 34s linear infinite;animation-play-state:paused;
+}
+.pv-clients__glass:hover .pv-clients__track{animation-play-state:running}
+@keyframes pv-marquee{to{transform:translateX(-50%)}}
+.pv-clients__item{flex:none;display:flex;align-items:center}
+.pv-clientlogo{width:auto;max-width:180px;object-fit:contain;max-height:48px;display:block}
+.pv-clientlogo--univi{max-height:44px}
+.pv-clientlogo--domusvi{max-height:50px}
+.pv-clientlogo--korian{max-height:42px}
+.pv-clientlogo--clinalliance{max-height:32px}
+.pv-clientlogo--emeis{max-height:44px}
+.pv-clientlogo--roguet{max-height:60px}
+.pv-clientlogo--idf{max-height:40px}
+.pv-clientlogo--pfp{max-height:58px}
+.pv-clientlogo--colombes{max-height:40px}
+.pv-clientlogo--text{
+  font-family:var(--font-display);font-weight:var(--fw-extrabold);
+  font-size:1.25rem;color:var(--oc-ink);line-height:1.1;white-space:nowrap;
+}
+@media (prefers-reduced-motion:reduce){
+  .pv-clients__track{animation:none}
+  .pv-clients__glass{overflow-x:auto}
+  .pv-clients__item[aria-hidden="true"]{display:none}
+}
+
+/* ============================================================
+   08 · CTA FINAL — bloc encre, CTA jaune + secondaire outline
+   ============================================================ */
+.pv-final{background:var(--oc-ink);padding-block:var(--sp-24);text-align:center}
+.pv-final__inner{max-width:720px;margin:0 auto}
+.pv-final__title{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h1);   /* 44px */
+  line-height:1.15;letter-spacing:var(--ls-tight);color:var(--oc-white);margin:0;
+}
+.pv-final__sub{
+  font-size:var(--fs-lead);line-height:var(--lh-normal);
+  color:rgba(255,255,255,.82);margin:var(--sp-6) 0 var(--sp-10);
+}
+.pv-final__cta{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.pv-final__reassure{margin:var(--sp-8) 0 0;font-weight:var(--fw-semibold);color:var(--oc-yellow)}
+/* CTA secondaire sur fond sombre : outline clair */
+.btn--ghost-dark{background:transparent;color:var(--oc-white);border-color:rgba(255,255,255,.45)}
+.btn--ghost-dark:hover{--btn-lift:-2px;background:rgba(255,255,255,.08);border-color:var(--oc-white);box-shadow:none}
+.btn--ghost-dark:active{--btn-lift:0px;transform:translateY(0) scale(.985)}
+
+/* Surligneur du hero (« preuves ») : bande FINE (ne dépasse qu'un peu le mot),
+   au lieu du surlignage plein pleine hauteur de .mark. */
+.pq-hero__title .mark{
+  background:transparent;color:var(--oc-ink);
+  position:relative;isolation:isolate;padding:0 .08em;border-radius:0;
+}
+.pq-hero__title .mark::before{
+  content:"";position:absolute;z-index:-1;left:0;right:0;top:.30em;bottom:.14em;
+  background:var(--oc-yellow);border-radius:var(--r-xs);
+}
+
+
+/* Indice discret sous la bande partenaires : « ↑ Survolez » (défile au survol) */
+.pv-clients__hint{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  margin-top:var(--sp-4);
+  font-size:var(--fs-sm);font-weight:var(--fw-medium);letter-spacing:.02em;
+  color:var(--oc-text-faint);
+}
+.pv-clients__hint-arrow{color:var(--oc-yellow-deep);font-weight:var(--fw-bold);line-height:1}
+
+/* ============================================================
+   MOBILE / RESPONSIVE (≤760) — page « Nos preuves »
+   Grilles propres (PAS des .grid12) à collapser : chiffres-clés
+   (moonwalkers 3 col), citations (2 col), mesures (2 col).
+   ============================================================ */
+@media (max-width:760px){
+  .pv-section{padding-block:var(--sp-16)}
+  .pv-final{padding-block:var(--sp-16)}
+
+  /* Sommaire du hero : pleine largeur */
+  .pv-toc{max-width:none;margin-top:var(--sp-10)}
+
+  /* Chiffres-clés : moonwalkers 3 colonnes → empilés, filet en HAUT */
+  .pv-kpis{padding-block:var(--sp-12)}
+  .pv-kpis__grid{grid-template-columns:1fr}
+  .pv-kpi{padding:var(--sp-6) 0}
+  .pv-kpi + .pv-kpi{border-left:none;border-top:1.5px solid var(--oc-ink)}
+  .pv-kpi__num{font-size:clamp(3rem,16vw,4.5rem)}
+
+  /* Témoignages : segmented control + citations en 1 colonne */
+  .pv-tabs__nav{width:auto}
+  .pv-quotes{grid-template-columns:1fr}
+
+  /* Mesures : grille → CARROUSEL (repris du dispositif) : 1 carte/vue,
+     illustration EN HAUT, texte dessous, flèches-chevrons + compteur « 1/4 » */
+  .pv-measures__carousel{position:relative;padding-bottom:var(--sp-20)}
+  .pv-measures__grid{
+    display:flex;grid-template-columns:none;gap:var(--sp-5);
+    overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+    -ms-overflow-style:none;scrollbar-width:none;
+  }
+  .pv-measures__grid::-webkit-scrollbar{display:none}
+  .pv-measure{flex:0 0 86%;scroll-snap-align:start;min-height:0}
+  .pv-measure__illus{order:-1;margin-top:0;margin-bottom:var(--sp-5)}
+  .pv-measures__nav{
+    display:grid;place-items:center;position:absolute;bottom:0;
+    width:46px;height:46px;padding:0;border:none;border-radius:50%;cursor:pointer;
+    background:var(--oc-yellow);color:var(--oc-ink);
+  }
+  .pv-measures__nav--prev{left:calc(50% - 50px);background:var(--oc-white);border:1.8px solid var(--oc-text);color:var(--oc-text)}
+  .pv-measures__nav--next{left:calc(50% + 4px)}
+  .pv-measures__nav[hidden]{display:none}
+  .pv-measures__nav::before{content:"";position:absolute;top:50%;left:50%;width:9px;height:9px;border-right:3px solid currentColor;border-bottom:3px solid currentColor}
+  .pv-measures__nav--next::before{transform:translate(-50%,-50%) rotate(-45deg)}
+  .pv-measures__nav--prev::before{transform:translate(-50%,-50%) rotate(135deg)}
+  .pv-measures__count{display:block;position:absolute;left:0;right:0;bottom:56px;text-align:center;font-size:var(--fs-sm);font-weight:var(--fw-medium);color:var(--oc-ink)}
+}

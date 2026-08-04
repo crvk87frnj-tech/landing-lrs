@@ -19,9 +19,12 @@
   line-height:1.15;letter-spacing:-.015em;color:var(--oc-ink);
 }
 .plans__title .mark{
-  padding:.02em .22em;border-radius:var(--r-sm);color:var(--oc-ink);   /* fond plein → coins arrondis (cohérent site) */
-  background:var(--oc-yellow);
-  box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  position:relative;isolation:isolate;color:var(--oc-ink);
+  padding:0 .18em;background:transparent;
+}
+.plans__title .mark::before{   /* bandeau jaune affiné, coins arrondis */
+  content:"";position:absolute;z-index:-1;left:0;right:0;top:17%;bottom:17%;
+  background:var(--oc-yellow);border-radius:var(--r-sm);
 }
 .plans__intro{
   max-width:880px;margin:0 0 var(--sp-20);
@@ -67,26 +70,30 @@
 .axis__num{font-weight:var(--fw-black);font-size:2rem;line-height:1;color:var(--oc-yellow-deep)}
 .axis__title{font-weight:var(--fw-extrabold);font-size:var(--fs-h3);letter-spacing:-.01em;color:var(--oc-ink)}
 .axis__body{font-size:var(--fs-lead);line-height:1.6;font-weight:var(--fw-regular);color:var(--oc-gray-800)}
+.axis__body p{margin:0}
+.axis__body p + p{margin-top:.85em}   /* blocs de phrases aérés */
 
-/* flèche CTA (style dynamique du site) */
+/* Flèche(s) de navigation — CENTRÉES SOUS le carrousel.
+   Page 1 : « → » seule ; dernière page : « ← » seule (l'autre = display:none,
+   donc l'unique flèche visible reste centrée). Style dynamique du site conservé. */
+.axes__nav{display:flex;justify-content:center;gap:16px;margin-top:var(--sp-8)}
 .axis__nav{
-  position:absolute;z-index:4;width:56px;height:56px;border-radius:var(--r-pill);
+  width:56px;height:56px;border-radius:var(--r-pill);
   display:grid;place-items:center;cursor:pointer;border:none;
   background:var(--oc-yellow);color:var(--on-accent);
   font-size:1.4rem;line-height:1;
   box-shadow:var(--shadow-yellow);
   transition:transform var(--dur) var(--ease),background var(--dur) var(--ease),box-shadow var(--dur) var(--ease);
 }
+.axis__nav[hidden]{display:none}
 .axis__nav:hover{transform:translateY(-3px);background:var(--oc-yellow-deep);box-shadow:0 14px 30px rgba(245,168,0,.42)}
 .axis__nav:active{transform:translateY(0) scale(.96)}
-.axis__nav--next{right:26px;bottom:26px}
-.axis__nav--prev{left:26px;bottom:26px}
 
 /* ============================================================
    Sous-partie 2 — LES 4 PLANS (4 bulles côte à côte, glass léger)
    ============================================================ */
 .plans4__title{
-  font-weight:var(--fw-extrabold);font-size:var(--fs-h2);   /* 32px */
+  font-weight:var(--fw-bold);font-size:var(--fs-h2);   /* 32px — graisse allégée (proportion) */
   line-height:1.2;letter-spacing:-.02em;color:var(--oc-ink);margin-bottom:var(--sp-12);
 }
 .plans4__grid{align-items:stretch}
@@ -113,5 +120,76 @@
 .plan4__title{font-weight:var(--fw-bold);font-size:1.125rem;letter-spacing:-.01em;color:var(--oc-ink);margin-bottom:10px}
 .plan4__body{font-size:.9375rem;line-height:1.5;color:var(--oc-gray-800)}
 
+/* --- Déroulé mobile des 4 plans (n'agit qu'en mobile) ---
+   Desktop : le panneau + son clip « disparaissent » (display:contents)
+   → les 3 cartes redeviennent des items DIRECTS de la grille → 4 colonnes intactes. */
+.plans4__more,
+.plans4__more-clip{display:contents}
+.plans4__toggle-wrap{display:none}
+.plans4__toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:46px;height:46px;padding:0;border:none;border-radius:50%;
+  background:var(--oc-yellow);color:var(--oc-ink);cursor:pointer;
+  box-shadow:var(--shadow-md);
+  transition:transform var(--dur) var(--ease),background var(--dur) var(--ease);
+}
+.plans4__toggle:hover{transform:translateY(-2px);background:var(--oc-yellow-deep)}
+.plans4__toggle:active{transform:translateY(0) scale(.96)}
+.plans4__chevron{width:22px;height:22px;transition:transform var(--dur) var(--ease)}
+.plans4__toggle[aria-expanded="true"] .plans4__chevron{transform:rotate(180deg)}
+
 /* ---- CTA « En savoir plus » : centré, bien détaché des bulles ---- */
 .plans__cta{text-align:center;margin-top:var(--sp-24)}
+
+/* ---- Mobile (≤760) ---- */
+@media (max-width:760px){
+  .plans{padding-bottom:var(--sp-16)}
+  /* coins « capote » : plus petits et atténués (moins de pollution) */
+  .plans__corner{opacity:.4;width:clamp(60px,15vw,92px)}
+  .plans__corner--tr{top:12px;right:12px}
+  .plans__corner--bl{bottom:12px;left:12px}
+  .plans__head{margin-bottom:var(--sp-12);text-align:left}
+  .plans__intro{margin-bottom:var(--sp-16);text-align:left}
+
+  /* « 2 axes » : la slide passe en colonne (texte puis photo) */
+  .axes{margin-bottom:var(--sp-16)}
+  .axes__title{margin-bottom:var(--sp-6)}
+  .axis{flex-direction:column;min-height:0}
+  .axis__text{flex:none;padding:var(--sp-8) var(--sp-6);border-radius:24px}
+  .axis__photo{order:-1;flex:none;width:100%;margin-left:0;margin-top:0;margin-bottom:var(--sp-5);height:220px;border-radius:24px}
+  .axis__num{font-size:1.6rem}
+  .axes__nav{margin-top:var(--sp-6)}
+  .axis__nav{width:48px;height:48px;font-size:0;position:relative}
+  .axis__nav::before{content:"";position:absolute;top:50%;left:50%;width:9px;height:9px;border-right:3px solid currentColor;border-bottom:3px solid currentColor}
+  .axis__nav--next::before{transform:translate(-50%,-50%) rotate(-45deg)}
+  .axis__nav--prev::before{transform:translate(-50%,-50%) rotate(135deg)}
+
+  /* « 4 plans » : empilés en rangées (collapse global) ; resserrés */
+  .plans4__title{margin-bottom:var(--sp-6)}
+  .plans4__grid{gap:var(--sp-4)}
+  /* 4 plans : picto + titre CENTRÉS, corps étalé sur toute la largeur, pictos réduits */
+  .plan4{display:flex;flex-direction:column;align-items:stretch;text-align:center;padding:var(--sp-6)}
+  .plan4__picto{width:28px;height:28px;margin:0 auto var(--sp-3)}
+  .plan4__picto svg{width:24px;height:24px}
+  .plan4__title{text-align:center;margin:0 0 var(--sp-4)}
+  .plan4__body{margin:0}
+  /* Déroulé : « Moteur » + un APERÇU fondu du 2e plan (continuité), la flèche
+     jaune posée PAR-DESSUS le fondu. Au clic → le panneau s'ouvre (max-height). */
+  .plans4{position:relative}
+  .plans4__more{position:relative;display:block;overflow:hidden;max-height:104px;transition:max-height .45s var(--ease)}
+  .plans4__more-clip{display:flex;flex-direction:column;gap:var(--sp-4)}
+  /* fondu du bas de l'aperçu (le 2e plan « s'efface » vers le crème/blanc) */
+  .plans4__more::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:72px;z-index:1;pointer-events:none;
+    background:linear-gradient(to bottom,rgba(255,255,255,0),var(--oc-white) 82%);
+    transition:opacity .3s var(--ease);
+  }
+  .plans4.is-plans-open .plans4__more{max-height:none}
+  .plans4.is-plans-open .plans4__more::after{opacity:0}
+  /* flèche jaune posée par-dessus l'aperçu (remontée sur le 2e plan) ; redescend à l'ouverture */
+  .plans4__toggle-wrap{display:flex;justify-content:center;position:relative;z-index:2;margin-top:calc(-1 * var(--sp-10));transition:margin-top .3s var(--ease)}
+  .plans4.is-plans-open .plans4__toggle-wrap{margin-top:var(--sp-6)}
+  /* picto du 2e plan (vert Cognitif) atténué dans l'aperçu → glimpse discret */
+  .plans4:not(.is-plans-open) .plan4--cognitif .plan4__picto{opacity:.4}
+  .plans__cta{margin-top:var(--sp-20)}   /* + d'air entre le déroulé 4 plans et « En savoir plus » (évite la confusion 2 clics) */
+}

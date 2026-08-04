@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pour qui ? · Les Roues Solidaires</title>
+<meta name="description" content="Le OuiCycle s'adapte à chaque structure : EHPAD, résidence autonomie, collectivité, ballades ludiques. Choisissez votre profil pour découvrir la cyclothérapie chez vous.">
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sections/01-header.css">
+<link rel="stylesheet" href="css/sections/07-structure.css">
+<link rel="stylesheet" href="css/sections/09-footer.css">
+<link rel="stylesheet" href="css/pour-qui-hub.css">
+</head>
+<body>
+
+<!-- ========================================================
+     HEADER (sticky) — identique à la landing / dispositif
+     ======================================================== -->
+<header class="site-header" id="site-header">
+  <div class="brand-switch" role="group" aria-label="Les Roues Solidaires, une marque OuiCycle">
+    <a href="index.html" class="brand-switch__item brand-switch__item--current" aria-label="Les Roues Solidaires, accueil">
+      <img src="assets/logos/lrs-noir.svg" alt="Les Roues Solidaires" class="brand-logo brand-logo--lrs">
+    </a>
+    <span class="brand-switch__divider" aria-hidden="true"></span>
+    <a href="#" class="brand-switch__item brand-switch__item--alt" aria-label="Aller sur le site OuiCycle (nouvel onglet)" target="_blank" rel="noopener">
+      <img src="assets/logos/ouicycle-jaune.svg" alt="OuiCycle" class="brand-logo brand-logo--oc">
+      <span class="brand-switch__ext" aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+    <a href="dispositif.html">Le dispositif</a>
+    <a href="pour-qui.html" aria-current="page">Pour qui</a>
+    <a href="financement.html">Financement</a>
+    <a href="preuves.html">Nos preuves</a>
+    <a href="le-ouicycle.html">Le OuiCycle</a>
+    <a href="a-propos.html">À propos</a>
+  </nav>
+
+  <div class="header-actions">
+    <a href="contact.html" class="btn btn--primary btn--sm">
+      <span class="cta-full">Prendre rendez-vous</span>
+      <span class="cta-short">Prendre RDV</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- ========================================================
+     HUB · « Vous êtes ? » — le choix, point focal de l'écran 1.
+     4 cartes (composant .audience-card de la landing) : EHPAD active,
+     les autres en « bientôt ».
+     ======================================================== -->
+<section class="hub" aria-labelledby="hub-title">
+  <div class="container">
+    <div class="hub__head">
+      <p class="hub__eyebrow">Pour qui&nbsp;?</p>
+      <h1 class="hub__title" id="hub-title">Vous êtes&nbsp;?</h1>
+      <p class="hub__lead">Un dispositif unique, des usages sur mesure. Choisissez votre structure pour découvrir ce que le OuiCycle change, concrètement, chez vous.</p>
+    </div>
+
+    <div class="hub-choices grid12">
+
+      <!-- EHPAD — ACTIVE -->
+      <a class="audience-card" href="pour-qui-ehpad.html">
+        <span class="audience-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h9"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M9 16h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M5 21v-16c0 -.53 .211 -1.039 .586 -1.414c.375 -.375 .884 -.586 1.414 -.586h10c.53 0 1.039 .211 1.414 .586c.375 .375 .586 .884 .586 1.414v7"/><path d="M16 19h6"/><path d="M19 16v6"/></svg>
+        </span>
+        <h2 class="audience-card__title">EHPAD</h2>
+        <ul class="audience-card__benefits">
+          <li>De l'activité physique adaptée pour vos résidents</li>
+          <li>Plus d'attractivité pour votre établissement</li>
+        </ul>
+        <span class="audience-card__arrow">Découvrir <span aria-hidden="true">→</span></span>
+      </a>
+
+      <!-- RÉSIDENCE AUTONOMIE — ACTIVE -->
+      <a class="audience-card" href="pour-qui-residence-autonomie.html">
+        <span class="audience-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l18 0"/><path d="M3 10l18 0"/><path d="M5 6l7 -3l7 3"/><path d="M4 10l0 11"/><path d="M20 10l0 11"/><path d="M8 14l0 3"/><path d="M12 14l0 3"/><path d="M16 14l0 3"/></svg>
+        </span>
+        <h2 class="audience-card__title">Résidence autonomie</h2>
+        <ul class="audience-card__benefits">
+          <li>Maintenir vos résidents dans l'autonomie</li>
+          <li>Un temps fort partagé chaque semaine</li>
+        </ul>
+        <span class="audience-card__arrow">Découvrir <span aria-hidden="true">→</span></span>
+      </a>
+
+      <!-- COLLECTIVITÉS — bientôt -->
+      <div class="audience-card audience-card--soon" aria-label="Collectivités, page bientôt disponible">
+        <span class="audience-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"/><path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M17 10h2a2 2 0 0 1 2 2v1"/><path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M3 13v-1a2 2 0 0 1 2 -2h2"/></svg>
+        </span>
+        <h2 class="audience-card__title">Collectivités</h2>
+        <ul class="audience-card__benefits">
+          <li>Un levier d'inclusion pour vos administrés</li>
+          <li>Une action visible sur votre territoire</li>
+        </ul>
+        <span class="audience-card__soon"><span>Bientôt</span></span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     SOCLE COMMUN · ce qui est vrai pour tous. Flou/atténué au repos
+     (le hub précède du contenu), s'éclaircit au scroll.
+     ======================================================== -->
+<section class="hub-socle" data-hub-socle aria-labelledby="hub-socle-title">
+  <div class="container">
+    <div class="hub-socle__inner">
+      <h2 class="hub-socle__title" id="hub-socle-title">Quelle que soit votre structure, vous y trouverez votre compte.</h2>
+      <p class="hub-socle__lead">Le OuiCycle est un vélo adapté qui permet à chacun de sortir, pédaler et partager un vrai moment. Ce qui change d'une structure à l'autre, c'est l'usage : sélectionnez votre profil ci-dessus pour le découvrir en détail.</p>
+
+      <div class="hub-proof">
+        <div class="hub-proof__item">
+          <span class="hub-proof__num">21</span>
+          <span class="hub-proof__label">établissements partenaires</span>
+        </div>
+        <div class="hub-proof__item">
+          <span class="hub-proof__num hub-proof__num--accent">400+</span>
+          <span class="hub-proof__label">séances réalisées</span>
+        </div>
+        <div class="hub-proof__item">
+          <span class="hub-proof__num">9</span>
+          <span class="hub-proof__label">communes d'Île-de-France</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ========================================================
+     FOOTER — identique à la landing / dispositif
+     ======================================================== -->
+<footer class="footer" aria-label="Pied de page">
+  <div class="container">
+    <div class="footer__grid grid12">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="assets/logos/lrs-jaune.svg" alt="Les Roues Solidaires">
+        <p class="footer__tagline">La cyclothérapie inclusive, à bord du OuiCycle. Se remettre en mouvement, ensemble.</p>
+        <p class="footer__parent">Une marque <a href="#" target="_blank" rel="noopener">OuiCycle&nbsp;↗</a></p>
+      </div>
+
+      <nav class="footer__col footer__col--nav" aria-label="Navigation pied de page">
+        <p class="footer__title">Naviguer</p>
+        <ul class="footer__list">
+          <li><a href="dispositif.html">Le dispositif</a></li>
+          <li><a href="pour-qui.html">Pour qui</a></li>
+          <li><a href="preuves.html">Nos preuves</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col footer__col--contact">
+        <p class="footer__title">Contact</p>
+        <div class="footer__contact">
+          <a href="mailto:contact@ouicycle.fr">contact@ouicycle.fr</a>
+          <a href="contact.html" class="footer__cta">Réservez une démo <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__legal">
+      <span>© 2026 OuiCycle · Les Roues Solidaires. Tous droits réservés.</span>
+      <div class="footer__legal-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/pour-qui-hub.js"></script>
+<script src="js/header.js"></script>
+</body>
+</html>

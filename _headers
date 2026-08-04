@@ -1,0 +1,26 @@
+# ============================================================
+# En-têtes de sécurité HTTP — appliqués par Netlify au déploiement.
+# (Le serveur d'aperçu local serve.py ne les émet pas ; ils ne valent qu'en prod.)
+#
+# La CSP ci-dessous est en mode « Report-Only » : elle NE BLOQUE RIEN.
+# Elle se contente de SIGNALER dans la console (DevTools) ce qu'elle
+# bloquerait si elle était active. Marche à suivre pour l'activer :
+#   1. Déployer tel quel, ouvrir le site + DevTools ▸ Console.
+#   2. Naviguer sur toutes les pages ; noter les lignes « [Report Only] ».
+#   3. Ajuster la règle jusqu'à ce qu'il ne reste plus que du légitime.
+#   4. Renommer « Content-Security-Policy-Report-Only » en
+#      « Content-Security-Policy » (sans -Report-Only) pour l'activer.
+# ============================================================
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=()
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'
+
+# Illustrations « mesures » : bundles React autonomes, DÉJÀ isolés par sandbox.
+# Politique volontairement permissive (inline + blob:) pour ne PAS polluer le
+# rapport de la CSP principale avec leurs violations attendues.
+/assets/mesures/*
+  Content-Security-Policy-Report-Only: default-src 'self' blob: data:; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; worker-src blob:; child-src blob:

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact · Prendre rendez-vous · Les Roues Solidaires</title>
+<meta name="description" content="Réservez une séance de démonstration gratuite du OuiCycle dans votre établissement, sans engagement. Réponse sous 48 heures. EHPAD, résidences autonomie, collectivités et établissements médico-sociaux.">
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sections/01-header.css">
+<link rel="stylesheet" href="css/sections/09-footer.css">
+<link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+<!-- ========================================================
+     HEADER (sticky) — identique aux autres pages
+     ======================================================== -->
+<header class="site-header" id="site-header">
+  <div class="brand-switch" role="group" aria-label="Les Roues Solidaires, une marque OuiCycle">
+    <a href="index.html" class="brand-switch__item brand-switch__item--current" aria-label="Les Roues Solidaires, accueil">
+      <img src="assets/logos/lrs-noir.svg" alt="Les Roues Solidaires" class="brand-logo brand-logo--lrs">
+    </a>
+    <span class="brand-switch__divider" aria-hidden="true"></span>
+    <a href="#" class="brand-switch__item brand-switch__item--alt" aria-label="Aller sur le site OuiCycle (nouvel onglet)" target="_blank" rel="noopener">
+      <img src="assets/logos/ouicycle-jaune.svg" alt="OuiCycle" class="brand-logo brand-logo--oc">
+      <span class="brand-switch__ext" aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+    <a href="dispositif.html">Le dispositif</a>
+    <a href="pour-qui.html">Pour qui</a>
+    <a href="financement.html">Financement</a>
+    <a href="preuves.html">Nos preuves</a>
+    <a href="le-ouicycle.html">Le OuiCycle</a>
+    <a href="a-propos.html">À propos</a>
+  </nav>
+
+  <div class="header-actions">
+    <a href="contact.html" class="btn btn--primary btn--sm">
+      <span class="cta-full">Prendre rendez-vous</span>
+      <span class="cta-short">Prendre RDV</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- ========================================================
+     CONTACT — prise de rendez-vous (formulaire dynamique 2 étapes)
+     ======================================================== -->
+<section class="ct" aria-labelledby="ct-title">
+  <img class="ct__roue ct__roue--tl" src="assets/logos/roue.png" alt="" aria-hidden="true">
+  <img class="ct__roue ct__roue--br" src="assets/logos/roue.png" alt="" aria-hidden="true">
+  <div class="container">
+
+    <header class="ct__head">
+      <p class="ct__eyebrow">Prise de rendez-vous</p>
+      <h1 class="ct__title" id="ct-title">Envie de voir le OuiCycle dans votre <span class="mark">établissement</span>&#8239;?</h1>
+      <p class="ct__lead">Réservez une séance de démonstration gratuite, sans engagement. Tout se passe chez vous, avec vos équipes et vos résidents.</p>
+      <p class="ct__reassure">Réponse sous 48&#160;h, promis&#8239;!</p>
+    </header>
+
+    <div class="ct__body">
+      <form class="ct-form" name="rdv" method="POST" action="contact.html"
+            data-netlify="true" netlify-honeypot="bot-field" data-rdv-form>
+        <input type="hidden" name="form-name" value="rdv">
+        <p class="ct-hp" aria-hidden="true"><label>Ne remplissez pas ce champ&#8239;: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+        <div class="ct-form__head">
+          <p class="ct-form__nb">Les champs marqués d'un <span class="ct-req">*</span> sont obligatoires.</p>
+          <p class="ct-form__stepnum" data-step-label>Étape 1 sur 2</p>
+        </div>
+        <div class="ct-progress" aria-hidden="true"><span class="ct-progress__bar" data-step-bar></span></div>
+
+        <!-- Étape 1 — l'établissement -->
+        <div class="ct-step" data-step="1">
+          <p class="ct-field">
+            <label for="ct-name">Nom de l'établissement <span class="ct-req">*</span></label>
+            <input id="ct-name" name="name" type="text" placeholder="Ex.&#8239;: EHPAD Les Jardins" autocomplete="organization" required>
+          </p>
+          <p class="ct-field">
+            <label for="ct-loc">Localisation <span class="ct-req">*</span></label>
+            <input id="ct-loc" name="location" type="text" placeholder="Ville ou département" required>
+          </p>
+          <fieldset class="ct-field ct-check">
+            <legend>Type de structure <span class="ct-req">*</span> <span class="ct-opt">(plusieurs choix possibles)</span></legend>
+            <div class="ct-check__grid">
+              <label class="ct-check__item"><input type="checkbox" name="type" value="EHPAD"><span>EHPAD</span></label>
+              <label class="ct-check__item"><input type="checkbox" name="type" value="Résidence autonomie"><span>Résidence autonomie</span></label>
+              <label class="ct-check__item"><input type="checkbox" name="type" value="IME"><span>IME</span></label>
+              <label class="ct-check__item"><input type="checkbox" name="type" value="CCAS"><span>CCAS</span></label>
+              <label class="ct-check__item"><input type="checkbox" name="type" value="Collectivité / Maison Sport Santé"><span>Collectivité / Maison Sport Santé</span></label>
+              <label class="ct-check__item"><input type="checkbox" name="type" value="Autre"><span>Autre</span></label>
+            </div>
+            <span class="ct-check__error" data-check-error hidden>Choisissez au moins un type de structure.</span>
+          </fieldset>
+
+          <div class="ct-form__nav">
+            <button type="button" class="btn btn--primary" data-next>Suivant <span class="arrow" aria-hidden="true">&#8594;</span></button>
+          </div>
+        </div>
+
+        <!-- Étape 2 — vous -->
+        <div class="ct-step" data-step="2" hidden>
+          <p class="ct-field">
+            <label for="ct-fn">Votre fonction <span class="ct-req">*</span></label>
+            <input id="ct-fn" name="function" type="text" placeholder="Ex.&#8239;: Directeur, Animateur, Médecin…" required>
+          </p>
+          <p class="ct-field">
+            <label for="ct-email">E-mail <span class="ct-req">*</span></label>
+            <input id="ct-email" name="email" type="email" placeholder="votre@email.fr" autocomplete="email" required>
+          </p>
+          <div class="ct-form__row">
+            <p class="ct-field">
+              <label for="ct-tel">Numéro de téléphone <span class="ct-opt">(facultatif)</span></label>
+              <input id="ct-tel" name="phone" type="tel" placeholder="06 xx xx xx xx" autocomplete="tel">
+            </p>
+            <p class="ct-field">
+              <label for="ct-count">Nombre de bénéficiaires <span class="ct-opt">(facultatif)</span></label>
+              <input id="ct-count" name="count" type="text" inputmode="numeric" placeholder="Ex.&#8239;: 45">
+            </p>
+          </div>
+
+          <div class="ct-form__nav ct-form__nav--split">
+            <button type="button" class="btn btn--outline" data-prev><span class="arrow arrow--back" aria-hidden="true">&#8592;</span> Retour</button>
+            <button type="submit" class="btn btn--primary">Envoyer ma demande <span class="arrow" aria-hidden="true">&#8594;</span></button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Confirmation (après envoi) -->
+      <div class="ct-success" data-rdv-success hidden>
+        <span class="ct-success__check" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+        </span>
+        <h2 class="ct-success__title">Merci, c'est envoyé&#8239;!</h2>
+        <p class="ct-success__text">Nous revenons vers vous sous 48&#160;heures pour convenir d'une date de démonstration. À très vite&#160;!</p>
+      </div>
+
+      <p class="ct__direct">Ou écrivez-nous directement à <a href="mailto:contact@ouicycle.fr">contact@ouicycle.fr</a></p>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ========================================================
+     FOOTER — identique aux autres pages
+     ======================================================== -->
+<footer class="footer" aria-label="Pied de page">
+  <div class="container">
+    <div class="footer__grid grid12">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="assets/logos/lrs-jaune.svg" alt="Les Roues Solidaires">
+        <p class="footer__tagline">La cyclothérapie inclusive, à bord du OuiCycle. Se remettre en mouvement, ensemble.</p>
+        <p class="footer__parent">Une marque <a href="#" target="_blank" rel="noopener">OuiCycle&nbsp;↗</a></p>
+      </div>
+
+      <nav class="footer__col footer__col--nav" aria-label="Navigation pied de page">
+        <p class="footer__title">Naviguer</p>
+        <ul class="footer__list">
+          <li><a href="dispositif.html">Le dispositif</a></li>
+          <li><a href="pour-qui.html">Pour qui</a></li>
+          <li><a href="preuves.html">Nos preuves</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col footer__col--contact">
+        <p class="footer__title">Contact</p>
+        <div class="footer__contact">
+          <a href="mailto:contact@ouicycle.fr">contact@ouicycle.fr</a>
+          <a href="contact.html" class="footer__cta">Réservez une démo <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__legal">
+      <span>© 2026 OuiCycle · Les Roues Solidaires. Tous droits réservés.</span>
+      <div class="footer__legal-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/header.js"></script>
+</body>
+</html>

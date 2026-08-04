@@ -32,7 +32,7 @@ a{color:inherit;text-decoration:none}
    Marges page 40px. Gouttière 24px. Rien "à la louche".
    ============================================================ */
 :root{
-  --page-pad:40px;        /* marge gauche/droite du canvas */
+  --page-pad:clamp(20px, 6vw, 40px);  /* marge latérale : 40px desktop, se resserre en mobile */
   --col-count:12;
   --col-gutter:24px;
   /* Fond de page : beige/crème chaud — pas blanc, sans gêner la lecture */
@@ -82,7 +82,7 @@ a{color:inherit;text-decoration:none}
 
 /* ============================================================
    BOUTONS — pilules. Hover = légère surélévation + jaune
-   approfondi + glow chaud. Press = settle 1px + scale .985.
+   approfondi (ombre neutre douce, pas de halo). Press = scale .985.
    Subtil, jamais déroutant.
    ============================================================ */
 .btn{
@@ -102,14 +102,14 @@ a{color:inherit;text-decoration:none}
 .btn .arrow{transition:transform var(--dur) var(--ease)}
 .btn:hover .arrow{transform:translateX(3px)}
 
-/* primaire — jaune */
-.btn--primary{background:var(--oc-yellow);color:var(--on-accent);box-shadow:var(--shadow-yellow)}
-.btn--primary:hover{--btn-lift:-2px;background:var(--oc-yellow-deep);box-shadow:0 14px 30px rgba(245,168,0,.38)}
+/* primaire — jaune. Ombre NEUTRE (pas de halo jaune). */
+.btn--primary{background:var(--oc-yellow);color:var(--on-accent);box-shadow:var(--shadow-md)}
+.btn--primary:hover{--btn-lift:-2px;background:var(--oc-yellow-deep);box-shadow:var(--shadow-lg)}
 .btn--primary:active{--btn-lift:0px;transform:translateY(0) scale(.985)}
 
-/* sur fond sombre — jaune qui glow */
-.btn--on-dark{background:var(--oc-yellow);color:var(--on-accent);box-shadow:0 12px 30px rgba(245,168,0,.36)}
-.btn--on-dark:hover{--btn-lift:-2px;background:var(--oc-yellow-deep);box-shadow:0 16px 36px rgba(245,168,0,.46)}
+/* sur fond sombre — jaune, ombre neutre discrète (plus de glow). */
+.btn--on-dark{background:var(--oc-yellow);color:var(--on-accent);box-shadow:var(--shadow-md)}
+.btn--on-dark:hover{--btn-lift:-2px;background:var(--oc-yellow-deep);box-shadow:var(--shadow-lg)}
 .btn--on-dark:active{--btn-lift:0px;transform:translateY(0) scale(.985)}
 
 /* contour — CTA secondaires (sortants vers OuiCycle, etc.) */
@@ -133,4 +133,19 @@ a{color:inherit;text-decoration:none}
     animation-duration:.001ms!important;animation-iteration-count:1!important;
     transition-duration:.001ms!important;scroll-behavior:auto!important;
   }
+}
+
+/* ============================================================
+   FONDATION MOBILE (≤760px) — espacements verticaux resserrés +
+   grilles 12 colonnes qui s'empilent en une colonne (colonnes → rangées).
+   ============================================================ */
+@media (max-width:760px){
+  .section{padding-block:var(--sp-16)}          /* 96 → 64 */
+  .grid12{grid-template-columns:1fr;gap:var(--sp-8)}
+  /* Paragraphes : alignés à gauche, fins de lignes soignées,
+     SANS césure (pas de mots coupés par un tiret). */
+  p{text-wrap:pretty;overflow-wrap:break-word}
+  /* Coins « capote » (corner.svg) : masqués en mobile (désencombrement) */
+  img[src*="corner"]{display:none}
+  .grid12 > *{grid-column:auto !important}      /* col-4/6/8… → pleine largeur */
 }

@@ -1,0 +1,81 @@
+/* ============================================================
+   FOOTER — pied de page sombre, prolonge le CTA final (base ink
+   unifiée). Filet fin de séparation. 3 colonnes sur la grille 12 :
+   marque · navigation · contact. Puis une barre légale.
+   Typo : titres de colonne = registre "eyebrow" (12px, uppercase,
+   tracking large) ; liens atténués qui s'éclaircissent au survol.
+   ============================================================ */
+.footer{
+  background:var(--oc-ink);
+  color:var(--oc-text-on-dark);
+  border-top:1px solid var(--oc-border-dark);   /* filet fin : sépare du CTA */
+  padding-block:var(--sp-16) var(--sp-10);       /* 64px haut · 40px bas */
+}
+
+/* ---- Rangée principale : marque (5) · nav (3) · contact (4) ---- */
+.footer__grid{align-items:start;row-gap:var(--sp-10)}
+.footer__brand{grid-column:span 5}
+.footer__col--nav{grid-column:span 3}
+.footer__col--contact{grid-column:span 4}
+
+/* Marque */
+.footer__logo{height:38px;width:auto;margin-bottom:var(--sp-4)}
+.footer__tagline{
+  max-width:340px;
+  font-size:var(--fs-body);line-height:var(--lh-normal);
+  color:rgba(247,244,236,.72);
+}
+.footer__parent{
+  margin-top:var(--sp-4);font-size:var(--fs-sm);
+  color:rgba(247,244,236,.55);
+}
+.footer__parent a{color:var(--oc-yellow);font-weight:var(--fw-semibold)}
+.footer__parent a:hover{text-decoration:underline}
+
+/* Titres de colonne (registre eyebrow, sur fond sombre) */
+.footer__title{
+  font-size:var(--fs-label);       /* 12 */
+  font-weight:var(--fw-semibold);  /* 600 */
+  letter-spacing:var(--ls-label);  /* .16em */
+  text-transform:uppercase;
+  color:rgba(247,244,236,.55);
+  margin-bottom:var(--sp-4);
+}
+
+/* Listes de liens */
+.footer__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--sp-3)}
+.footer__list a,
+.footer__contact a{
+  color:rgba(247,244,236,.82);
+  font-size:var(--fs-body);
+  transition:color var(--dur) var(--ease);
+}
+.footer__list a:hover,
+.footer__contact a:hover{color:var(--oc-yellow)}
+
+.footer__contact{display:flex;flex-direction:column;gap:var(--sp-3)}
+.footer__contact .footer__cta{
+  margin-top:var(--sp-3);
+  color:var(--oc-yellow);font-weight:var(--fw-semibold);
+  display:inline-flex;align-items:center;gap:.4em;
+}
+.footer__contact .footer__cta .arrow{transition:transform var(--dur) var(--ease)}
+.footer__contact .footer__cta:hover .arrow{transform:translateX(3px)}
+
+/* ---- Barre légale ---- */
+.footer__legal{
+  margin-top:var(--sp-12);padding-top:var(--sp-5);
+  border-top:1px solid var(--oc-border-dark);
+  display:flex;justify-content:space-between;align-items:center;gap:var(--sp-5);
+  flex-wrap:wrap;
+  font-size:var(--fs-sm);color:rgba(247,244,236,.5);
+}
+.footer__legal-links{display:flex;gap:var(--sp-5);flex-wrap:wrap}
+.footer__legal-links a{color:rgba(247,244,236,.6);transition:color var(--dur) var(--ease)}
+.footer__legal-links a:hover{color:var(--oc-yellow)}
+
+/* ---- Mobile (≤760) : colonnes empilées (collapse global) ---- */
+@media (max-width:760px){
+  .footer{padding-block:var(--sp-12) var(--sp-8)}
+  .footer__legal{flex-direction:column;align-items:flex-start;gap:var(--sp-3)}
+}

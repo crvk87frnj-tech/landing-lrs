@@ -1,0 +1,112 @@
+/* ============================================================
+   PAGE — POUR QUI ? · HUB « Vous êtes ? »
+   Écran 1 = le choix (4 cartes, point focal). En dessous, un socle
+   commun atténué au repos qui s'éclaircit au scroll (le hub précède
+   du contenu, sans cul-de-sac). Réutilise le composant .audience-card
+   de la landing (css/sections/07-structure.css).
+   ============================================================ */
+
+/* ---- Hero du hub : le prompt de choix ----
+   4 STYLES TYPO sur toute la page (pas plus) :
+   ① Titres extra-gras/noir ink (H1, titre socle, titres de cartes, chiffres)
+   ② Corps régulier gris (chapô, bénéfices, libellés)
+   ③ Méta semi-gras (eyebrow, « Bientôt », « Découvrir »)
+   ④ (les chiffres display partagent le noir des titres → pas un 5ᵉ style) */
+.hub{padding-top:var(--sp-10);padding-bottom:var(--sp-10)}
+.hub__head{max-width:900px;margin-bottom:var(--sp-10)}   /* resserré pour laisser peeker le socle */
+.hub__eyebrow{
+  margin:0 0 var(--sp-5);   /* + d'air : détache « Pour qui ? » du titre */
+  font-size:var(--fs-sm);font-weight:var(--fw-semibold);
+  letter-spacing:.06em;text-transform:uppercase;color:var(--oc-gray-700);   /* lisible (l'ambre échouerait sur crème) */
+}
+.hub__title{
+  margin:0;font-weight:var(--fw-black);
+  font-size:clamp(2.5rem,4.6vw,3.75rem);   /* → 60px desktop */
+  line-height:1.1;letter-spacing:-.02em;color:var(--oc-ink);
+}
+.hub__lead{
+  margin:var(--sp-6) 0 0;max-width:60ch;
+  font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-gray-700);
+}
+
+/* ---- Grille des 3 choix : 3 cartes sur une ligne (span 4), agrandies ---- */
+.hub-choices{align-items:stretch;margin-top:0}
+.hub-choices .audience-card{grid-column:span 4;min-height:264px;padding:30px 28px}
+.hub-choices .audience-card__title{font-size:1.375rem;line-height:1.25;min-height:1.25em}   /* 22px, 1 ligne (titres tiennent au canvas, mesuré) → puces alignées */
+/* CTA de fin de carte bien détaché du texte au-dessus */
+.hub-choices .audience-card__arrow{padding-top:26px}
+
+/* ---- État « bientôt » : teaser non cliquable, sobre ----
+   Surface grise OPAQUE (pas d'opacity globale → le texte garde son
+   plein contraste, WCAG AA). La carte reste « secondaire » vs EHPAD. */
+.audience-card--soon{
+  background:var(--oc-gray-100);
+  border-color:var(--oc-border);
+  cursor:default;
+  box-shadow:0 14px 30px -22px rgba(37,33,26,.16),inset 0 1px 0 rgba(255,255,255,.6);
+}
+.audience-card--soon:hover,
+.audience-card--soon:focus-visible{
+  transform:none;
+  box-shadow:0 14px 30px -22px rgba(37,33,26,.16),inset 0 1px 0 rgba(255,255,255,.6);
+}
+.audience-card--soon .audience-card__icon{background:var(--oc-gray-200);color:var(--oc-gray-600)}
+.audience-card--soon:hover .audience-card__icon{transform:none}
+.audience-card__soon{margin-top:auto;padding-top:18px}
+.audience-card__soon span{
+  display:inline-block;padding:5px 13px;border-radius:var(--r-pill);
+  background:var(--oc-gray-200);color:var(--oc-gray-700);
+  font-size:var(--fs-sm);font-weight:var(--fw-semibold);
+}
+
+/* ---- Socle commun : BANDEAU BLANC pleine largeur, atténué au repos,
+       s'éclaircit au scroll ---- */
+.hub-socle{background:var(--oc-white);padding:var(--sp-12) 0 var(--sp-20)}
+.hub-socle__inner{
+  transition:opacity .6s var(--ease),filter .6s var(--ease),transform .6s var(--ease);
+}
+/* le flou n'est armé (par JS) que si le socle est sous la ligne de flottaison
+   → sans JS ou en reduced-motion, il reste net (accessible par défaut) */
+.hub-socle.is-armed .hub-socle__inner{opacity:.4;filter:blur(3px);transform:translateY(14px)}
+.hub-socle.is-armed.is-revealed .hub-socle__inner{opacity:1;filter:none;transform:none}
+
+.hub-socle__title{
+  margin:0;font-weight:var(--fw-extrabold);font-size:var(--fs-h1);   /* 44px = titre de section */
+  line-height:1.2;letter-spacing:-.02em;color:var(--oc-ink);
+}
+.hub-socle__lead{
+  margin:var(--sp-6) 0 0;max-width:62ch;
+  font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-gray-700);
+}
+/* Chiffres en grille « moonwalkers » : cadre + filets verticaux ink,
+   chiffres NOIRS (display), bien détachés du paragraphe. */
+.hub-proof{
+  max-width:760px;margin-top:var(--sp-16);   /* + d'espace vs le texte */
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  border-top:1.5px solid var(--oc-ink);border-bottom:1.5px solid var(--oc-ink);
+}
+.hub-proof__item{display:flex;flex-direction:column;gap:10px;padding:var(--sp-8) var(--sp-6)}
+.hub-proof__item:first-child{padding-left:0}
+.hub-proof__item + .hub-proof__item{border-left:1.5px solid var(--oc-ink)}
+.hub-proof__num{
+  font-family:var(--font-display);font-weight:var(--fw-black);
+  font-size:var(--fs-h1);line-height:1;color:var(--oc-ink);   /* NOIR */
+}
+.hub-proof__num--accent{color:var(--oc-yellow-deep)}   /* « 400+ » : rupture jaune (même accent que « Découvrir ») */
+.hub-proof__label{font-size:var(--fs-sm);line-height:1.4;color:var(--oc-gray-700);max-width:22ch}
+
+/* ============================================================
+   MOBILE / RESPONSIVE (≤760) — page « Pour qui » (hub)
+   Cartes de choix : collapse via base (.grid12). Ici : titre hero
+   réduit + chiffres « moonwalkers » 3 col → empilés.
+   ============================================================ */
+@media (max-width:760px){
+  .hub{padding-top:var(--sp-6);padding-bottom:var(--sp-8)}
+  .hub__title{font-size:clamp(1.9rem,6.4vw,2.6rem);line-height:1.15}
+  .hub-socle{padding:var(--sp-12) 0 var(--sp-16)}
+  /* Chiffres « moonwalkers » (3 col + filets verticaux) → empilés, filet en HAUT */
+  .hub-proof{grid-template-columns:1fr;max-width:none}
+  .hub-proof__item{padding:var(--sp-6) 0}
+  .hub-proof__item:first-child{padding-left:0}
+  .hub-proof__item + .hub-proof__item{border-left:none;border-top:1.5px solid var(--oc-ink)}
+}

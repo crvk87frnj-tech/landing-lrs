@@ -42,3 +42,16 @@
   --ls-label: 0.16em;  /* @kind other */
   --ls-wide: 0.22em;   /* @kind other */
 }
+
+/* Échelle typographique MOBILE (≤760px) — une taille par niveau, réduite.
+   Le corps reste à 16px (lisibilité WCAG). */
+@media (max-width:760px){
+  :root{
+    --fs-display:1.9375rem; /* 31 */
+    --fs-h1:clamp(1.3125rem, 6.7vw, 1.75rem); /* ~25 à 375px, descend à ~21 à 320px, remonte à 28 vers le palier : titres de section réduits sur mobile (insécables + zéro césure conservés, zéro scroll jusqu'à 320) */
+    --fs-h2:1.375rem;       /* 22 — sous-titres */
+    --fs-h3:1.1875rem;      /* 19 — cartes / étapes */
+    --fs-h4:1.125rem;       /* 18 — mineurs */
+    --fs-lead:1.0625rem;    /* 17 — chapô */
+  }
+}

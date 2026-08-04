@@ -1,0 +1,792 @@
+/* ============================================================
+   PAGE — POUR QUI ? · sous-page publics (EHPAD / IME / médico-social)
+   Gabarit réutilisable par public. Mêmes tokens, même grille 12 col,
+   même échelle typo que la landing et la page « dispositif ».
+   Rien « à l'œil » : tout est posé sur .container + .grid12.
+   ============================================================ */
+
+/* Reset marge par défaut des <figure> (non couverte par base.css) */
+figure{margin:0}
+
+/* Rythme vertical homogène (= .section landing : 96px) */
+.pq-section{padding-block:var(--sp-24)}
+
+/* ============================================================
+   00 · EN-TÊTE DE SOUS-PAGE — label + hero + chapô
+   ============================================================ */
+.pq-hero{padding-top:var(--sp-8);padding-bottom:var(--sp-16);position:relative;overflow:hidden;min-height:max(600px,calc(100vh - 126px))}
+/* le texte passe AU-DESSUS du panneau photo (qui est en plein-bord à droite) */
+.pq-hero > .container{position:relative;z-index:2}
+
+/* --- Label « encoche » : bulle jaune pâle coupée par le bord gauche ---
+   position:relative + left = décale le bloc jusqu'au bord du viewport ;
+   padding-left = ramène le TEXTE pile sur la colonne 1 de la grille.
+   Le tout s'auto-ajuste à toutes les largeurs (calc sur 50%/50vw). */
+.pq-label{
+  display:inline-flex;align-items:center;
+  position:relative;left:calc(50% - 50vw);
+  margin:0 0 var(--sp-16);   /* + d'air sous le bandeau (évite l'encombrement) */
+  padding:15px 32px 15px calc(50vw - 50%);
+  font-size:1.0625rem;font-weight:var(--fw-semibold);   /* 17px : bien visible, reste modéré */
+  letter-spacing:.03em;color:var(--oc-text);
+  background:var(--oc-yellow-soft);
+  border-radius:0 var(--r-pill) var(--r-pill) 0;
+  box-shadow:var(--shadow-md);
+}
+
+.pq-hero__grid{align-items:start}   /* texte calé en haut ; la photo est un panneau plein-bord (hors grille) */
+.pq-hero__col-text{grid-column:1 / span 7;display:flex;flex-direction:column}
+
+/* Titre = échelle du HERO (landing .hero__title / dispositif .d-hero__title) :
+   display, black, near-black. */
+.pq-hero__title{
+  font-weight:var(--fw-black);
+  font-size:clamp(2.5rem,4.6vw,3.75rem);   /* → 60px desktop */
+  line-height:1.2;   /* + d'air : évite que le « p » de perte touche le « i » d'autonomie */
+  letter-spacing:-.005em;color:var(--oc-ink);margin:0;
+}
+.pq-hero__lead{
+  max-width:52ch;font-size:var(--fs-lead);line-height:var(--lh-normal);
+  color:var(--oc-text-muted);margin:var(--sp-10) 0 0;
+}
+/* CTA « démo » FLOTTANT sur la photo (bas-droite, façon landing) : sorti de la
+   colonne texte → texte de gauche plus aéré ; ombre sombre (plus de glow jaune). */
+.pq-hero__cta{
+  position:absolute;z-index:3;
+  right:max(var(--page-pad),calc(50vw - 560px));
+  bottom:var(--sp-12);
+  box-shadow:0 14px 34px rgba(21,21,28,.32);
+}
+.pq-hero__cta:hover{box-shadow:0 18px 42px rgba(21,21,28,.40)}
+
+/* PHOTO du hero : panneau PLEINE HAUTEUR, plein-bord à droite (façon landing,
+   l'humain au centre). Séparation texte/photo = COUPE NETTE + ombrage doux
+   projeté sur le crème (le panneau paraît surélevé). Pas de fondu, pas de liseré. */
+.pq-hero__photo{
+  position:absolute;top:0;right:0;bottom:0;
+  width:42vw;margin:0;z-index:1;
+  box-shadow:-24px 0 54px -20px rgba(37,33,26,.34);   /* ombrage porté vers la gauche */
+}
+.pq-hero__photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+
+/* ============================================================
+   PRIMITIVES PARTAGÉES — titres de section + surligneur
+   (identiques à .d-h2 / .d-title .mark de la page « dispositif »)
+   ============================================================ */
+/* Titre de section : 44px extrabold, near-black — échelle landing. */
+.pq-h2{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h1);   /* 44px */
+  line-height:1.2;letter-spacing:var(--ls-tight);color:var(--oc-ink);margin:0;
+}
+/* Surligneur « bande fine » derrière un mot-clé (pas de fond plein). */
+.pq-title .mark{
+  position:relative;isolation:isolate;color:var(--oc-ink);
+  padding:0 .18em;background:transparent;border-radius:0;
+}
+.pq-title .mark::before{
+  content:"";position:absolute;z-index:-1;left:0;right:0;top:17%;bottom:17%;
+  background:var(--oc-yellow);border-radius:var(--r-sm);
+}
+/* Soulignement « crayon » léger (emphase secondaire, ex. mot-clé de sous-titre)
+   — fin trait jaune pâle posé sous le mot, sans brillance (= .d-uline dispositif). */
+.pq-uline{position:relative;isolation:isolate;white-space:nowrap}
+.pq-uline::after{
+  content:"";position:absolute;z-index:-1;left:-.03em;right:-.03em;bottom:-.10em;
+  height:3px;border-radius:var(--r-pill);background:var(--oc-yellow-soft);
+}
+
+/* ============================================================
+   01 · SOYEZ RASSURÉS (sécurité + accessibilité)
+   Fond blanc = alternance avec le crème de la page (délimitation).
+   ============================================================ */
+.pq-safe{background:var(--oc-white)}
+.pq-safe__title{margin-bottom:var(--sp-16)}   /* titre → specs (accroche retirée) */
+.pq-safe__accroche{
+  font-size:var(--fs-lead);line-height:var(--lh-normal);
+  color:var(--oc-text-muted);margin:0 0 var(--sp-16);
+}
+
+/* Specs empilées à GAUCHE (01→04) · photo à DROITE (se cale sur la hauteur). */
+.pq-safe__grid{align-items:stretch}
+.pq-safe__photo{
+  grid-column:8 / span 5;position:relative;
+  border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);
+}
+.pq-safe__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+
+/* Rangées ÉGALES (basées sur la plus grande) + UNE ligne verticale continue,
+   posée pile entre les chiffres (col. fixe 52px) et les textes. */
+.pq-safe__specs{
+  grid-column:1 / span 6;position:relative;
+  display:grid;grid-auto-rows:1fr;
+}
+.pq-safe__specs::before{
+  content:"";position:absolute;top:0;bottom:0;left:52px;width:1.5px;background:var(--oc-ink);
+}
+.pq-spec{
+  display:flex;align-items:flex-start;
+  padding:24px 0;border-top:1.5px solid var(--oc-ink);
+}
+.pq-spec:first-child{border-top:none}
+.pq-spec__num{
+  flex:none;width:52px;
+  font-family:var(--font-display);font-weight:var(--fw-black);
+  font-size:1.4rem;line-height:1.25;color:var(--oc-yellow-deep);
+}
+.pq-spec__body{flex:1;padding-left:22px}
+.pq-spec__title{
+  font-weight:var(--fw-bold);font-size:var(--fs-h4);   /* 20px */
+  line-height:1.25;letter-spacing:-.01em;color:var(--oc-ink);margin:0 0 8px;
+}
+.pq-spec__desc{font-size:var(--fs-body);line-height:var(--lh-normal);color:var(--oc-text-muted);margin:0}
+
+/* CTA secondaire (outline) bien détaché, allongé. */
+.pq-safe__cta{display:flex;justify-content:center;margin-top:var(--sp-20)}
+.pq-safe__btn{padding-inline:38px}
+
+/* ============================================================
+   02 · RIEN À GÉRER POUR VOS ÉQUIPES (clé en main)
+   Fond crème (page) = alternance avec le bloc blanc précédent.
+   ============================================================ */
+/* Roue de marque en filigrane, coupée EN SON MILIEU par le bord droit
+   (mêmes réglages que la landing : jaune très pâle, opacité .14). */
+.pq-turnkey{position:relative;overflow:hidden}
+.pq-turnkey > .container{position:relative;z-index:1}
+.pq-turnkey__roue{
+  --roue-size:clamp(240px,24vw,400px);
+  position:absolute;z-index:0;
+  right:calc(var(--roue-size) / -2);   /* centre pile sur le bord → coupée en son milieu */
+  top:-16px;                            /* réhaussée : occupe l'espace libre à droite du titre */
+  width:var(--roue-size);height:auto;
+  opacity:.14;pointer-events:none;user-select:none;
+}
+.pq-turnkey__title{margin-bottom:var(--sp-12)}   /* accroche retirée → écart titre→contenu */
+.pq-turnkey__accroche{
+  font-size:var(--fs-lead);line-height:var(--lh-normal);
+  color:var(--oc-text-muted);margin:0 0 var(--sp-20);   /* + d'air avant le bloc photo/texte */
+}
+
+/* Photo (col 1-4, réduite) à son cadrage / ratio natif (aucune découpe) ;
+   texte rapproché (col 5-12) et centré verticalement → bloc plus compact. */
+.pq-turnkey__grid{align-items:center;margin-top:var(--sp-10)}   /* + d'air entre le sous-titre « clé en main » et la photo */
+.pq-turnkey__col-photo{grid-column:1 / span 4}
+.pq-turnkey__col-text{grid-column:6 / span 7}
+.pq-turnkey__photo{border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md)}
+.pq-turnkey__photo img{width:100%;height:auto;display:block}
+/* Placeholder temporaire en attendant la vraie photo « OuiCycle part ». */
+.pq-turnkey__photo--placeholder{
+  display:grid;place-items:center;text-align:center;
+  background:var(--oc-gray-100);border:2px dashed var(--oc-border-strong);box-shadow:none;
+}
+.pq-turnkey__photo--placeholder span{
+  font-size:var(--fs-sm);font-weight:var(--fw-semibold);letter-spacing:.02em;
+  color:var(--oc-text-faint);line-height:1.5;
+}
+
+.pq-turnkey__lead{
+  font-weight:var(--fw-bold);font-size:var(--fs-h3);color:var(--oc-ink);margin:0 0 var(--sp-6);
+}
+
+/* Liste « prise en charge » : badge picto coloré + label. */
+.pq-charge{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--sp-5)}
+.pq-charge__item{display:flex;align-items:center;gap:18px}
+.pq-charge__ico{
+  flex:none;width:52px;height:52px;border-radius:50%;
+  display:grid;place-items:center;
+  color:var(--c);background:var(--ct);
+}
+.pq-charge__ico svg{width:26px;height:26px}
+.pq-charge__ico svg.ico-stroke{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pq-charge__ico svg.ico-fill{fill:currentColor;stroke:none}
+.pq-charge__label{
+  font-size:var(--fs-lead);line-height:var(--lh-snug);
+  font-weight:var(--fw-medium);color:var(--oc-ink);margin:0;
+}
+/* Couleurs = 4 plans de la landing (une par item). */
+.pq-charge--maint{--c:var(--oc-cognitif); --ct:var(--oc-cognitif-tint)}   /* tool — vert */
+.pq-charge--drive{--c:var(--oc-moteur);   --ct:var(--oc-moteur-tint)}      /* steering — jaune */
+.pq-charge--insur{--c:var(--oc-social);   --ct:var(--oc-social-tint)}      /* contract — bleu */
+.pq-charge--coord{--c:var(--oc-sensoriel);--ct:var(--oc-sensoriel-tint)}   /* users — rouge */
+
+/* --- Ligne « capacité d'accueil » : cases moonwalkers (épuré) ---
+   Rangée de cellules égales, séparées par un fin trait vertical.
+   Encadrée par une hairline haut/bas (comme les specs). */
+.pq-capacity{margin-top:var(--sp-20)}
+.pq-capacity__title{
+  font-weight:var(--fw-bold);font-size:var(--fs-h3);color:var(--oc-ink);margin:0 0 var(--sp-8);
+}
+.pq-capacity__row{
+  display:flex;
+  border-top:1.5px solid var(--oc-ink);border-bottom:1.5px solid var(--oc-ink);
+}
+.pq-cap{flex:1;padding:26px 28px}
+.pq-cap + .pq-cap{border-left:1.5px solid var(--oc-ink)}
+.pq-cap__value{
+  font-weight:var(--fw-semibold);font-size:var(--fs-h4);   /* 20px, allégé */
+  line-height:1.2;letter-spacing:-.01em;color:var(--oc-ink);margin:0 0 6px;
+}
+.pq-cap__label{font-size:var(--fs-sm);line-height:var(--lh-normal);color:var(--oc-text-muted);margin:0}
+/* Cellule résultat : la valeur passe en jaune profond (aboutissement). */
+.pq-cap--result .pq-cap__value{color:var(--oc-yellow-deep)}
+
+/* ============================================================
+   03 · UN OUTIL DE SOIN QUI S'INTÈGRE
+   Fond blanc = alternance. Texte (col 1-7) + photo droite (col 9-12).
+   ============================================================ */
+.pq-care{background:var(--oc-white);padding-block:var(--sp-24)}
+
+/* Titre de bloc (le sous-titre a disparu → écart titre→1er mouvement). */
+.pq-care__title{margin-bottom:var(--sp-16)}
+.pq-care__sub{
+  font-size:var(--fs-lead);line-height:var(--lh-normal);
+  color:var(--oc-text-muted);margin:0 0 var(--sp-16);
+}
+
+.pq-care__grid{align-items:center}
+
+/* Bulle crème DERRIÈRE le texte (intro « Chaque séance… » + les 4 cases).
+   Forme signature DS : haut-gauche, haut-droit, bas-droit arrondis,
+   BAS-GAUCHE à angle droit. */
+/* Bulle « Une activité qui s'inscrit… » : fond JAUNE OuiCycle (rupture).
+   Cases blanches + textes ink pour le contraste (plus de cases jaunes). */
+.pq-care__bubble{
+  max-width:900px;margin-top:var(--sp-8);
+  background:var(--oc-yellow);border:none;
+  border-radius:var(--r-2xl) var(--r-2xl) var(--r-2xl) 0;
+  padding:40px 44px;box-shadow:var(--shadow-md);
+}
+.pq-care__bubble .pq-care__intro{color:var(--oc-ink)}
+.pq-care__bubble .pq-integr__item{color:var(--oc-ink)}
+.pq-care__bubble .pq-integr__item::before{background:var(--oc-white);border-color:var(--oc-ink)}
+.pq-care__bubble .pq-integr__item:hover::before{background:var(--oc-cognitif);border-color:#20614A}
+.pq-care__col-photo{grid-column:9 / span 4}
+.pq-care__photo{border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md)}
+.pq-care__photo img{width:100%;height:auto;display:block}
+
+.pq-care__intro{
+  font-weight:var(--fw-bold);font-size:var(--fs-h4);   /* 20px */
+  line-height:1.3;color:var(--oc-ink);margin:0 0 var(--sp-12);   /* en-tête bien détaché des cases */
+}
+
+/* Liste « intégration » : cases carrées COCHABLES (jaune → vert au survol,
+   bord compris) ; plus de flèche, plus de point. Items révélés au scroll.
+   Hauteur d'item identique → distance ÉGALE entre chaque case. */
+.pq-integr{
+  list-style:none;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:var(--sp-6);
+}
+.pq-integr__item{
+  display:flex;align-items:flex-start;gap:16px;min-height:58px;   /* = item 2 lignes → cases équidistantes */
+  font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-gray-800);
+  /* état initial (reveal) */
+  opacity:0;transform:translateY(10px);
+  transition:opacity .5s var(--ease),transform .5s var(--ease);
+}
+.pq-integr__item.is-visible{opacity:1;transform:none}
+/* la case : carré arrondi, rempli jaune ; au survol → vert (fond + bord). */
+.pq-integr__item::before{
+  content:"";flex:none;margin-top:.12em;
+  width:24px;height:24px;border-radius:var(--r-xs);
+  background:var(--oc-yellow);border:2px solid var(--oc-yellow-deep);
+  transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease);
+}
+.pq-integr__item:hover::before{
+  background:var(--oc-cognitif);border-color:#20614A;
+}
+
+/* CTA secondaire de fin de bloc — aligné à DROITE, bien détaché. */
+.pq-care__cta{display:flex;justify-content:flex-end;margin-top:var(--sp-20)}
+.pq-care__btn{padding-inline:38px}
+
+/* ============================================================
+   04 · LE CONDUCTEUR-ANIMATEUR — « bloc bonus »
+   Fond crème (page). Photo (col 1-6) + texte (col 7-12) ; bulle de
+   confiance compacte dans la colonne ; punchline en conclusion centrée.
+   ============================================================ */
+/* Texte calé sur toute la hauteur de la photo : titre en haut (au niveau du
+   haut de la photo), bulle poussée en bas. */
+.pq-driver__grid{align-items:stretch}
+.pq-driver__col-photo{grid-column:1 / span 6}
+.pq-driver__col-text{grid-column:7 / span 6;display:flex;flex-direction:column}
+.pq-driver__photo{border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md)}
+.pq-driver__photo img{width:100%;height:auto;display:block}
+
+/* EXCEPTION : titre un peu réduit (effet « bloc bonus », pas un bloc traditionnel). */
+.pq-driver__title{
+  font-size:2.375rem;font-weight:var(--fw-bold);   /* 38/700 : entre h2 (32) et h1 (44) */
+  line-height:1.22;margin-bottom:var(--sp-12);       /* descriptif 2× plus loin */
+}
+.pq-driver__lead{
+  font-size:var(--fs-lead);line-height:var(--lh-normal);
+  color:var(--oc-text-muted);margin:0;
+}
+
+/* Bulle de confiance (bonus) : texte à gauche + logo à droite.
+   Centrée verticalement dans l'espace entre le bas du descriptif et le bas
+   de la photo (marges auto haut+bas → équidistante). */
+.pq-trust{
+  margin-block:auto;transform:translateY(28px);   /* centrée puis baissée un peu */
+  display:flex;align-items:center;gap:24px;
+  background:var(--oc-white);border:1px solid var(--oc-border);
+  border-radius:var(--r-lg) var(--r-lg) var(--r-lg) 0;
+  padding:26px 30px;box-shadow:var(--shadow-sm);
+}
+.pq-trust__text{flex:1;font-size:var(--fs-body);line-height:var(--lh-normal);color:var(--oc-text-muted);margin:0}
+.pq-trust__logo{flex:none;height:52px;width:auto;display:block}
+
+/* Punchline = CONCLUSION du bandeau : centrée, sans barre jaune. */
+.pq-driver__punch{
+  margin:var(--sp-16) auto 0;max-width:56ch;text-align:center;
+  font-weight:var(--fw-bold);font-size:var(--fs-h3);   /* 24px */
+  line-height:1.35;letter-spacing:-.01em;color:var(--oc-ink);
+}
+
+/* ============================================================
+   05 · APPEL À L'ACTION — bandeau near-black (= .final de la landing)
+   ============================================================ */
+.pq-final{position:relative;overflow:hidden;background:var(--oc-ink)}
+.pq-final::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(58% 115% at 50% 0%,rgba(255,195,0,.12),transparent 62%);
+}
+.pq-final__inner{position:relative;z-index:1;max-width:860px;margin-inline:auto;text-align:center}
+.pq-final__title{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h1);   /* 44px */
+  line-height:1.18;letter-spacing:-.015em;color:var(--oc-text-on-dark);margin:0;
+}
+.pq-final__sub{
+  margin:var(--sp-5) auto 0;max-width:560px;
+  font-size:var(--fs-lead);line-height:var(--lh-normal);color:rgba(247,244,236,.78);
+}
+.pq-final__num{color:var(--oc-yellow);font-weight:var(--fw-bold)}   /* numéral jaune (signature DS) */
+.pq-final__cta{margin-top:var(--sp-10)}
+
+/* ============================================================
+   06 · TARIFICATION — bloc noir, épuré. Bulle tarifaire surélevée.
+   ============================================================ */
+.pq-pricing{background:var(--oc-ink)}
+.pq-pricing__bubble{
+  max-width:560px;margin-inline:auto;
+  background:var(--oc-ink-2);border:1px solid rgba(255,255,255,.10);
+  border-radius:var(--r-2xl) var(--r-2xl) var(--r-2xl) 0;
+  padding:36px 40px;box-shadow:var(--shadow-lg);
+}
+.pq-pricing__label{
+  font-size:var(--fs-label);font-weight:var(--fw-semibold);letter-spacing:var(--ls-label);
+  text-transform:uppercase;color:var(--oc-yellow);margin:0 0 var(--sp-4);
+}
+.pq-pricing__price{
+  font-weight:var(--fw-black);font-size:2.75rem;   /* 44px */
+  line-height:1.05;letter-spacing:-.02em;color:var(--oc-white);margin:0;
+}
+.pq-pricing__unit{color:var(--oc-yellow)}
+.pq-pricing__per{font-size:var(--fs-h3);font-weight:var(--fw-bold);color:var(--oc-yellow)}
+.pq-pricing__note{
+  font-size:var(--fs-sm);line-height:var(--lh-normal);
+  color:rgba(247,244,236,.7);margin:var(--sp-4) 0 0;
+}
+
+/* ============================================================
+   REFONTE 2026-07-28 — nouveaux composants
+   ============================================================ */
+
+/* Sous-titre de sous-partie (PAS un titre de section : 24px bold). */
+.pq-subhead{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h2);   /* 32px = sous-titre landing (.axes__title) */
+  line-height:1.2;letter-spacing:var(--ls-tight);color:var(--oc-ink);margin:0 0 var(--sp-8);
+}
+
+/* ------------------------------------------------------------
+   BLOC 1 · TARIFICATION — bande sombre, « moonwalkers »
+   Prix isolé (gauche) · filet vertical · cases égales (droite).
+   ------------------------------------------------------------ */
+.pq-tarif{background:var(--oc-ink)}
+.pq-tarif__label{
+  font-size:0.9375rem;font-weight:var(--fw-semibold);letter-spacing:var(--ls-label);   /* 15px : agrandi */
+  text-transform:uppercase;color:var(--oc-yellow);margin:0 0 var(--sp-4);
+}
+.pq-tarif__title{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h1);   /* 44px */
+  line-height:1.2;letter-spacing:var(--ls-tight);color:var(--oc-text-on-dark);margin:0 0 var(--sp-16);
+}
+.pq-tarif__grid{align-items:stretch}
+/* colonne gauche : le prix, isolé et centré verticalement */
+.pq-tarif__price{grid-column:1 / span 5;align-self:center}
+.pq-tarif__amount{
+  font-weight:var(--fw-black);font-size:clamp(2.75rem,4.6vw,3.75rem);   /* gros (~44→60px) */
+  line-height:1;letter-spacing:-.02em;color:var(--oc-white);margin:0;
+}
+.pq-tarif__unit{color:var(--oc-yellow);font-size:.5em;font-weight:var(--fw-bold);letter-spacing:0;white-space:nowrap}
+.pq-tarif__per{font-size:var(--fs-h4);font-weight:var(--fw-bold);color:var(--oc-yellow);margin:var(--sp-3) 0 0}
+.pq-tarif__note{font-size:var(--fs-body);line-height:var(--lh-normal);color:rgba(247,244,236,.72);margin:var(--sp-4) 0 0}
+/* colonne droite : cases égales, filet vertical (gauche) + lignes horizontales */
+.pq-tarif__cases{
+  grid-column:7 / span 6;list-style:none;margin:0;padding:0 0 0 var(--sp-10);
+  border-left:1.5px solid rgba(255,255,255,.18);
+  display:grid;grid-auto-rows:1fr;
+}
+.pq-tarif__case{
+  display:flex;align-items:flex-start;gap:16px;padding:20px 0;   /* point sur la 1ʳᵉ ligne */
+  border-top:1.5px solid rgba(255,255,255,.14);
+  font-size:var(--fs-lead);line-height:1.55;color:rgba(247,244,236,.9);   /* interlignage aéré (« plusieurs leviers ») */
+}
+.pq-tarif__case:first-child{border-top:none}
+.pq-tarif__case::before{
+  content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--oc-yellow);margin-top:.55em;
+}
+/* CTA « séance découverte » + ligne de renvoi (même bande sombre) */
+.pq-tarif__cta{margin-top:var(--sp-16)}
+.pq-tarif__foot{margin:var(--sp-5) 0 0;font-size:calc(var(--fs-lead) * 0.75);line-height:1.55;color:rgba(247,244,236,.66);max-width:66ch}
+.pq-tarif__link{color:var(--oc-yellow);font-weight:var(--fw-semibold);text-decoration:none;white-space:nowrap}
+.pq-tarif__link:hover{text-decoration:underline}
+
+/* ------------------------------------------------------------
+   BULLE DE CITATION « sauce OuiCycle » (réutilisable)
+   Carte crème, forme signature, bec (bulle de dialogue).
+   ------------------------------------------------------------ */
+/* Citations : bulles GRISES + texte BLANC (contraste, casse la monotonie
+   du jaune pâle). Format DS : rectangle arrondi, coin bas-gauche à angle droit. */
+.pq-quote{
+  position:relative;max-width:52ch;
+  background:var(--oc-gray-700);   /* gris plus clair */
+  border-radius:var(--r-2xl) var(--r-2xl) var(--r-2xl) 0;
+  padding:26px 30px;box-shadow:var(--shadow-md);
+}
+.pq-quote__text{
+  font-size:1.0625rem;line-height:1.5;color:var(--oc-white);font-style:italic;margin:0 0 14px;   /* 17px : −2pt vs texte courant */
+}
+.pq-quote__text::before{content:"«\00a0";font-style:normal;font-weight:var(--fw-bold);color:var(--oc-yellow)}
+.pq-quote__text::after{content:"\00a0»";font-style:normal;font-weight:var(--fw-bold);color:var(--oc-yellow)}
+.pq-quote__author{font-size:var(--fs-sm);line-height:var(--lh-normal);color:rgba(255,255,255,.72)}
+.pq-quote__author strong{color:var(--oc-white);font-weight:var(--fw-semibold)}
+/* pas de bec : la bulle reste un seul bloc (rectangle arrondi, coin bas-gauche droit) */
+
+/* ------------------------------------------------------------
+   BLOC 2 · deux mouvements
+   ------------------------------------------------------------ */
+.pq-move + .pq-move{margin-top:var(--sp-24)}
+.pq-move__p{font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-text-muted);margin:0 0 .85em}
+.pq-move__p--lead{font-weight:var(--fw-regular);font-size:var(--fs-lead);color:var(--oc-ink);margin:0 0 var(--sp-8)}
+
+/* Mouvement 1 : texte (gauche) + photo (droite) ; citation poussée en bas
+   → son bec (droite) arrive au niveau du bas-gauche de la photo. */
+.pq-move--1{
+  position:relative;
+  display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:start;
+}
+.pq-move__text{grid-column:1 / span 6}
+.pq-move__photo{grid-column:8 / span 5;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md)}
+.pq-move__photo img{width:100%;height:auto;display:block}
+/* citation : positionnée en absolu, son bord HAUT au 2/3 bas de la photo */
+.pq-move--1 .pq-quote{position:absolute;left:0;top:64%;width:48%;margin:0}
+
+/* Mouvement 2 : pleine largeur (sans photo). */
+.pq-move--2 .pq-quote{margin:var(--sp-8) 0}
+.pq-move__cta{display:flex;justify-content:center;margin-top:var(--sp-16)}
+
+/* ------------------------------------------------------------
+   BLOC 3 · CE QUE ÇA CHANGE — sous-parties
+   ------------------------------------------------------------ */
+.pq-change__title{margin-bottom:var(--sp-16)}
+.pq-change__part + .pq-change__part{margin-top:var(--sp-24)}
+
+/* Parcours en 4 étapes : rail à progression (jaune→ambre) + étapes qui
+   s'allument au scroll. Version claire du « comment se passe une séance ». */
+.pq-steps{position:relative;margin-top:var(--sp-8)}
+.pq-steps__list{display:flex;flex-direction:column;gap:var(--sp-16);margin:0;padding:0;list-style:none}
+.pq-step{display:grid;grid-template-columns:64px 1fr;column-gap:20px;align-items:start}
+/* chiffres DÉCERCLÉS, grands, pâle → jaune au scroll (DA plaquette) */
+.pq-step__num{
+  font-family:var(--font-display);font-weight:var(--fw-black);font-size:2.25rem;line-height:1.1;
+  text-align:center;color:var(--oc-gray-300);transition:color .3s var(--ease);
+}
+.pq-step.is-active .pq-step__num{color:var(--oc-yellow-deep)}
+.pq-step__title{font-weight:var(--fw-bold);font-size:var(--fs-h4);line-height:1.25;color:var(--oc-ink);margin:0 0 4px}
+.pq-step__text{font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-text-muted);margin:0;max-width:62ch}
+
+/* À l'arrivée = TERMINUS du parcours : rond « validé » aligné sur le rail
+   (col 1, 56px, centré sur la ligne), corps à droite (texte + citation).
+   Au scroll : blanc → jaune + check (couleur des chiffres = --on-accent). */
+.pq-arrival{
+  display:grid;grid-template-columns:64px 1fr;column-gap:20px;align-items:baseline;
+}
+.pq-change__part.pq-arrival{margin-top:var(--sp-16)}   /* rapproché du parcours (continuité) */
+/* check DÉCERCLÉ : gros V gras, pâle → jaune au scroll (même style que les chiffres) */
+.pq-arrival__check{display:flex;justify-content:center}
+.pq-arrival__check svg{
+  width:2.75rem;height:2.75rem;stroke:var(--oc-gray-300);fill:none;
+  stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s var(--ease);
+}
+.pq-arrival__check.is-arrived svg{stroke:var(--oc-yellow-deep)}
+.pq-arrival__body{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,42%);column-gap:var(--sp-16);align-items:center;
+}
+.pq-arrival__quote{max-width:none;width:100%;justify-self:end}
+.pq-arrival__title{
+  font-weight:var(--fw-bold);font-size:var(--fs-h4);   /* = titres d'étape */
+  line-height:1.3;letter-spacing:-.01em;color:var(--oc-ink);margin:0 0 var(--sp-6);
+}
+.pq-arrival__p{font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-text-muted);margin:0}
+
+/* ------------------------------------------------------------
+   BLOC 4 · sous-partie conducteur (intégrée, version light)
+   Réécrit les règles « bloc bonus » précédentes.
+   ------------------------------------------------------------ */
+.pq-safe .pq-driver{margin-top:var(--sp-24)}
+.pq-driver__sub{margin-bottom:var(--sp-12)}
+.pq-driver__grid{align-items:start}   /* texte réhaussé (aligné en haut) */
+.pq-driver__col-photo{grid-column:1 / span 5}
+.pq-driver__col-text{grid-column:7 / span 6;display:block}
+.pq-driver__title{
+  font-size:var(--fs-h3);font-weight:var(--fw-bold);   /* 24px, sous-sous-titre */
+  line-height:1.25;letter-spacing:-.01em;margin:0 0 var(--sp-4);
+}
+.pq-driver__col-text .pq-driver__lead{margin:0 0 var(--sp-8)}
+.pq-driver__lead--bold{font-weight:var(--fw-bold);color:var(--oc-ink)}
+/* Partenaire : texte courant + logo empilé dessous (effet linéaire, sans encart). */
+.pq-driver__partner-text{font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-text-muted);margin:0 0 var(--sp-6)}
+.pq-driver__logo{height:48px;width:auto;display:block}
+
+/* ------------------------------------------------------------
+   BLOC 2 · Carrousel « mesures » compact (repris du dispositif, sans image)
+   ------------------------------------------------------------ */
+.pq-mes{position:relative;margin-top:var(--sp-12)}
+.pq-mes__viewport{overflow:hidden}
+.pq-mes__track{
+  display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  padding-bottom:6px;-ms-overflow-style:none;scrollbar-width:none;
+}
+.pq-mes__track::-webkit-scrollbar{height:0;background:transparent}
+.pq-mes-card{
+  flex:0 0 calc(50% - 12px);scroll-snap-align:start;
+  border-radius:var(--r-xl);padding:26px 28px;
+  background:var(--oc-gray-100);border:1px solid var(--oc-border-strong);
+  display:flex;flex-direction:column;
+}
+.pq-mes-card__title{display:flex;align-items:baseline;gap:12px;font-weight:var(--fw-bold);font-size:1.25rem;line-height:1.2;margin:0 0 8px;white-space:nowrap}
+.pq-mes-card__num{flex:none;font-family:var(--font-display);font-weight:var(--fw-black);font-size:1.6rem;line-height:1;opacity:.85}
+.pq-mes-card__body{font-size:var(--fs-body);line-height:var(--lh-normal);color:var(--oc-ink);margin:0}
+/* couleurs par mesure (le n° hérite de la couleur du titre, comme le dispositif) */
+.pq-mes-card--tonus     .pq-mes-card__title{color:var(--oc-yellow-deep)}
+.pq-mes-card--cardiaque .pq-mes-card__title{color:var(--oc-sensoriel)}
+.pq-mes-card--psychique .pq-mes-card__title{color:var(--oc-cognitif)}
+.pq-mes-card--plateforme{background:var(--oc-social);border-color:var(--oc-social);box-shadow:var(--shadow-md)}
+.pq-mes-card--plateforme .pq-mes-card__title{color:#fff}
+.pq-mes-card--plateforme .pq-mes-card__body{color:rgba(255,255,255,.9)}
+/* flèches (mêmes réglages que le dispositif) */
+.pq-mes__nav{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:52px;height:52px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  font-size:1.3rem;line-height:1;
+  transition:transform var(--dur) var(--ease),background var(--dur) var(--ease),box-shadow var(--dur) var(--ease);
+}
+.pq-mes__nav--prev{left:-62px;background:var(--oc-white);border:1.8px solid var(--oc-text);color:var(--oc-text);box-shadow:var(--shadow-md)}
+.pq-mes__nav--next{right:-62px;background:var(--oc-yellow);border:none;color:var(--on-accent);box-shadow:var(--shadow-yellow)}
+.pq-mes__nav:hover{transform:translateY(-50%) scale(1.06)}
+.pq-mes__nav[hidden]{display:none}
+.pq-mes__count{display:none}   /* pagination « 1/4 » : mobile uniquement */
+
+/* ------------------------------------------------------------
+   BLOC 2 · « La cyclothérapie s'inscrit… » : page coupée en deux
+   (bullets à gauche · citation à droite · vide au centre)
+   ------------------------------------------------------------ */
+.pq-projet{
+  margin-top:var(--sp-24);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,42%);column-gap:var(--sp-20);align-items:center;
+}
+.pq-projet__title{font-weight:var(--fw-bold);font-size:var(--fs-h4);line-height:1.3;color:var(--oc-ink);margin:0 0 var(--sp-8)}
+.pq-projet__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--sp-4)}
+.pq-projet__list li{
+  position:relative;padding-left:22px;
+  font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-gray-800);
+}
+.pq-projet__list li::before{
+  content:"";position:absolute;left:2px;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--oc-yellow);
+}
+.pq-projet__quote{max-width:none;width:100%;justify-self:end}
+
+/* ============================================================
+   BLOCS COMMUNS aux sous-pages « Pour qui » (EHPAD + résidence…)
+   Style UNIFIÉ : peek tarif · panneau mesures · coins parcours · polaroïd.
+   (Déplacé depuis la surcouche résidence pour servir les 2 pages.)
+   ============================================================ */
+
+/* BLOC 1 · Tarification : à l'arrivée on n'aperçoit que « Tarification » */
+.pq-tarif{padding-top:var(--sp-8)}
+
+/* BLOC 2 · Mouvement « mesuré » — panneau CONTRASTÉ crème + carrousel blanc */
+.pq-mzone{
+  background:var(--oc-cream);
+  border-radius:var(--r-2xl);
+  padding:var(--sp-12) var(--sp-12) var(--sp-16);
+  margin-top:var(--sp-8);
+}
+.pq-mzone .pq-move__p--lead{color:var(--oc-text-muted)}
+.pq-mzone .pq-move__cta{justify-content:center;margin-top:var(--sp-12)}
+.pq-mzone .pq-mes{max-width:700px;margin-inline:auto}
+.pq-mzone .pq-mes__viewport{padding:22px 18px;margin:-22px -18px}   /* fix ombres croppées */
+.pq-mzone .pq-mes-card{box-shadow:0 8px 20px -6px rgba(37,33,26,.20);border-color:var(--oc-border)}
+.pq-mzone .pq-mes-card:not(.pq-mes-card--plateforme){background:var(--oc-white)}
+.pq-mzone .pq-mes-card__num::after{content:"."}
+.pq-mzone .pq-mes__nav--prev{left:-131px}
+.pq-mzone .pq-mes__nav--next{right:-131px}
+
+/* CTA carrousel « mesure l'impact » : phrase en bas à DROITE, DANS la bulle mzone
+   (juste sortie de sa forme bouton). Taille = texte des cartes (fs-body).
+   Souligné NOIR sur le texte seul (pas la flèche) + légère lévitation au survol. */
+.pq-mes__more{max-width:700px;margin:var(--sp-8) auto 0;display:flex;justify-content:flex-end}
+.pq-mes__more-link{
+  display:inline-flex;align-items:center;gap:.45em;
+  font-size:var(--fs-body);font-weight:var(--fw-semibold);color:var(--oc-ink);
+  transition:transform var(--dur) var(--ease);
+}
+.pq-mes__more-link:hover{transform:translateY(-2px)}   /* lévitation → indique la redirection */
+.pq-mes__more-txt{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+.pq-mes__more-link .arrow{transition:transform var(--dur) var(--ease)}
+
+/* BLOC 3 · Parcours + arrivée encadrés par 2 coins « capote » (sans bulle, crème) */
+.pq-journey{position:relative;margin-top:var(--sp-20);padding:var(--sp-16) var(--sp-8)}   /* + d'espace entre le bloc photo et le parcours (asset compris) */
+.pq-journey > .pq-change__part{position:relative;z-index:1}
+.pq-journey__corner{position:absolute;z-index:0;pointer-events:none;user-select:none;width:clamp(96px,9vw,150px);height:auto}
+/* Poussés vers les bords du viewport (34px, comme la landing), sans déborder. */
+.pq-journey__corner--tl{top:-4px;left:calc(50% - 50vw + 34px);transform:scaleX(-1)}
+.pq-journey__corner--br{bottom:-4px;right:calc(50% - 50vw + 34px);transform:scaleY(-1)}
+
+/* BLOC 4 · Conducteur : sous-titre aéré + texte vers le milieu de la photo */
+.pq-safe .pq-driver__sub{margin-bottom:var(--sp-16)}
+.pq-safe .pq-driver__col-text{margin-top:var(--sp-12)}
+/* Photo conducteur : même traitement que les autres photos (coins arrondis,
+   ombre douce), taille conservée (~300px), sans inclinaison ni cadre. */
+.pq-safe .pq-driver__col-photo{grid-column:1 / span 4;display:flex;align-items:flex-start;justify-content:center}
+.pq-safe .pq-driver__photo{
+  max-width:300px;
+  border-radius:20px;overflow:hidden;
+  box-shadow:var(--shadow-md);
+}
+.pq-safe .pq-driver__photo img{border-radius:0}
+
+/* Ligne de clôture sous le logo partenaire */
+.pq-driver__close{
+  margin:var(--sp-6) 0 0;font-size:var(--fs-body);line-height:var(--lh-normal);
+  color:var(--oc-text-muted);
+}
+/* Bulle « recrutement » : dialogue (coin bas-gauche marqué), nudge secondaire.
+   2 phrases distinctes : question (h4) + réponse (corps) + flèche. */
+.pq-driver__recruit{
+  display:block;margin-top:var(--sp-8);
+  background:var(--oc-yellow-wash);border:1px solid var(--oc-yellow-soft);
+  border-radius:var(--r-bubble);
+  padding:18px 22px;text-decoration:none;color:var(--oc-ink);
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease);
+}
+.pq-driver__recruit:hover,
+.pq-driver__recruit:focus-visible{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.pq-driver__recruit-q{display:block;font-weight:var(--fw-bold);font-size:var(--fs-h4);line-height:1.3;color:var(--oc-ink)}
+.pq-driver__recruit-a{
+  display:inline-flex;align-items:center;gap:.4em;margin-top:6px;
+  font-size:var(--fs-body);color:var(--oc-text-muted);
+}
+.pq-driver__recruit-a .arrow{transition:transform var(--dur) var(--ease)}
+.pq-driver__recruit:hover .arrow{transform:translateX(4px)}
+
+/* ============================================================
+   MOBILE / RESPONSIVE (≤760) — sous-pages « Pour qui » (partagé
+   par EHPAD, résidence-autonomie, preuves).
+   Le squelette (grille 12→1 col, échelle typo, corners masqués)
+   est déjà géré par base.css. Ici : uniquement le SUR-MESURE —
+   héros photo-panneau, moonwalkers, grids « maison » (non .grid12),
+   carrousel, citations en position absolue.
+   ============================================================ */
+@media (max-width:760px){
+  /* Rythme vertical resserré (pq-section = 96px en desktop) */
+  .pq-section{padding-block:var(--sp-16)}
+  .pq-care{padding-block:var(--sp-16)}
+
+  /* ---- 00 · HÉRO : la photo (panneau absolu 42vw) et le CTA
+     redeviennent des blocs normaux → titre + chapô, puis photo,
+     puis CTA. min-height plein écran retiré. ---- */
+  .pq-hero{min-height:0;padding-top:var(--sp-4);padding-bottom:var(--sp-12)}
+  .pq-label{margin-bottom:var(--sp-8);padding-top:12px;padding-bottom:12px;font-size:var(--fs-body)}
+  .pq-hero__title{font-size:clamp(1.9rem,6.4vw,2.6rem);line-height:1.15}
+  .pq-hero__lead{margin-top:var(--sp-5);max-width:none}
+  .pq-hero__photo{
+    position:static;width:auto;height:260px;margin:var(--sp-8) var(--page-pad) 0;
+    border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);
+  }
+  .pq-hero__cta{position:static;margin:var(--sp-6) var(--page-pad) 0}
+
+  /* ---- 01 · SOYEZ RASSURÉS : photo (img en absolu) sous les specs,
+     donc lui donner une hauteur explicite ---- */
+  .pq-safe__photo{height:240px;margin-top:var(--sp-8)}
+
+  /* ---- 02 · CLÉ EN MAIN : filigrane discret ; « capacité »
+     (moonwalkers horizontaux) empilée en colonnes ---- */
+  .pq-turnkey__roue{opacity:.06;--roue-size:clamp(150px,40vw,240px);top:8px}
+  .pq-capacity__row{flex-direction:column}
+  .pq-cap{padding:var(--sp-5) 0}
+  .pq-cap + .pq-cap{border-left:none;border-top:1.5px solid var(--oc-ink)}
+
+  /* ---- 03 · OUTIL DE SOIN : bulle resserrée, CTA ramené à gauche ---- */
+  .pq-care__bubble{padding:var(--sp-8) var(--sp-6);max-width:none}
+  .pq-care__cta{justify-content:flex-start;margin-top:var(--sp-10)}
+
+  /* ---- 04 · CONDUCTEUR : titre « bonus » réduit, bulle confiance recalée ---- */
+  .pq-driver__title{font-size:var(--fs-h1)}
+  .pq-trust{transform:none;margin-block:0;margin-top:var(--sp-8)}
+  .pq-driver__punch{margin-top:var(--sp-10);font-size:var(--fs-h4)}
+
+  /* ---- 06 · TARIF (moonwalkers) : filet vertical retiré, colonnes empilées ---- */
+  .pq-tarif__title{margin-bottom:var(--sp-10)}
+  .pq-tarif__price{align-self:start}
+  .pq-tarif__cases{padding-left:0;border-left:none;margin-top:var(--sp-6)}
+  /* CTA « séance découverte » rehaussé (bloc raccourci) + police réduite */
+  .pq-tarif__cta{margin-top:var(--sp-6)}
+  .pq-tarif__cta .btn{font-size:var(--fs-sm)}
+
+  /* ---- Grids « maison » (PAS des .grid12 → base ne les collapse pas) ---- */
+  .pq-move--1{display:block}
+  .pq-move__photo{margin-top:var(--sp-6)}
+  .pq-move--1 .pq-quote{position:static;width:100%;margin:var(--sp-6) 0 0}
+  .pq-journey{padding:var(--sp-12) 0;margin-top:var(--sp-12)}   /* coins masqués en mobile → plus besoin du padding latéral */
+  /* arrivée : check AU-DESSUS centré, corps + citation ÉLARGIE pleine largeur */
+  .pq-arrival{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--sp-5)}
+  .pq-arrival__check{justify-content:center}
+  .pq-arrival__body{display:block;width:100%}
+  .pq-arrival__quote{width:100%;max-width:none;margin-top:var(--sp-8)}
+  .pq-projet{display:block}
+  .pq-projet__list{margin-bottom:0}
+  .pq-projet__quote{width:100%;margin-top:var(--sp-8)}
+
+  /* ---- Parcours en étapes : colonne chiffre resserrée ---- */
+  /* parcours : le CHIFFRE au-dessus, titre + texte CENTRÉS (demande EHPAD mobile) */
+  .pq-step{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--sp-2)}
+  .pq-step__num{font-size:2rem}
+  .pq-step__text{max-width:none}
+  .pq-steps__list{gap:var(--sp-12)}
+  /* bloc « ce que ça change » : sous-blocs en colonne, + d'air entre eux,
+     et la PHOTO « clé en main » remontée juste sous le titre du bloc */
+  .pq-change__part{display:flex;flex-direction:column}
+  .pq-change__part + .pq-change__part{margin-top:var(--sp-16)}
+  .pq-turnkey__grid{display:contents}
+  .pq-turnkey__col-photo{order:-1}
+  .pq-turnkey__photo{height:260px;margin-bottom:var(--sp-6)}
+  .pq-turnkey__photo img{height:100%;object-fit:cover}
+
+  /* ---- Carrousel « mesures » : 1 carte visible + flèches CENTRÉES
+     SOUS le carrousel (corrige le débordement des flèches à -62/-131px) ---- */
+  .pq-mzone{padding:var(--sp-8) var(--sp-6) var(--sp-12)}
+  .pq-mes{padding-bottom:var(--sp-20)}
+  .pq-mes-card{flex-basis:82%}
+  .pq-mes__nav{top:auto;bottom:0;transform:none;width:46px;height:46px;font-size:0;box-shadow:none}
+  /* flèches en CHEVRONS épais (sans hampe), CENTRÉS dans le bouton */
+  .pq-mes__nav::before{content:"";position:absolute;top:50%;left:50%;width:9px;height:9px;border-right:3px solid currentColor;border-bottom:3px solid currentColor}
+  .pq-mes__nav--next::before{transform:translate(-50%,-50%) rotate(-45deg)}
+  .pq-mes__nav--prev::before{transform:translate(-50%,-50%) rotate(135deg)}
+  /* pagination « 1/4 » centrée au-dessus des deux flèches */
+  .pq-mes__count{display:block;position:absolute;left:0;right:0;bottom:56px;text-align:center;font-size:var(--fs-sm);font-weight:var(--fw-medium);color:var(--oc-ink)}
+  .pq-mes__nav--prev{left:calc(50% - 52px);right:auto}
+  .pq-mes__nav--next{right:calc(50% - 52px);left:auto}
+  .pq-mzone .pq-mes__nav--prev{left:calc(50% - 52px)}
+  .pq-mzone .pq-mes__nav--next{right:calc(50% - 52px)}
+  .pq-mes__more{margin-top:var(--sp-6)}
+}

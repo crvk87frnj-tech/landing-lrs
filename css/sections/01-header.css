@@ -81,3 +81,87 @@
 .site-nav a:hover::after{transform:scaleX(1)}
 .site-nav a[aria-current="page"]{color:var(--oc-text);font-weight:var(--fw-semibold)}
 .site-nav a[aria-current="page"]::after{transform:scaleX(1)}
+
+/* ============================================================
+   ACTIONS (CTA + bouton menu) — groupe de droite
+   ============================================================ */
+.header-actions{display:flex;align-items:center;gap:var(--sp-4)}
+
+/* Bouton « hamburger » — masqué en desktop, visible < 900px */
+.nav-toggle{
+  display:none;
+  width:44px;height:44px;padding:0;margin:0;
+  align-items:center;justify-content:center;
+  border:0;border-radius:var(--r-sm);background:transparent;
+  color:var(--oc-ink);cursor:pointer;-webkit-tap-highlight-color:transparent;
+  transition:background var(--dur) var(--ease);
+}
+.nav-toggle:hover{background:var(--oc-gray-100)}
+.nav-toggle:active{background:var(--oc-gray-200)}
+/* Icône : 3 barres → croix (X) quand le menu est ouvert */
+.nav-toggle__icon{
+  position:relative;display:block;width:20px;height:2px;border-radius:2px;
+  background:currentColor;transition:background-color .2s var(--ease);
+}
+.nav-toggle__icon::before,
+.nav-toggle__icon::after{
+  content:"";position:absolute;left:0;width:20px;height:2px;border-radius:2px;
+  background:currentColor;transition:transform .3s var(--ease),top .3s var(--ease);
+}
+.nav-toggle__icon::before{top:-6px}
+.nav-toggle__icon::after{top:6px}
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon{background-color:transparent}
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::before{top:0;transform:rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::after{top:0;transform:rotate(-45deg)}
+@media (prefers-reduced-motion:reduce){
+  .nav-toggle__icon,.nav-toggle__icon::before,.nav-toggle__icon::after{transition:none}
+}
+/* libellé CTA : complet en desktop, court (« Prendre RDV ») en mobile */
+.cta-short{display:none}
+
+/* ============================================================
+   HEADER RESPONSIVE — < 900px : hamburger + nav déroulante
+   Ordre : [logo LRS] .......... [CTA] [menu]
+   ============================================================ */
+@media (max-width:900px){
+  .site-header{
+    gap:var(--sp-3);
+    padding-inline:max(var(--sp-4),env(safe-area-inset-left)) max(var(--sp-4),env(safe-area-inset-right));
+  }
+  /* logo LRS seul : on masque la bascule OuiCycle + le filet */
+  .brand-switch__divider,
+  .brand-switch__item--alt{display:none}
+  .brand-logo--lrs{height:28px}
+
+  /* groupe CTA + menu poussé à droite */
+  .header-actions{margin-left:auto;gap:var(--sp-2)}
+  .nav-toggle{display:inline-flex}
+  .site-header .btn--sm{padding:9px var(--sp-3);font-size:0.8125rem;font-weight:var(--fw-semibold)}   /* bulle CTA resserrée : + petite police, graisse allégée */
+  .cta-full{display:none}
+  .cta-short{display:inline}
+
+  /* nav = panneau déroulant sous le bandeau */
+  .site-nav{
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;gap:0;padding:var(--sp-2) 0;
+    background:var(--oc-paper);border-bottom:1px solid var(--oc-border);
+    box-shadow:var(--shadow-lg);
+    max-height:calc(100svh - 62px);overflow-y:auto;
+  }
+  .site-nav:not(.is-open){display:none}
+  .site-nav a{
+    padding:14px max(var(--sp-6),env(safe-area-inset-left));
+    font-size:var(--fs-body);font-weight:var(--fw-medium);
+    border-bottom:1px solid var(--oc-border);
+  }
+  .site-nav a:last-child{border-bottom:0}
+  .site-nav a::after{display:none}
+}
+
+/* Très petits écrans : on resserre pour tenir à 320px sans débordement */
+@media (max-width:360px){
+  .site-header{gap:var(--sp-2);padding-inline:var(--sp-3)}
+  .brand-logo--lrs{height:26px}
+  .header-actions{gap:var(--sp-1)}
+  .site-header .btn--sm{padding-inline:var(--sp-2)}
+}

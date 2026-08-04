@@ -1,0 +1,169 @@
+/* ============================================================
+   PAGE — CONTACT / PRISE DE RENDEZ-VOUS
+   Formulaire dynamique en 2 étapes. Mêmes tokens, même échelle typo,
+   même DS que le reste du site. Header/footer partagés.
+   ============================================================ */
+
+figure{margin:0}
+
+.ct{position:relative;overflow:hidden;padding-block:var(--sp-16) var(--sp-24)}
+.ct > .container{position:relative;z-index:1}
+
+/* ---- En-tête centré ---- */
+.ct__head{max-width:760px;margin:0 auto var(--sp-12);text-align:center}
+.ct__eyebrow{
+  margin:0 0 var(--sp-4);
+  font-size:var(--fs-label);font-weight:var(--fw-bold);
+  letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--oc-gray-700);
+}
+.ct__title{
+  font-weight:var(--fw-black);font-size:var(--fs-display);   /* 60px */
+  line-height:1.12;letter-spacing:-.005em;color:var(--oc-ink);margin:0;
+}
+/* surligneur fin sur « établissement » (ne dépasse qu'un peu le mot) */
+.ct__title .mark{
+  background:transparent;color:var(--oc-ink);
+  position:relative;isolation:isolate;padding:0 .08em;border-radius:0;
+}
+.ct__title .mark::before{
+  content:"";position:absolute;z-index:-1;left:0;right:0;top:.15em;bottom:.18em;
+  background:var(--oc-yellow);border-radius:var(--r-xs);
+}
+.ct__lead{
+  max-width:56ch;margin:var(--sp-6) auto 0;
+  font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-gray-800);
+}
+.ct__reassure{
+  margin:var(--sp-5) 0 0;font-size:var(--fs-h4);font-weight:var(--fw-bold);color:var(--oc-yellow-deep);
+}
+
+/* ---- Corps : carte formulaire centrée ---- */
+.ct__body{max-width:720px;margin:0 auto}
+
+.ct-form{
+  background:var(--oc-white);border:1px solid var(--oc-border);
+  border-radius:var(--r-2xl);box-shadow:var(--shadow-md);
+  padding:clamp(24px,4vw,40px);
+}
+.ct-form__head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  margin-bottom:var(--sp-4);
+}
+.ct-form__nb{font-size:var(--fs-sm);color:var(--oc-text-muted);margin:0}
+.ct-form__stepnum{
+  font-size:var(--fs-sm);font-weight:var(--fw-semibold);letter-spacing:.02em;
+  color:var(--oc-gray-700);margin:0;white-space:nowrap;
+}
+.ct-req{color:var(--oc-yellow-deep);font-weight:var(--fw-bold)}
+.ct-opt{color:var(--oc-text-faint);font-weight:var(--fw-regular);font-size:var(--fs-sm)}
+
+/* barre de progression 2 étapes */
+.ct-progress{
+  height:4px;border-radius:var(--r-pill);background:var(--oc-gray-200);
+  overflow:hidden;margin-bottom:var(--sp-8);
+}
+.ct-progress__bar{
+  display:block;height:100%;width:50%;border-radius:var(--r-pill);
+  background:var(--oc-yellow-deep);transition:width var(--dur-slow) var(--ease);
+}
+
+/* ---- Étapes ---- */
+.ct-step{display:flex;flex-direction:column;gap:var(--sp-5);animation:ct-fade .3s var(--ease)}
+.ct-step[hidden]{display:none}   /* l'attribut hidden doit l'emporter sur display:flex */
+@keyframes ct-fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---- Champs ---- */
+.ct-field{margin:0;display:flex;flex-direction:column;gap:8px}
+.ct-field > label,
+.ct-check legend{
+  font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--oc-ink);padding:0;
+}
+.ct-field input,
+.ct-field textarea{
+  width:100%;font-family:inherit;font-size:var(--fs-body);color:var(--oc-text);
+  background:var(--oc-white);
+  border:1.5px solid var(--oc-border-strong);border-radius:var(--r-md);
+  padding:12px 15px;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease);
+}
+.ct-field textarea{resize:vertical;min-height:96px}
+.ct-field input::placeholder,
+.ct-field textarea::placeholder{color:var(--oc-text-faint)}
+.ct-field input:focus,
+.ct-field textarea:focus{
+  outline:none;border-color:var(--oc-yellow-deep);box-shadow:var(--ring);
+}
+.ct-field input:user-invalid{border-color:var(--oc-sensoriel)}
+
+/* rangée 2 colonnes (téléphone + bénéficiaires) */
+.ct-form__row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-5) var(--sp-6)}
+
+/* honeypot CACHÉ (anti-spam) — invisible pour l'utilisateur, piège à bots */
+.ct-hp{position:absolute !important;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ---- Type de structure : cases à cocher (choix multiples) ---- */
+.ct-check{border:0;padding:0;margin:0;min-width:0}
+.ct-check legend{margin-bottom:10px}
+.ct-check__grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px}
+.ct-check__item{
+  display:flex;align-items:center;gap:10px;cursor:pointer;
+  padding:11px 14px;border:1.5px solid var(--oc-border-strong);border-radius:var(--r-md);
+  font-size:var(--fs-body);color:var(--oc-ink);
+  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease);
+}
+.ct-check__item input{
+  width:18px;height:18px;flex:none;margin:0;accent-color:var(--oc-yellow-deep);cursor:pointer;
+}
+.ct-check__item:hover{border-color:var(--oc-yellow)}
+.ct-check__item:has(input:checked){
+  border-color:var(--oc-yellow-deep);background:var(--oc-yellow-wash);
+}
+.ct-check__item:has(input:focus-visible){box-shadow:var(--ring)}
+.ct-check__error{
+  margin-top:8px;font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--oc-sensoriel);
+}
+
+/* ---- Navigation d'étapes ---- */
+.ct-form__nav{display:flex;justify-content:flex-end;margin-top:var(--sp-4)}
+.ct-form__nav--split{justify-content:space-between;gap:16px}
+.arrow--back{display:inline-block;transition:transform var(--dur) var(--ease)}
+.btn:hover .arrow--back{transform:translateX(-3px)}
+
+/* ---- Confirmation ---- */
+.ct-success{
+  text-align:center;background:var(--oc-white);border:1px solid var(--oc-border);
+  border-radius:var(--r-2xl);box-shadow:var(--shadow-md);
+  padding:clamp(32px,5vw,56px);
+}
+.ct-success__check{
+  display:grid;place-items:center;width:64px;height:64px;margin:0 auto var(--sp-6);
+  border-radius:50%;background:var(--oc-yellow);
+}
+.ct-success__check svg{width:32px;height:32px;fill:none;stroke:var(--on-accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ct-success__title{font-weight:var(--fw-extrabold);font-size:var(--fs-h2);color:var(--oc-ink);margin:0 0 var(--sp-3)}
+.ct-success__text{font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-gray-800);max-width:44ch;margin:0 auto}
+
+/* ---- Contact direct ---- */
+.ct__direct{
+  margin:var(--sp-8) 0 0;text-align:center;
+  font-size:var(--fs-body);color:var(--oc-text-muted);
+}
+.ct__direct a{color:var(--oc-ink);font-weight:var(--fw-semibold);text-decoration:underline;text-decoration-color:var(--oc-yellow);text-underline-offset:3px}
+.ct__direct a:hover{color:var(--oc-yellow-deep)}
+
+/* ---- Roues décoratives (profondeur : tailles + opacités différentes) ---- */
+.ct__roue{position:absolute;z-index:0;height:auto;pointer-events:none;user-select:none}
+.ct__roue--tl{--s:clamp(170px,19vw,290px);width:var(--s);top:calc(var(--s) / -3);left:calc(var(--s) / -3);opacity:.05}
+.ct__roue--br{--s:clamp(280px,32vw,460px);width:var(--s);bottom:calc(var(--s) / -3.2);right:calc(var(--s) / -3.2);opacity:.11}
+
+/* ============================================================
+   MOBILE / RESPONSIVE (≤760) — page « Contact »
+   Formulaire centré : rangées 2 colonnes → 1 ; titre display réduit.
+   ============================================================ */
+@media (max-width:760px){
+  .ct{padding-block:var(--sp-12) var(--sp-16)}
+  .ct__title{font-size:clamp(1.75rem,7.2vw,2.4rem);line-height:1.15}   /* évite le débordement des mots collés (insécables) */
+  .ct__roue--br{--s:clamp(200px,48vw,300px)}
+  /* Champs : téléphone + bénéficiaires et cases « type de structure » en 1 colonne */
+  .ct-form__row{grid-template-columns:1fr}
+  .ct-check__grid{grid-template-columns:1fr}
+}

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pour les résidences autonomie &amp; résidences services · Les Roues Solidaires</title>
+<meta name="description" content="En résidence autonomie, la cyclothérapie met le ludique au service du thérapeutique : entretenir le lien social, prévenir les chutes, maintenir l'autonomie. Un dispositif clé en main et sécurisé, à bord du OuiCycle.">
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sections/01-header.css">
+<link rel="stylesheet" href="css/sections/09-footer.css">
+<link rel="stylesheet" href="css/pour-qui.css">
+<link rel="stylesheet" href="css/pour-qui-residence.css">
+</head>
+<body>
+
+<!-- ========================================================
+     HEADER (sticky) — identique à la landing / dispositif
+     ======================================================== -->
+<header class="site-header" id="site-header">
+  <div class="brand-switch" role="group" aria-label="Les Roues Solidaires, une marque OuiCycle">
+    <a href="index.html" class="brand-switch__item brand-switch__item--current" aria-label="Les Roues Solidaires, accueil">
+      <img src="assets/logos/lrs-noir.svg" alt="Les Roues Solidaires" class="brand-logo brand-logo--lrs">
+    </a>
+    <span class="brand-switch__divider" aria-hidden="true"></span>
+    <a href="#" class="brand-switch__item brand-switch__item--alt" aria-label="Aller sur le site OuiCycle (nouvel onglet)" target="_blank" rel="noopener">
+      <img src="assets/logos/ouicycle-jaune.svg" alt="OuiCycle" class="brand-logo brand-logo--oc">
+      <span class="brand-switch__ext" aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+    <a href="dispositif.html">Le dispositif</a>
+    <a href="pour-qui.html">Pour qui</a>
+    <a href="financement.html">Financement</a>
+    <a href="preuves.html">Nos preuves</a>
+    <a href="le-ouicycle.html">Le OuiCycle</a>
+    <a href="a-propos.html">À propos</a>
+  </nav>
+
+  <div class="header-actions">
+    <a href="contact.html" class="btn btn--primary btn--sm">
+      <span class="cta-full">Prendre rendez-vous</span>
+      <span class="cta-short">Prendre RDV</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- ========================================================
+     00 · EN-TÊTE DE SOUS-PAGE : label + hero + chapô
+     ======================================================== -->
+<section class="pq-hero" aria-labelledby="pq-hero-title">
+  <div class="container">
+
+    <p class="pq-label">Résidences autonomie</p>
+
+    <div class="pq-hero__grid grid12">
+      <div class="pq-hero__col-text">
+        <h1 class="pq-hero__title" id="pq-hero-title">Entretenir le lien,<br>maintenir l'autonomie.</h1>
+        <p class="pq-hero__lead">En résidence autonomie, tous les profils se côtoient :<br>résidents très actifs, premières pertes d'autonomie. Notre solution :<br>mettre le ludique au service du thérapeutique. Pouvoir choisir entre les deux, librement !</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Photo : panneau pleine hauteur, plein-bord droit, fondu à gauche (CSS) -->
+  <figure class="pq-hero__photo">
+    <img src="assets/media/residence-hero.jpg?v=1" alt="Des résidents souriants à bord du OuiCycle lors d'une sortie en extérieur." width="1280" height="720">
+  </figure>
+
+  <a href="contact.html" class="btn btn--primary pq-hero__cta">Réserver une démo <span class="arrow" aria-hidden="true">&#8594;</span></a>
+</section>
+
+<!-- ========================================================
+     BLOC 1 · TARIFICATION — bande sombre, layout « moonwalkers »
+     Prix isolé à gauche · filet vertical · arguments en cases à droite.
+     ======================================================== -->
+<section class="pq-section pq-tarif" aria-labelledby="pq-tarif-title">
+  <div class="container">
+    <p class="pq-tarif__label">Pour commencer</p>
+    <h2 class="pq-tarif__title" id="pq-tarif-title">Une première séance chez vous, on s'occupe de tout.</h2>
+
+    <div class="pq-tarif__grid grid12">
+      <div class="pq-tarif__price">
+        <p class="pq-tarif__amount">380<span class="pq-tarif__unit"> € HT</span></p>
+        <p class="pq-tarif__note">Séance découverte, sans engagement.</p>
+      </div>
+
+      <ul class="pq-tarif__cases">
+        <li class="pq-tarif__case">Une demi-journée sur site, tout compris : vélo, conducteur-animateur, assurance</li>
+        <li class="pq-tarif__case">3 bénéficiaires par sortie, 12 à 15 résidents dans l'après-midi</li>
+        <li class="pq-tarif__case">Vos équipes n'ont rien à préparer</li>
+      </ul>
+    </div>
+
+    <div class="pq-tarif__cta">
+      <a href="contact.html" class="btn btn--primary">Réserver une séance découverte <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+    <p class="pq-tarif__foot">En abonnement, le coût descend jusqu'à 16 €/résident (sur la base d'une séance de 2h30), et plusieurs aides le financent. <a href="financement.html" class="pq-tarif__link">Voir les financements <span aria-hidden="true">→</span></a></p>
+  </div>
+</section>
+
+<!-- ========================================================
+     BLOC 2 · LA CYCLOTHÉRAPIE, UNE SORTIE QU'ON ATTEND
+     Deux mouvements. Sous-titres (pas des titres). Citations en bulle.
+     ======================================================== -->
+<section class="pq-section pq-care" aria-labelledby="pq-care-title">
+  <div class="container">
+    <h2 class="pq-h2 pq-title pq-care__title" id="pq-care-title">La cyclothérapie, c'est une sortie <span class="mark">qu'on attend</span>.</h2>
+
+    <!-- Mouvement 1 : monter à bord, pour le plaisir -->
+    <div class="pq-move pq-move--1">
+      <div class="pq-move__text">
+        <h3 class="pq-subhead">Monter à bord du OuiCycle, pour le plaisir.</h3>
+        <p class="pq-move__p">Chacun pédale à son rythme, sans effort imposé et sans compétition.</p>
+        <p class="pq-move__p">Le OuiCycle intrigue&nbsp;: on vient le voir, on demande à essayer.</p>
+        <p class="pq-move__p">La première séance devient celle que l'on attend chaque semaine.</p>
+
+        <figure class="pq-quote pq-quote--right">
+          <blockquote class="pq-quote__text">Des résidents qui ne se parlaient plus partagent à nouveau des moments ensemble. Le lien social se reconstruit naturellement pendant les sorties.</blockquote>
+          <figcaption class="pq-quote__author"><strong>Nathalie V.</strong>, animatrice, Résidence autonomie Les Tilleuls</figcaption>
+        </figure>
+      </div>
+
+      <figure class="pq-move__photo">
+        <img src="assets/media/residence-lien-social.jpg?v=1" alt="Deux résidentes de résidence autonomie côte à côte à bord du OuiCycle, complices et souriantes." width="1206" height="1698">
+      </figure>
+    </div>
+
+    <!-- Mouvement 2 : le corps travaille sans y penser (prévention, mesuré) -->
+    <div class="pq-move pq-move--2">
+      <div class="pq-mzone">
+      <h3 class="pq-subhead">Quand le corps travaille sans y penser.</h3>
+      <p class="pq-move__p">La pratique régulière entretient l'équilibre, la coordination et la confiance dans les déplacements. Elle aide à prévenir les chutes.</p>
+      <p class="pq-move__p pq-move__p--lead">Une activité physique adaptée à part entière, mesurée à chaque séance.</p>
+
+      <!-- Carrousel mesures (compact, sans image) — repris du dispositif -->
+      <div class="pq-mes">
+        <div class="pq-mes__viewport">
+          <div class="pq-mes__track" data-mes-track>
+            <article class="pq-mes-card pq-mes-card--tonus">
+              <h4 class="pq-mes-card__title"><span class="pq-mes-card__num">1</span>Tonus musculaire</h4>
+              <p class="pq-mes-card__body">Un capteur de couple sur chaque pédalier mesure l'effort fourni (en Watt).</p>
+            </article>
+            <article class="pq-mes-card pq-mes-card--cardiaque">
+              <h4 class="pq-mes-card__title"><span class="pq-mes-card__num">2</span>Fréquence cardiaque</h4>
+              <p class="pq-mes-card__body">Bracelets connectés : fréquence cardiaque, activité.</p>
+            </article>
+            <article class="pq-mes-card pq-mes-card--psychique">
+              <h4 class="pq-mes-card__title"><span class="pq-mes-card__num">3</span>État psychique</h4>
+              <p class="pq-mes-card__body">Questionnaire post-séance.</p>
+            </article>
+            <article class="pq-mes-card pq-mes-card--plateforme">
+              <h4 class="pq-mes-card__title"><span class="pq-mes-card__num">4</span>Plateforme en ligne</h4>
+              <p class="pq-mes-card__body">Données agrégées et restituées à votre direction et à vos financeurs.</p>
+            </article>
+          </div>
+        </div>
+        <button class="pq-mes__nav pq-mes__nav--prev" data-mes-prev aria-label="Mesures précédentes" hidden>←</button>
+        <button class="pq-mes__nav pq-mes__nav--next" data-mes-next aria-label="Mesures suivantes">→</button>
+        <span class="pq-mes__count" data-mes-count aria-hidden="true"></span>
+      </div>
+              <div class="pq-mes__more">
+          <a href="dispositif.html#d-measures" class="pq-mes__more-link"><span class="pq-mes__more-txt">Voir comment on mesure l'impact</span> <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div><!-- /pq-mzone -->
+
+      <!-- La cyclothérapie s'inscrit dans le projet (gauche) + citation (droite) -->
+      <div class="pq-projet">
+        <div class="pq-projet__text">
+          <h3 class="pq-projet__title">La cyclothérapie s'inscrit dans votre projet d'activité physique adaptée&nbsp;:</h3>
+          <ul class="pq-projet__list">
+            <li>Articulée à votre programme d'animation</li>
+            <li>Construite avec votre responsable animation et votre équipe</li>
+            <li>Une restitution par bénéficiaire et un bilan collectif</li>
+          </ul>
+        </div>
+        <figure class="pq-quote pq-projet__quote">
+          <blockquote class="pq-quote__text">Les sorties créent une vraie dynamique collective : les résidents se retrouvent autour d'un projet partagé, et beaucoup renouent avec une activité de plein air qu'ils pensaient hors de portée.</blockquote>
+          <figcaption class="pq-quote__author"><strong>Directeur de résidence autonomie</strong>, établissement pilote</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     BLOC 3 · CE QUE ÇA CHANGE POUR VOTRE RÉSIDENCE
+     Sous-parties : clé en main (pictos) · parcours 4 étapes · à l'arrivée.
+     ======================================================== -->
+<section class="pq-section pq-change" aria-labelledby="pq-change-title">
+  <div class="container">
+    <h2 class="pq-h2 pq-change__title" id="pq-change-title">Ce que ça change pour votre résidence.</h2>
+
+    <!-- Sous-partie 1 : clé en main (photo gauche · pictos droite) -->
+    <div class="pq-change__part">
+      <h3 class="pq-subhead pq-title">Un dispositif clé en main, <span class="mark">zéro charge</span> pour vos équipes.</h3>
+      <div class="pq-turnkey__grid grid12">
+        <div class="pq-turnkey__col-photo">
+          <figure class="pq-turnkey__photo">
+            <img src="assets/media/pour-qui-part.jpg?v=2" alt="Le OuiCycle chargé de résidents et de son conducteur-animateur, prêt à partir dans la rue." width="1235" height="1400">
+          </figure>
+        </div>
+        <div class="pq-turnkey__col-text">
+          <ul class="pq-charge">
+            <li class="pq-charge__item pq-charge--maint">
+              <span class="pq-charge__ico" aria-hidden="true"><svg class="ico-stroke" viewBox="0 0 24 24"><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/></svg></span>
+              <p class="pq-charge__label">Le véhicule et sa maintenance</p>
+            </li>
+            <li class="pq-charge__item pq-charge--drive">
+              <span class="pq-charge__ico" aria-hidden="true"><svg class="ico-fill" viewBox="0 0 24 24"><path d="M17 3.34a10 10 0 1 1 -15 8.66l.005 -.324a10 10 0 0 1 14.995 -8.336m-13 8.66a8 8 0 0 0 7 7.937v-5.107a3 3 0 0 1 -1.898 -2.05l-5.07 -1.504q-.031 .36 -.032 .725m15.967 -.725l-5.069 1.503a3 3 0 0 1 -1.897 2.051v5.108a8 8 0 0 0 6.985 -8.422zm-11.967 -6.204a8 8 0 0 0 -3.536 4.244l4.812 1.426a3 3 0 0 1 5.448 0l4.812 -1.426a8 8 0 0 0 -11.536 -4.244"/></svg></span>
+              <p class="pq-charge__label">La conduite et l'encadrement</p>
+            </li>
+            <li class="pq-charge__item pq-charge--insur">
+              <span class="pq-charge__ico" aria-hidden="true"><svg class="ico-stroke" viewBox="0 0 24 24"><path d="M8 21h-2a3 3 0 0 1 -3 -3v-1h5.5"/><path d="M17 8.5v-3.5a2 2 0 1 1 2 2h-2"/><path d="M19 3h-11a3 3 0 0 0 -3 3v11"/><path d="M9 7h4"/><path d="M9 11h4"/><path d="M18.42 12.61a2.1 2.1 0 0 1 2.97 2.97l-6.39 6.42h-3v-3z"/></svg></span>
+              <p class="pq-charge__label">L'assurance RC Pro</p>
+            </li>
+            <li class="pq-charge__item pq-charge--coord">
+              <span class="pq-charge__ico" aria-hidden="true"><svg class="ico-stroke" viewBox="0 0 24 24"><path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"/><path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M17 10h2a2 2 0 0 1 2 2v1"/><path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M3 13v-1a2 2 0 0 1 2 -2h2"/></svg></span>
+              <p class="pq-charge__label">La coordination avec votre équipe</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pq-journey">
+      <img class="pq-journey__corner pq-journey__corner--tl" src="assets/logos/corner.svg" alt="" aria-hidden="true">
+      <img class="pq-journey__corner pq-journey__corner--br" src="assets/logos/corner.svg" alt="" aria-hidden="true">
+
+    <!-- Sous-partie 2 : parcours en 4 étapes (révélation au scroll) -->
+    <div class="pq-change__part">
+      <h3 class="pq-subhead pq-title">De la première visite au suivi, un parcours en <span class="mark">quatre étapes</span>.</h3>
+
+      <div class="pq-steps" data-steps>
+        <ol class="pq-steps__list">
+          <li class="pq-step" data-step>
+            <span class="pq-step__num" aria-hidden="true">1</span>
+            <div class="pq-step__body">
+              <h4 class="pq-step__title">Présentation du dispositif</h4>
+              <p class="pq-step__text">Prise en compte de vos objectifs et évaluation de vos besoins.</p>
+            </div>
+          </li>
+          <li class="pq-step" data-step>
+            <span class="pq-step__num" aria-hidden="true">2</span>
+            <div class="pq-step__body">
+              <h4 class="pq-step__title">Séance découverte</h4>
+              <p class="pq-step__text">Rencontre avec votre personnel, mise en adéquation avec vos besoins.</p>
+            </div>
+          </li>
+          <li class="pq-step" data-step>
+            <span class="pq-step__num" aria-hidden="true">3</span>
+            <div class="pq-step__body">
+              <h4 class="pq-step__title">Sorties régulières</h4>
+              <p class="pq-step__text">Séances de 2h à 2h30 intégrant 3 à 4 sorties. Abonnement de 6 à 12 mois.</p>
+            </div>
+          </li>
+          <li class="pq-step" data-step>
+            <span class="pq-step__num" aria-hidden="true">4</span>
+            <div class="pq-step__body">
+              <h4 class="pq-step__title">Suivi &amp; bilan</h4>
+              <p class="pq-step__text">Rapport individualisé et collectif, utile à votre projet d'activité physique adaptée.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Sous-partie 3 : à l'arrivée = complétude du parcours (texte gauche, citation droite) -->
+    <div class="pq-change__part pq-arrival">
+      <span class="pq-arrival__check" data-arrival-check aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l5 5l10 -10"/></svg></span>
+      <div class="pq-arrival__body pq-arrival__body--solo">
+        <div class="pq-arrival__text">
+          <h3 class="pq-arrival__title">À l'arrivée, c'est toute votre résidence qui en profite&nbsp;!</h3>
+          <p class="pq-arrival__p">L'usage, c'est vous qui le décidez&nbsp;: un parcours de cyclothérapie pour ceux qui en ont besoin, une balade pour ceux qui veulent simplement sortir.</p>
+          <p class="pq-arrival__p">Une activité visible, qui dynamise la vie collective et vous distingue auprès des familles.</p>
+        </div>
+        <!-- TODO · citation à droite : en attente du texte de Vincent (cf. prompt « citation à droite » sans contenu fourni) -->
+      </div>
+    </div>
+    </div><!-- /pq-journey -->
+  </div>
+</section>
+
+<!-- ========================================================
+     BLOC 4 · ON PROFITE MIEUX QUAND ON SE SENT EN SÉCURITÉ
+     Specs (grille) + sous-partie conducteur-animateur + CTA.
+     ======================================================== -->
+<section class="pq-section pq-safe" aria-labelledby="pq-safe-title">
+  <div class="container">
+    <h2 class="pq-h2 pq-title pq-safe__title" id="pq-safe-title">On profite mieux quand on se sent en <span class="mark">sécurité</span>.</h2>
+
+    <div class="pq-safe__grid grid12">
+      <div class="pq-safe__specs">
+        <article class="pq-spec">
+          <span class="pq-spec__num">01</span>
+          <div class="pq-spec__body">
+            <h3 class="pq-spec__title">Vélo à assistance électrique</h3>
+            <p class="pq-spec__desc">Conforme à la norme européenne EN 15194, autorisé sur les pistes cyclables, 25 km/h max.</p>
+          </div>
+        </article>
+        <article class="pq-spec">
+          <span class="pq-spec__num">02</span>
+          <div class="pq-spec__body">
+            <h3 class="pq-spec__title">L'assistance électrique</h3>
+            <p class="pq-spec__desc">Elle prend le relais dès que c'est nécessaire&nbsp;: ni la côte ni le retour ne sont un souci.</p>
+          </div>
+        </article>
+        <article class="pq-spec">
+          <span class="pq-spec__num">03</span>
+          <div class="pq-spec__body">
+            <h3 class="pq-spec__title">Le maintien avant tout</h3>
+            <p class="pq-spec__desc">Sièges ajustables d'une seule poignée, de 1,55 m à 1,95 m. Position assis-couché, maintien par sangles et ceintures.</p>
+          </div>
+        </article>
+        <article class="pq-spec">
+          <span class="pq-spec__num">04</span>
+          <div class="pq-spec__body">
+            <h3 class="pq-spec__title">Un embarquement accompagné</h3>
+            <p class="pq-spec__desc">Marche-pied bas et aide au transfert&nbsp;: chaque passager est installé et sécurisé avant le départ. Accessibilité PMR.</p>
+          </div>
+        </article>
+      </div>
+
+      <figure class="pq-safe__photo">
+        <img src="assets/media/dispositif-julien.jpg" alt="Julien, fondateur du OuiCycle, explique le fonctionnement du véhicule à une bénéficiaire installée à bord.">
+      </figure>
+    </div>
+
+    <!-- Sous-partie : le conducteur-animateur, formé à l'APA -->
+    <div class="pq-driver">
+      <h3 class="pq-subhead pq-driver__sub">Nos conducteurs-animateurs, formés à l'activité physique adaptée.</h3>
+      <div class="pq-driver__grid grid12">
+        <div class="pq-driver__col-photo">
+          <figure class="pq-driver__photo">
+            <img src="assets/media/residence-conducteur-sourire.jpg?v=1" alt="Un conducteur-animateur souriant du OuiCycle, aux côtés d'une résidente." width="1412" height="1500">
+          </figure>
+        </div>
+        <div class="pq-driver__col-text">
+          <p class="pq-driver__lead pq-driver__lead--bold">Un même équipier conduit le véhicule et anime la séance.</p>
+          <p class="pq-driver__partner-text">Chaque conducteur-animateur est formé à l'activité physique adaptée par notre partenaire ReSantéVous.</p>
+          <img class="pq-driver__logo" src="assets/logos/resantevous.svg" alt="ReSantéVous" width="337" height="165">
+          <p class="pq-driver__close">C'est ce qui distingue une sortie encadrée d'une simple promenade.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pq-safe__cta">
+      <a href="dispositif.html#d-steps" class="btn btn--outline pq-safe__btn">Comment se passe une séance&nbsp;? <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     BLOC FINAL · PASSAGE À L'ACTION (bande sombre — fait écho au tarif)
+     ======================================================== -->
+<section class="pq-section pq-final" aria-labelledby="pq-final-title">
+  <div class="container">
+    <div class="pq-final__inner">
+      <h2 class="pq-final__title" id="pq-final-title">Envie de voir le OuiCycle dans votre résidence&nbsp;?</h2>
+      <p class="pq-final__sub">Rien ne remplace une démonstration sur site. On vient à vous, sans engagement&nbsp;: réponse sous <span class="pq-final__num">48&nbsp;h</span>.</p>
+      <div class="pq-final__cta">
+        <a href="contact.html" class="btn btn--on-dark">Réserver une démonstration <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ========================================================
+     FOOTER — identique à la landing / dispositif
+     ======================================================== -->
+<footer class="footer" aria-label="Pied de page">
+  <div class="container">
+    <div class="footer__grid grid12">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="assets/logos/lrs-jaune.svg" alt="Les Roues Solidaires">
+        <p class="footer__tagline">La cyclothérapie inclusive, à bord du OuiCycle. Se remettre en mouvement, ensemble.</p>
+        <p class="footer__parent">Une marque <a href="#" target="_blank" rel="noopener">OuiCycle&nbsp;↗</a></p>
+      </div>
+
+      <nav class="footer__col footer__col--nav" aria-label="Navigation pied de page">
+        <p class="footer__title">Naviguer</p>
+        <ul class="footer__list">
+          <li><a href="dispositif.html">Le dispositif</a></li>
+          <li><a href="pour-qui.html">Pour qui</a></li>
+          <li><a href="preuves.html">Nos preuves</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col footer__col--contact">
+        <p class="footer__title">Contact</p>
+        <div class="footer__contact">
+          <a href="mailto:contact@ouicycle.fr">contact@ouicycle.fr</a>
+          <a href="contact.html" class="footer__cta">Réservez une démo <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__legal">
+      <span>© 2026 OuiCycle · Les Roues Solidaires. Tous droits réservés.</span>
+      <div class="footer__legal-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/pour-qui.js"></script>
+<script src="js/header.js"></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Financement &amp; tarifs · Les Roues Solidaires</title>
+<meta name="description" content="Un dispositif clé en main et un financement modulable : séance découverte sans engagement, abonnements dégressifs, et des aides publiques souvent cumulables (APA, Conférences des financeurs, CNSA).">
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sections/01-header.css">
+<link rel="stylesheet" href="css/sections/07-structure.css">
+<link rel="stylesheet" href="css/sections/09-footer.css">
+<link rel="stylesheet" href="css/financement.css">
+</head>
+<body>
+
+<!-- ========================================================
+     HEADER (sticky) — identique à la landing / dispositif
+     ======================================================== -->
+<header class="site-header" id="site-header">
+  <div class="brand-switch" role="group" aria-label="Les Roues Solidaires, une marque OuiCycle">
+    <a href="index.html" class="brand-switch__item brand-switch__item--current" aria-label="Les Roues Solidaires, accueil">
+      <img src="assets/logos/lrs-noir.svg" alt="Les Roues Solidaires" class="brand-logo brand-logo--lrs">
+    </a>
+    <span class="brand-switch__divider" aria-hidden="true"></span>
+    <a href="#" class="brand-switch__item brand-switch__item--alt" aria-label="Aller sur le site OuiCycle (nouvel onglet)" target="_blank" rel="noopener">
+      <img src="assets/logos/ouicycle-jaune.svg" alt="OuiCycle" class="brand-logo brand-logo--oc">
+      <span class="brand-switch__ext" aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+    <a href="dispositif.html">Le dispositif</a>
+    <a href="pour-qui.html">Pour qui</a>
+    <a href="financement.html" aria-current="page">Financement</a>
+    <a href="preuves.html">Nos preuves</a>
+    <a href="le-ouicycle.html">Le OuiCycle</a>
+    <a href="a-propos.html">À propos</a>
+  </nav>
+
+  <div class="header-actions">
+    <a href="contact.html" class="btn btn--primary btn--sm">
+      <span class="cta-full">Prendre rendez-vous</span>
+      <span class="cta-short">Prendre RDV</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- ========================================================
+     00 · HERO — titre + chapô + CTA
+     ======================================================== -->
+<section class="fin-hero" aria-labelledby="fin-hero-title">
+  <img class="fin-hero__roue" src="assets/logos/roue.png" alt="" aria-hidden="true">
+  <div class="container">
+    <p class="eyebrow fin-hero__eyebrow">Financement</p>
+    <h1 class="fin-hero__title" id="fin-hero-title">Un dispositif clé en main<br>et un financement modulable.</h1>
+    <p class="fin-hero__lead">Vous aider à organiser le financement. Notre solution s'adosse à des dispositifs publics existants, souvent cumulables.</p>
+    <a href="contact.html" class="btn btn--primary fin-hero__cta">Réserver une séance découverte <span class="arrow" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<!-- ========================================================
+     BLOC 1 · COMMENCEZ PAR UNE SÉANCE DÉCOUVERTE — fond blanc
+     Module signature : prix isolé à gauche · filet vertical ·
+     puces à droite. Puis mini-bloc « besoins ponctuels » (packs).
+     ======================================================== -->
+<section class="fin-section fin-section--white" aria-labelledby="fin-decouverte-title">
+  <div class="container">
+    <h2 class="fin-h2" id="fin-decouverte-title">Commencez par une séance découverte.</h2>
+    <p class="fin-liaison">Le plus simple pour se décider&nbsp;: voir l'effet sur vos résidents, sans rien engager.</p>
+
+    <div class="fin-module">
+      <div class="fin-module__grid grid12">
+        <div class="fin-module__price fin-module__price--dark">
+          <p class="fin-module__amount">380<span class="fin-module__unit"> € HT</span></p>
+          <p class="fin-module__note">Sans engagement.</p>
+        </div>
+        <ul class="fin-module__cases">
+          <li class="fin-module__case">Une demi-journée sur site avec vos résidents</li>
+          <li class="fin-module__case">Tout compris&nbsp;: véhicule, conducteur-animateur formé, assurance</li>
+          <li class="fin-module__case">Vos équipes n'ont rien à organiser</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fin-packs">
+      <h3 class="fin-packs__title">Des besoins ponctuels&nbsp;?</h3>
+      <div class="fin-packs__row">
+        <div class="fin-pack">
+          <p class="fin-pack__name">Pack 3 séances</p>
+          <p class="fin-pack__price">340 €<span class="fin-pack__per"> HT / séance</span></p>
+          <p class="fin-pack__save">Économie 10 %</p>
+        </div>
+        <div class="fin-pack">
+          <p class="fin-pack__name">Pack 5 séances</p>
+          <p class="fin-pack__price">300 €<span class="fin-pack__per"> HT / séance</span></p>
+          <p class="fin-pack__save">Économie 20 %</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     BLOC 2 · 3 FORMULES D'ABONNEMENT — fond crème
+     Cartes = composant .audience-card du hub ; la 2ᵉ (Hebdomadaire)
+     est mise en avant (bordure jaune + badge « Le plus choisi »).
+     ======================================================== -->
+<section class="fin-section" aria-labelledby="fin-formules-title">
+  <div class="container">
+    <h2 class="fin-h2" id="fin-formules-title">3 formules d'abonnement.</h2>
+    <p class="fin-liaison">De l'essai ponctuel au rendez-vous hebdomadaire&nbsp;: c'est vous qui donnez<br>le tempo.</p>
+
+    <div class="fin-formules fin-formules__grid grid12">
+
+      <!-- À la carte -->
+      <article class="audience-card fin-formule">
+        <h3 class="fin-formule__name">À la carte</h3>
+        <p class="fin-formule__price">380 <span class="fin-formule__unit">€ HT</span></p>
+        <p class="fin-formule__cadence">par séance</p>
+        <ul class="audience-card__benefits fin-formule__args">
+          <li>Sans engagement</li>
+          <li>Séance ou pack (−20 %)</li>
+          <li>Idéal pour tester</li>
+        </ul>
+      </article>
+
+      <!-- Hebdomadaire — mise en avant -->
+      <article class="audience-card fin-formule audience-card--featured">
+        <span class="fin-formule__badge">Le plus choisi</span>
+        <h3 class="fin-formule__name">Hebdomadaire</h3>
+        <p class="fin-formule__price"><span class="fin-formule__pre">dès</span> 760 <span class="fin-formule__unit">€ HT</span></p>
+        <p class="fin-formule__cadence">par mois · 4 séances</p>
+        <ul class="audience-card__benefits fin-formule__args">
+          <li>Engagement 6 ou 12 mois</li>
+          <li>Ancrage thérapeutique</li>
+          <li>Coût par résident le plus bas</li>
+        </ul>
+      </article>
+
+      <!-- Bimensuel -->
+      <article class="audience-card fin-formule">
+        <h3 class="fin-formule__name">Bimensuel</h3>
+        <p class="fin-formule__price"><span class="fin-formule__pre">dès</span> 460 <span class="fin-formule__unit">€ HT</span></p>
+        <p class="fin-formule__cadence">par mois · 2 séances</p>
+        <ul class="audience-card__benefits fin-formule__args">
+          <li>Engagement 6 ou 12 mois</li>
+          <li>Un rendez-vous régulier</li>
+          <li>Tarif dégressif</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     BLOC 3 · COMMENT FONCTIONNE L'ABONNEMENT — fond blanc
+     Barre dégressive + 3 puces + encart « takeaway ».
+     ======================================================== -->
+<section class="fin-section fin-section--white" aria-labelledby="fin-abo-title">
+  <div class="container">
+    <h2 class="fin-h2" id="fin-abo-title">Comment fonctionne l'abonnement&nbsp;?</h2>
+    <p class="fin-liaison">Un tarif dégressif en fonction du rythme et de la durée d'engagement.</p>
+
+    <div class="fin-degress">
+      <div class="fin-degress__bar" aria-hidden="true"></div>
+      <div class="fin-degress__labels">
+        <span class="fin-degress__lbl">À la carte</span>
+        <span class="fin-degress__lbl">Bimensuel</span>
+        <span class="fin-degress__lbl fin-degress__lbl--best">Hebdomadaire</span>
+      </div>
+    </div>
+
+    <div class="fin-cells">
+      <div class="fin-cell">Engagement 6 ou 12 mois&nbsp;: la formule 12 mois est la plus avantageuse.</div>
+      <div class="fin-cell">À la carte, les packs de 3 ou 5 séances font déjà baisser le prix (−10 à −20 %).</div>
+      <div class="fin-cell">La régularité installe un vrai ancrage thérapeutique pour vos résidents.</div>
+    </div>
+
+    <p class="fin-takeaway">Au rythme hebdomadaire sur 12 mois, vous atteignez notre meilleur tarif.</p>
+  </div>
+</section>
+
+<!-- ========================================================
+     BLOC 4 · PAR BÉNÉFICIAIRE, C'EST COMBIEN ? — fond crème
+     Module en écho au Bloc 1 : bulle noire « 16 € / résident » +
+     4 puces (fourchette, aides publiques, leviers cumulables, devis).
+     ======================================================== -->
+<section class="fin-section" aria-labelledby="fin-benef-title">
+  <div class="container">
+    <h2 class="fin-h2" id="fin-benef-title">Par bénéficiaire, c'est combien&nbsp;?</h2>
+    <p class="fin-liaison">Ramené à chaque bénéficiaire, le tarif devient très accessible, et plusieurs aides le prennent en charge.</p>
+
+    <div class="fin-module">
+      <div class="fin-module__grid grid12">
+        <div class="fin-benef-stack">
+          <div class="fin-module__price--dark fin-benef--std">
+            <p class="fin-module__amount">32<span class="fin-module__unit"> € / résident</span></p>
+            <p class="fin-module__note">pour une séance unique</p>
+          </div>
+          <div class="fin-module__price--dark fin-benef--best">
+            <span class="fin-benef__badge">le plus avantageux</span>
+            <p class="fin-module__amount">16<span class="fin-module__unit"> € / résident</span></p>
+            <p class="fin-module__note">en abonnement hebdomadaire</p>
+          </div>
+        </div>
+        <ul class="fin-module__cases">
+          <li class="fin-module__case">Aides publiques&nbsp;: APA, Conférences des financeurs, CNSA</li>
+          <li class="fin-module__case">Appels à projets, mutuelles, mécénat, budgets participatifs&nbsp;: cumulables</li>
+          <li class="fin-module__case">Reste à charge calculé pour votre volumétrie dans le devis</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="fin-note">Chiffres par résident calculés sur la base d'une séance de 2h30 (~12 résidents par après-midi).</p>
+    <p class="fin-outro">On vous donne aussi les éléments pour votre dossier&nbsp;: chaque séance est mesurée et documentée, restituée sur une plateforme, et on vous oriente vers les bons interlocuteurs près de chez vous.</p>
+  </div>
+</section>
+
+<!-- ========================================================
+     CTA FINAL — bande near-black (= .final landing / .pq-final)
+     ======================================================== -->
+<section class="fin-section fin-final" aria-labelledby="fin-final-title">
+  <div class="container">
+    <div class="fin-final__inner">
+      <h2 class="fin-final__title" id="fin-final-title">On regarde votre montage ensemble&nbsp;?</h2>
+      <p class="fin-final__sub">Simulation selon votre profil et votre volumétrie. Réponse sous <span class="fin-final__num">48&nbsp;h</span>.</p>
+      <div class="fin-final__cta">
+        <a href="contact.html" class="btn btn--on-dark">Réserver une séance découverte <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ========================================================
+     FOOTER — identique à la landing / dispositif
+     ======================================================== -->
+<footer class="footer" aria-label="Pied de page">
+  <div class="container">
+    <div class="footer__grid grid12">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="assets/logos/lrs-jaune.svg" alt="Les Roues Solidaires">
+        <p class="footer__tagline">La cyclothérapie inclusive, à bord du OuiCycle. Se remettre en mouvement, ensemble.</p>
+        <p class="footer__parent">Une marque <a href="#" target="_blank" rel="noopener">OuiCycle&nbsp;↗</a></p>
+      </div>
+
+      <nav class="footer__col footer__col--nav" aria-label="Navigation pied de page">
+        <p class="footer__title">Naviguer</p>
+        <ul class="footer__list">
+          <li><a href="dispositif.html">Le dispositif</a></li>
+          <li><a href="pour-qui.html">Pour qui</a></li>
+          <li><a href="preuves.html">Nos preuves</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col footer__col--contact">
+        <p class="footer__title">Contact</p>
+        <div class="footer__contact">
+          <a href="mailto:contact@ouicycle.fr">contact@ouicycle.fr</a>
+          <a href="contact.html" class="footer__cta">Réservez une démo <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__legal">
+      <span>© 2026 OuiCycle · Les Roues Solidaires. Tous droits réservés.</span>
+      <div class="footer__legal-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/header.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+/* ============================================================
+   PAGE — À PROPOS · sous-page 1 « Notre histoire » (storytelling)
+   Portage du template Claude Design vers le site (mêmes tokens).
+   Le markup porte ses styles en inline (valeurs = tokens du DS) ;
+   ce fichier ne fournit que les bribes non-inlinables (états :hover,
+   billes/flèches du carrousel alignées sur la DA du site).
+   ============================================================ */
+
+figure { margin: 0; }
+main a:hover { color: var(--oc-yellow-deep); }
+
+/* ---- Carrousel « équipe » : billes (marqueur sous les photos) ---- */
+.aph-dot{
+  width: 10px; height: 10px; padding: 0;
+  border: none; border-radius: 50%; cursor: pointer;
+  background: #D2CCBF;
+  transition: background-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.aph-dot[aria-current="true"]{ background: var(--oc-yellow-deep); }
+.aph-dot:hover{ transform: scale(1.15); }
+
+/* ---- Carrousel « équipe » : flèche de défilement ----
+   Reprise EXACTE du motif site (.d-measures__nav / .axis__nav) :
+   « prev » blanche à liseré encre, « next » jaune ; masquée aux
+   extrémités. Unifie le carrousel avec le reste du site. */
+.aph-nav{
+  width: 56px; height: 56px; border-radius: 50%;
+  display: grid; place-items: center;
+  padding: 0; border: none; cursor: pointer;
+  font-size: 1.35rem; line-height: 1;
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.aph-nav--prev{ background: var(--oc-white); border: 1.8px solid var(--oc-text); color: var(--oc-text); box-shadow: var(--shadow-md); }
+.aph-nav--prev:hover{ transform: scale(1.06); }
+.aph-nav--next{ background: var(--oc-yellow); color: var(--on-accent); box-shadow: var(--shadow-yellow); }
+.aph-nav--next:hover{ transform: translateX(2px) scale(1.06); background: var(--oc-yellow-deep); box-shadow: 0 14px 30px rgba(245,168,0,.42); }
+.aph-nav[hidden]{ display: none; }   /* flèche masquée en bout de course */
+
+/* ---- Sobriété : animations désactivables ---- */
+@media (prefers-reduced-motion: reduce){
+  [data-aph-track]{ transition: none !important; }
+  .aph-nav, .aph-dot{ transition: none !important; }
+}
+
+/* ============================================================
+   PAGE À PROPOS — classes .ap-* (déplacement verbatim ; tokenisation étape 2)
+   ============================================================ */
+.ap-mile__dot{width: 12px; height: 12px; border-radius: 50%; background: var(--oc-ink-2); border: 2px solid rgba(255,255,255,.45);}
+.ap-mile__dotcell{display: flex; justify-content: center; padding-top: 10px;}
+.ap-year{font-weight: var(--fw-black); font-size: var(--fs-h2); line-height: 1; letter-spacing: var(--ls-tight); color: var(--oc-text-on-dark);}
+.ap-mile__txt{margin-top: var(--sp-3); font-size: var(--fs-body); line-height: 1.6; color: rgba(247,244,236,.78);}
+.ap-mile{display: grid; grid-template-columns: 1fr 72px 1fr; align-items: start; margin-bottom: 56px;}
+.ap-wrap{max-width: 1200px; margin-inline: auto; padding-inline: var(--sp-10);}
+.ap-h2{font-weight: var(--fw-extrabold); font-size: var(--fs-h1); line-height: 1.2; letter-spacing: var(--ls-tight); color: var(--oc-ink);}
+.ap-mile__fig{height: 190px; margin: 0; border-radius: var(--r-md); overflow: hidden; border: 1px solid rgba(255,255,255,.14); background: #101017;}
+.ap-mark{position: absolute; z-index: -1; left: 0; right: 0; top: 17%; bottom: 17%; background: var(--oc-yellow); border-radius: var(--r-sm);}
+.ap-markwrap{position: relative; isolation: isolate; padding: 0 .18em; white-space: nowrap;}
+.ap-cover{width: 100%; height: 100%; object-fit: cover;}
+.ap-cover--c{width: 100%; height: 100%; object-fit: cover; object-position: center;}
+.ap-eng{background: var(--oc-cream); border: 1px solid var(--oc-border); border-radius: var(--r-bubble); padding: 32px 36px; box-shadow: var(--shadow-sm);}
+.ap-sec--white{background: var(--oc-white); padding-block: var(--sp-24);}
+.ap-mile__col--r{display: flex; flex-direction: column-reverse; gap: var(--sp-5); padding-right: 8px; max-width: 420px; margin-left: auto;}
+.ap-mile--last{display: grid; grid-template-columns: 1fr 72px 1fr; align-items: start; margin-bottom: var(--sp-16);}
+.ap-aph__slide{flex: 0 0 50%; height: 100%; position: relative; overflow: hidden;}
+.ap-eyebrow{font-size: var(--fs-label); font-weight: var(--fw-semibold); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--oc-gray-600);}
+.ap-col-6{grid-column: 1 / span 6;}
+.ap-eng__name{margin-top: 10px; font-weight: var(--fw-bold); font-size: var(--fs-h3); line-height: 1.25; letter-spacing: -.01em; color: var(--oc-ink);}
+.ap-eng__txt{margin-top: var(--sp-4); font-size: var(--fs-body); line-height: 1.6; color: var(--oc-gray-700);}
+.ap-p--lead{margin-top: var(--sp-8); font-size: var(--fs-lead); line-height: 1.6; color: var(--oc-gray-700);}
+.ap-mile__col--l{padding-left: 8px; max-width: 420px;}
+.ap-mile__col--rt{padding-right: 8px; max-width: 420px; margin-left: auto;}
+.ap-aph__img{position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;}
+.ap-aph__dots{display: flex; align-items: center; justify-content: center; gap: 10px;}
+.ap-aph__navwrap{display: flex; align-items: center; justify-content: center; min-height: 56px;}
+.ap-mile__col--lf{display: flex; flex-direction: column-reverse; gap: var(--sp-5); padding-left: 8px; max-width: 420px;}
+.ap-arrival{display: flex; flex-direction: column; align-items: center; gap: var(--sp-4);}
+.ap-aph__ctrls{display: flex; flex-direction: column; align-items: center; gap: var(--sp-5); margin-top: var(--sp-6); max-width: 440px; margin-right: auto;}
+.ap-mile__dotcell--lg{display: flex; justify-content: center; padding-top: 34px;}
+.ap-aph__track{display: flex; width: 200%; height: 100%; transition: transform .55s var(--ease);}
+.ap-grid12--center{display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--sp-6); align-items: center;}
+.ap-grid12--end{display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--sp-6); align-items: end;}
+.ap-grid12--start{display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--sp-6); align-items: start;}
+.ap-grid12--start-mt{display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--sp-6); margin-top: var(--sp-16); align-items: start;}
+.ap-notch{display: inline-flex; align-items: center; margin: 0 0 64px; padding: 15px 32px 15px max(40px, calc(50vw - 560px)); font-size: 17px; font-weight: var(--fw-semibold); letter-spacing: .03em; color: var(--oc-text); background: var(--oc-yellow-soft); border-radius: 0 999px 999px 0; box-shadow: var(--shadow-md);}
+.ap-arrival__txt{font-weight: var(--fw-bold); font-size: var(--fs-h3); line-height: 1.25; color: var(--oc-text-on-dark); text-align: center;}
+.ap-dark__h2{font-weight: var(--fw-extrabold); font-size: var(--fs-h1); line-height: 1.2; letter-spacing: var(--ls-tight); color: var(--oc-text-on-dark);}
+.ap-year--now{font-weight: var(--fw-black); font-size: var(--fs-h2); line-height: 1; letter-spacing: var(--ls-tight); color: var(--oc-yellow);}
+.ap-h1{font-weight: var(--fw-black); font-size: var(--fs-display); line-height: 1.2; letter-spacing: -.005em; color: var(--oc-ink);}
+.ap-dispo__fig{grid-column: 1 / span 5; margin: 0; border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 4 / 3; background: var(--oc-gray-200); box-shadow: var(--shadow-md);}
+.ap-col-8{grid-column: 1 / span 8;}
+.ap-col-7{grid-column: 7 / span 6;}
+.ap-eng__wrap{grid-column: 7 / span 6; display: flex; flex-direction: column; gap: var(--sp-6);}
+.ap-origine__fig{grid-column: 8 / span 5; margin: 0; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); aspect-ratio: 4 / 5; background: var(--oc-gray-200);}
+.ap-mile__txt--now{margin-top: var(--sp-3); font-size: var(--fs-body); line-height: 1.6; color: var(--oc-text-on-dark);}
+.ap-p--muted{margin-top: var(--sp-5); font-size: var(--fs-lead); line-height: 1.6; color: var(--oc-text-muted);}
+.ap-hero__lead{max-width: 56ch; font-size: var(--fs-lead); line-height: var(--lh-normal); color: var(--oc-text-muted); margin-top: var(--sp-10);}
+.ap-lead-68{max-width: 68ch; margin-top: var(--sp-6); font-size: var(--fs-lead); line-height: 1.6; color: var(--oc-gray-700);}
+.ap-sec{padding-block: var(--sp-24);}
+.ap-pl8{padding-left: 8px;}
+.ap-nowcard{padding: 24px 28px; background: rgba(255,195,0,.1); border: 1px solid rgba(255,195,0,.35); border-radius: var(--r-bubble);}
+.ap-hero{padding: 32px 0 64px;}
+.ap-axis{position: absolute; left: 50%; top: 48px; bottom: 54px; width: 2px; transform: translateX(-50%); background: rgba(255,255,255,.16);}
+.ap-axis__fill{position: absolute; left: 50%; top: 48px; width: 2px; height: 0; transform: translateX(-50%); background: linear-gradient(180deg, rgba(255,195,0,.35), var(--oc-yellow)); box-shadow: 0 0 12px rgba(255,195,0,.35);}
+.ap-roue{position: absolute; z-index: 0; right: -170px; top: 80px; width: 340px; height: auto; opacity: .05; pointer-events: none;}
+.ap-frise{position: relative; list-style: none; margin: 112px auto 0; padding: 0; max-width: 1060px;}
+.ap-dark{position: relative; overflow: hidden; background: var(--oc-ink); padding-block: var(--sp-24);}
+.ap-aph{position: relative; overflow: hidden; border-radius: var(--r-xl); background: var(--oc-gray-200); aspect-ratio: 4 / 3; max-width: 440px; margin-right: auto; box-shadow: 0 18px 40px -22px rgba(37,33,26,.3);}
+.ap-band{position: relative; width: 100%; aspect-ratio: 1600 / 795; overflow: hidden; background: var(--oc-ink);}
+.ap-wrap--layer{position: relative; z-index: 1; max-width: 1200px; margin-inline: auto; padding-inline: var(--sp-10);}
+.ap-frise__head{text-align: center; max-width: 820px; margin-inline: auto;}
+.ap-arrival__dot{width: 12px; height: 12px; border-radius: 50%; background: var(--oc-yellow); border: 2px solid var(--oc-yellow);}
+
+/* ============================================================
+   MOBILE / RESPONSIVE (≤760) — page « À propos / Notre histoire »
+   Grilles repeat(12,1fr) « maison » (.ap-grid12--*) NON collapsées par
+   base → 1 colonne + spans réinitialisés. La frise chronologique
+   alternée (1fr | axe 72px | 1fr) devient une liste verticale simple
+   (axe central + pastilles masqués). Carrousel équipe pleine largeur.
+   ============================================================ */
+@media (max-width:760px){
+  .ap-sec, .ap-sec--white, .ap-dark{padding-block:var(--sp-16)}
+  .ap-wrap, .ap-wrap--layer{padding-inline:var(--page-pad)}
+
+  /* Grilles « maison » repeat(12,1fr) → 1 colonne + spans enfants réinitialisés */
+  .ap-grid12--center, .ap-grid12--start, .ap-grid12--end, .ap-grid12--start-mt{grid-template-columns:1fr;gap:var(--sp-8)}
+  .ap-col-6, .ap-col-7, .ap-col-8, .ap-eng__wrap, .ap-dispo__fig, .ap-origine__fig{grid-column:auto}
+
+  /* Héro : titre display réduit, leads pleine largeur */
+  .ap-hero{padding:var(--sp-4) 0 var(--sp-12)}
+  .ap-h1{font-size:clamp(1.9rem,6.4vw,2.6rem);line-height:1.15}
+  .ap-hero__lead, .ap-lead-68, .ap-p--muted{max-width:none}
+
+  /* Frise chronologique alternée → liste verticale simple (axe + pastilles masqués) */
+  .ap-frise{margin-top:var(--sp-12)}
+  .ap-axis, .ap-axis__fill{display:none}
+  .ap-mile, .ap-mile--last{display:block;margin-bottom:var(--sp-12)}
+  .ap-mile__dotcell, .ap-mile__dotcell--lg{display:none}
+  .ap-mile__col--l, .ap-mile__col--lf, .ap-mile__col--r, .ap-mile__col--rt{
+    max-width:none;margin:0;padding:0;flex-direction:column;
+  }
+
+  /* Carrousel « équipe » : pleine largeur */
+  .ap-aph{max-width:none;margin-right:0}
+  .ap-aph__ctrls{max-width:none;margin-right:0}
+
+  /* Roue déco à peine perceptible */
+  .ap-roue{opacity:.04;width:200px;right:-90px}
+  /* flèches carrousel équipe → chevrons épais (sans hampe) */
+  .aph-nav{font-size:0;position:relative}
+  .aph-nav::before{content:"";position:absolute;top:50%;left:50%;width:9px;height:9px;border-right:3px solid currentColor;border-bottom:3px solid currentColor}
+  .aph-nav--next::before{transform:translate(-50%,-50%) rotate(-45deg)}
+  .aph-nav--prev::before{transform:translate(-50%,-50%) rotate(135deg)}
+}

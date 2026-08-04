@@ -63,3 +63,15 @@
   color:var(--oc-gray-800);
 }
 .dispositif__cta{display:flex;justify-content:flex-end;align-items:flex-end}
+
+/* ---- Mobile (≤760) ---- */
+@media (max-width:760px){
+  .dispositif{padding-top:var(--sp-4)}   /* bloc remonté (moins d'espace sous les partenaires) */
+  .dispositif__roue{opacity:.06;width:clamp(150px,42vw,220px);right:-40px;top:12px}  /* filigrane plus discret */
+  .dispositif__title{line-height:1.2}
+  .dispositif__visual{height:auto;aspect-ratio:4/3;margin-top:var(--sp-6)}
+  .dispositif__foot{margin-top:var(--sp-6)}
+  .dispositif__lead{font-size:var(--fs-lead)}
+  .dispositif__lead br{display:none}   /* wrap naturel : « l'usager » sur la 1re ligne */
+  .dispositif__cta{justify-content:flex-start;margin-top:var(--sp-5)}
+}

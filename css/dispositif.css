@@ -1,0 +1,513 @@
+/* ============================================================
+   PAGE — LE DISPOSITIF
+   Page mère : présentation + les deux usages (thérapeutique / ludique).
+   Mêmes tokens, même grille 12 colonnes, même échelle typo que la
+   landing. Rien "à l'œil" : tout est posé sur .container + .grid12.
+   ============================================================ */
+
+/* Reset marge par défaut des <figure> (non couverte par base.css) */
+figure{margin:0}
+
+/* Libellé d'étape : « Étape N · » en desktop, « N. » en mobile (bascule §mobile) */
+.d-etape-mob{display:none}
+
+/* Rythme vertical homogène (= .section de la landing : 96px) */
+.d-section{padding-block:var(--sp-24)}
+.d-section--tight{padding-block:var(--sp-20)}
+
+/* Surligneur de titre « bande fine » — IDENTIQUE à la landing
+   (.plans__title .mark) : bandeau jaune derrière le mot, proportionnel. */
+.d-title .mark,
+.d-band{
+  position:relative;isolation:isolate;color:var(--oc-ink);
+  padding:0 .18em;background:transparent;border-radius:0;
+}
+.d-title .mark::before,
+.d-band::before{
+  content:"";position:absolute;z-index:-1;left:0;right:0;top:17%;bottom:17%;
+  background:var(--oc-yellow);border-radius:var(--r-sm);
+}
+
+/* Titres de section : IDENTIQUES à la landing (structure__title / plans__title /
+   dispositif__title / final__title) — 44px extrabold, jamais 32px.
+   C'est la référence unique : tout "super titre" de cette page pointe ici. */
+.d-h2{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h1);   /* 44px — landing */
+  line-height:1.2;letter-spacing:var(--ls-tight);color:var(--oc-ink);margin:0;
+}
+
+/* Puces jaunes homogènes (= listes landing) */
+.d-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:16px}
+.d-list li{display:flex;gap:14px;font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-gray-800)}
+.d-list li::before{
+  content:"";flex:none;width:7px;height:7px;border-radius:50%;
+  background:var(--oc-yellow-deep);margin-top:.62em;
+}
+
+/* Soulignement crayon : fin trait jaune PÂLE, posé plus bas, sans brillance */
+.d-uline{position:relative;isolation:isolate;white-space:nowrap}
+.d-uline::after{
+  content:"";position:absolute;z-index:-1;left:-.03em;right:-.03em;bottom:-.12em;
+  height:3px;border-radius:var(--r-pill);
+  background:var(--oc-yellow-soft);
+}
+
+/* Liste numérotée — chiffres jaunes nus, agrandis (pas de bulle) pour l'impact */
+.d-numlist{margin:0;padding:0;list-style:none;counter-reset:d-num;display:flex;flex-direction:column;gap:18px}
+.d-numlist li{
+  counter-increment:d-num;display:flex;gap:18px;align-items:baseline;
+  font-size:var(--fs-body);line-height:var(--lh-normal);color:var(--oc-text-muted);
+}
+.d-numlist li::before{
+  content:counter(d-num);flex:none;min-width:1ch;text-align:center;
+  color:var(--oc-yellow-deep);
+  font-family:var(--font-display);font-weight:var(--fw-black);
+  font-size:1.75rem;line-height:1;
+}
+
+/* ============================================================
+   01 · TITRE DE PAGE + INTRO
+   Accueil qui « envoie du lourd » comme la landing : titre display,
+   remonté en tête de page ; photo forte à droite. Section courte pour
+   laisser entrevoir la section suivante (incite au scroll).
+   ============================================================ */
+.d-hero{padding-top:var(--sp-8);padding-bottom:var(--sp-16);position:relative;overflow:hidden;min-height:max(600px,calc(100vh - 126px))}
+.d-hero > .container{position:relative;z-index:2}   /* texte au-dessus du panneau photo */
+
+.d-hero__grid{align-items:start}
+.d-hero__col-text{grid-column:1 / span 7}
+
+/* Titre = échelle du HERO de la landing (.hero__title), pas des sections :
+   display, black. Couleur ink (fond clair, pas de scrim). */
+.d-hero__title{
+  font-weight:var(--fw-black);                        /* 900 — comme le hero landing */
+  font-size:clamp(2.5rem,4.6vw,3.75rem);              /* → 60px desktop */
+  line-height:1.1;    /* + que la landing (1.04) : le noir « pèse » plus que le blanc */
+  letter-spacing:-.005em;color:var(--oc-ink);margin:0;
+}
+/* Espacements PROPORTIONNELS (pas égaux) et amples : le bloc de texte
+   descend pour approcher le bas du bandeau (moins de vide). */
+.d-hero__sub{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h3);   /* 24px */
+  color:var(--oc-yellow-deep);margin:var(--sp-8) 0 0;       /* 32px */
+}
+.d-hero__lead{
+  max-width:52ch;font-size:var(--fs-lead);line-height:var(--lh-normal);
+  color:var(--oc-text-muted);margin:var(--sp-12) 0 0;       /* 48px */
+}
+
+/* Photo : PANNEAU pleine hauteur, plein-bord à droite + ombrage porté
+   (même DA que les headers EHPAD / résidence). Coupe nette, pas de cadre. */
+.d-hero__photo{
+  position:absolute;top:0;right:0;bottom:0;width:42vw;margin:0;z-index:1;
+  box-shadow:-24px 0 54px -20px rgba(37,33,26,.34);
+}
+.d-hero__photo img{width:100%;height:100%;object-fit:cover;object-position:center}
+
+/* ============================================================
+   CTA DE FIN → hub « Pour qui » (bouton jaune, centré)
+   ============================================================ */
+.d-adapt{padding:var(--sp-2) 0 var(--sp-12);text-align:center;background:var(--oc-white)}   /* CTA rapproché du bloc 4 plans (haut réduit) ; bas conservé (footer) */
+.d-adapt__cta{font-size:var(--fs-h4)}   /* 20px : bien visible */
+
+/* ============================================================
+   02 · EN MOUVEMENT AUTREMENT
+   Photo (col 1-5) qui STRETCH à la hauteur du texte (col 7-12).
+   → plus de photo "trop petite" : la colonne image épouse le texte.
+   ============================================================ */
+.d-move{background:var(--oc-white)}   /* fond blanc = contraste avec les sections crème */
+.d-move__grid{align-items:stretch}
+.d-move__col-photo{grid-column:1 / span 5;display:flex}
+.d-move__col-text{grid-column:7 / span 6}
+
+.d-move__photo{
+  flex:1;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);
+  min-height:520px;
+}
+.d-move__photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+
+.d-move__title{margin-bottom:var(--sp-8)}
+.d-move__p{font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-text-muted);margin:0 0 22px}
+.d-move__p--tab{margin-left:2.5rem}   /* tabulation → décale le bloc à droite, favorise la lecture en Z */
+
+/* Carte « Comment ? » — LIQUID GLASS + hover. Coin bas-gauche rectangulaire,
+   les 3 autres arrondis : effet bulle de dialogue. */
+.d-move__card{
+  margin-top:var(--sp-10);
+  background:linear-gradient(155deg,rgba(255,232,158,.55),rgba(255,246,214,.7));   /* jaune pâle = contraste sur blanc */
+  -webkit-backdrop-filter:blur(10px) saturate(1.2);backdrop-filter:blur(10px) saturate(1.2);
+  border:1px solid rgba(255,213,80,.55);
+  border-radius:var(--r-lg) var(--r-lg) var(--r-lg) 0;   /* bulle : bas-gauche carré */
+  padding:30px 32px;
+  box-shadow:var(--shadow-md),inset 0 1px 0 rgba(255,255,255,.6);
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease);
+}
+.d-move__card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg),inset 0 1px 0 rgba(255,255,255,.7);
+}
+.d-move__card h3{
+  font-weight:var(--fw-bold);font-size:var(--fs-h3);color:var(--oc-ink);margin:0 0 18px;
+}
+.d-move__list li{font-size:var(--fs-lead)}   /* = taille des paragraphes sous le titre */
+
+/* ============================================================
+   03 · SOYEZ RASSURÉS
+   Titre · grand visuel véhicule pleine largeur · liste (col 1-8) + CTA (col 9-12)
+   ============================================================ */
+.d-safe__title{margin-bottom:var(--sp-16)}   /* titre + éloigné du contenu (aération) */
+
+/* Layout : specs empilées à GAUCHE (01→04) · photo à DROITE.
+   La photo se cale sur la hauteur des specs (img absolue). */
+.d-safe__grid{align-items:stretch}
+.d-safe__photo{
+  grid-column:8 / span 5;position:relative;
+  border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);
+}
+.d-safe__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+
+/* Specs : grille à rangées ÉGALES (basées sur la plus grande) + UNE seule
+   ligne verticale continue posée pile entre les chiffres et les textes. */
+.d-safe__specs{
+  grid-column:1 / span 6;position:relative;
+  display:grid;grid-auto-rows:1fr;   /* toutes les rangées à la taille de la + grande */
+}
+.d-safe__specs::before{           /* ligne verticale continue, parfaitement placée */
+  content:"";position:absolute;top:0;bottom:0;left:52px;width:1.5px;background:var(--oc-ink);
+}
+.spec{
+  display:flex;align-items:flex-start;   /* chiffre + titre alignés en haut, placement constant */
+  padding:24px 0;border-top:1.5px solid var(--oc-ink);
+}
+.spec:first-child{border-top:none}
+.spec__num{
+  flex:none;width:52px;   /* colonne fixe → chiffres strictement alignés, ligne à 52px */
+  font-family:var(--font-display);font-weight:var(--fw-black);
+  font-size:1.4rem;line-height:1.25;color:var(--oc-yellow-deep);
+}
+.spec__body{flex:1;padding-left:22px}   /* texte après la ligne */
+.spec__title{
+  font-weight:var(--fw-bold);font-size:var(--fs-h4);   /* 20px */
+  line-height:1.25;letter-spacing:-.01em;color:var(--oc-ink);margin:0 0 8px;
+}
+.spec__desc{font-size:var(--fs-body);line-height:var(--lh-normal);color:var(--oc-text-muted);margin:0}
+
+/* CTA : bien détaché du bloc précédent, bouton allongé */
+.d-safe__cta{display:flex;justify-content:center;margin-top:var(--sp-20)}
+.d-safe__btn{padding-inline:38px}
+
+/* ============================================================
+   04 · COMMENT SE PASSE UNE SÉANCE (fond sombre + progression scroll)
+   Barre jaune → verte (idée de complétude) au défilement.
+   ============================================================ */
+.d-steps{background:var(--oc-ink)}
+.d-steps__title{color:var(--oc-white);margin-bottom:var(--sp-20)}
+
+.d-steps__grid{position:relative;display:grid;grid-template-columns:56px 1fr;gap:var(--sp-10)}
+
+/* Rail + barre de progression */
+.d-steps__rail{position:relative;display:flex;justify-content:center}
+.d-steps__rail-bg{
+  width:4px;height:100%;background:rgba(255,255,255,.12);border-radius:2px;
+  position:relative;overflow:hidden;
+}
+.d-steps__rail-fill{
+  position:absolute;left:0;top:0;width:100%;height:0%;
+  background:var(--oc-yellow);border-radius:2px;
+  transition:height .12s linear,background .12s linear;
+}
+
+.d-steps__list{display:flex;flex-direction:column;gap:var(--sp-24)}   /* + d'air : maintient la hauteur du bandeau malgré le texte raccourci */
+.d-step{display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:start}
+
+.d-step__icon{
+  width:56px;height:56px;border-radius:50%;flex:none;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  transition:background .3s var(--ease),border-color .3s var(--ease);
+}
+.d-step__icon svg{width:28px;height:28px;stroke:var(--oc-yellow);fill:none;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  transition:stroke .3s var(--ease);
+}
+.d-step.is-active .d-step__icon{background:rgba(255,195,0,.14);border-color:rgba(255,195,0,.4)}
+
+/* Tête d'étape : titre lisible (20px bold) + horaire en badge bien visible */
+.d-step__head{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px;
+}
+.d-step__title{
+  font-weight:var(--fw-bold);font-size:var(--fs-h4);   /* 20px */
+  line-height:1.25;letter-spacing:-.01em;color:var(--oc-white);margin:0;
+}
+.d-step__time{
+  flex:none;font-size:var(--fs-sm);font-weight:var(--fw-semibold);letter-spacing:.02em;
+  color:var(--oc-yellow);background:rgba(255,195,0,.14);
+  border:1px solid rgba(255,195,0,.35);border-radius:var(--r-pill);padding:5px 14px;
+}
+.d-step__text{
+  font-size:var(--fs-lead);line-height:var(--lh-normal);color:rgba(255,255,255,.82);margin:0;max-width:62ch;
+}
+
+/* ============================================================
+   05 · LA PRATIQUE DU VÉLO SANS SES INCONVÉNIENTS
+   BLOC 1 : photo (col 1-6) + colonne « 4 plans » (col 7-12)
+   BLOC 2 : mesures — carrousel 2 cartes/vue, flèche visible
+   ============================================================ */
+/* Bloc « Ce qui fait la différence » sur fond BLANC, réhaussé pour se
+   rapprocher de l'outro (margin-top négatif dans le padding crème du bloc
+   au-dessus + padding-top réduit). Se cale sur le pattern .d-move (blanc). */
+.d-usage{
+  background:var(--oc-white);
+  margin-top:calc(-1 * var(--sp-12));   /* remonte sous l'outro en gardant ~48px de crème */
+  padding-top:var(--sp-16);             /* espace interne blanc au-dessus du titre */
+  padding-bottom:var(--sp-12);          /* bas resserré → CTA « pourquoi… » rapproché */
+}
+.d-usage__title{margin:0 0 var(--sp-16)}   /* sous-titre retiré → écart titre→4 plans */
+.d-usage__subtitle{font-size:var(--fs-lead);color:var(--oc-text-muted);margin:0 0 var(--sp-20)}
+
+/* --- BLOC 1 : 4 plans --- */
+/* Les CARTES pilotent la hauteur (compactes, bien espacées) ; la photo
+   se cale exactement dessus via une image en position absolue (aucune
+   fuite de hauteur intrinsèque) → bas alignés, pas d'espace vide. */
+.d-plans__grid{align-items:stretch;margin-bottom:var(--sp-24)}   /* espace net avant « 4 bienfaits » */
+.d-plans__col-photo{grid-column:1 / span 4}       /* photo + étroite */
+.d-plans__col-cards{grid-column:5 / span 8;display:flex;flex-direction:column}   /* bulles + allongées */
+
+.d-plans__photo{
+  position:relative;height:100%;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);
+}
+/* Cadrage identique à la landing (axis__photo) : object-position center */
+.d-plans__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+
+.d-plans__lead{
+  font-weight:var(--fw-bold);font-size:var(--fs-h3);color:var(--oc-ink);margin:0 0 18px;
+}
+.d-plans__cards{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 20px}   /* + d'air entre bulles → photo plus longue */
+/* Carte : picto + titre sur UNE ligne (grille), descriptif dessous →
+   bulles plus basses et allongées. */
+.plan-card{
+  display:grid;grid-template-columns:auto 1fr;column-gap:14px;row-gap:10px;align-items:center;
+  background:linear-gradient(160deg,rgba(255,255,255,.9),rgba(255,255,255,.7));
+  border:1px solid var(--oc-border);border-radius:18px;padding:22px 24px;
+  box-shadow:0 14px 32px -18px rgba(37,33,26,.20);
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease);
+}
+.plan-card:hover{transform:translateY(-6px);box-shadow:0 22px 40px -18px rgba(37,33,26,.28)}
+.plan-card__picto{grid-column:1;grid-row:1;width:40px;height:40px;flex:none;margin:0;transition:transform var(--dur) var(--ease-back)}
+.plan-card__picto svg{width:36px;height:36px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.plan-card:hover .plan-card__picto{transform:translateY(-4px)}
+.plan-card__title{grid-column:2;grid-row:1;font-weight:var(--fw-bold);font-size:1.125rem;letter-spacing:-.01em;margin:0}
+.plan-card__body{grid-column:1 / -1;grid-row:2;font-size:.9375rem;line-height:1.5;color:var(--oc-gray-800);margin:0}
+
+/* --- Déroulé mobile des 4 plans (repris de la landing) — inerte en desktop --- */
+.d-plans__more,
+.d-plans__more-clip{display:contents}
+.d-plans__toggle-wrap{display:none}
+.d-plans__toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:46px;height:46px;padding:0;border:none;border-radius:50%;
+  background:var(--oc-yellow);color:var(--oc-ink);cursor:pointer;
+  box-shadow:var(--shadow-md);
+  transition:transform var(--dur) var(--ease),background var(--dur) var(--ease);
+}
+.d-plans__toggle:hover{transform:translateY(-2px);background:var(--oc-yellow-deep)}
+.d-plans__toggle:active{transform:translateY(0) scale(.96)}
+.d-plans__chevron{width:22px;height:22px;transition:transform var(--dur) var(--ease)}
+.d-plans__col-cards.is-plans-open .d-plans__chevron{transform:rotate(180deg)}
+.plan-card--moteur    .plan-card__picto svg{stroke:var(--oc-moteur)}    .plan-card--moteur    .plan-card__title{color:var(--oc-moteur)}
+.plan-card--cognitif  .plan-card__picto svg{stroke:var(--oc-cognitif)}  .plan-card--cognitif  .plan-card__title{color:var(--oc-cognitif)}
+.plan-card--social    .plan-card__picto svg{stroke:var(--oc-social)}    .plan-card--social    .plan-card__title{color:var(--oc-social)}
+.plan-card--sensoriel .plan-card__picto svg{stroke:var(--oc-sensoriel)} .plan-card--sensoriel .plan-card__title{color:var(--oc-sensoriel)}
+
+/* --- BLOC 2 : mesures (carrousel) --- */
+/* Panneau BLANC posé sur la section crème → contraste net avec le reste. */
+.d-measures{
+  background:var(--oc-white);border:1px solid var(--oc-border);
+  border-radius:var(--r-2xl);padding:44px 44px 40px;box-shadow:var(--shadow-md);
+}
+/* Titre : EXCEPTION — réduit + moins gras (lisibilité, éviter le « brutal ») */
+.d-measures__title{
+  margin:0 0 var(--sp-10);
+  font-size:var(--fs-h2);          /* 32px au lieu de 44 */
+  font-weight:var(--fw-bold);      /* 700 au lieu de 800 */
+  letter-spacing:-.01em;line-height:1.25;
+}
+
+.d-measures__carousel{position:relative}
+.d-measures__viewport{overflow:hidden}
+.d-measures__track{
+  display:flex;gap:24px;
+  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  padding-bottom:10px;-ms-overflow-style:none;scrollbar-width:none;
+}
+.d-measures__track::-webkit-scrollbar{height:0;background:transparent}
+
+.measure{
+  flex:0 0 calc(50% - 12px);scroll-snap-align:start;
+  border-radius:var(--r-xl);padding:28px 30px 26px;
+  background:var(--oc-gray-100);border:1px solid var(--oc-border-strong);   /* teinte sur panneau blanc */
+  display:flex;flex-direction:column;min-height:340px;
+}
+/* Numéro à CÔTÉ du titre (gagne de la hauteur pour l'encart illustration) */
+.measure__title{
+  display:flex;align-items:baseline;gap:12px;
+  font-weight:var(--fw-bold);font-size:var(--fs-h3);margin:0 0 8px;
+}
+.measure__num{
+  flex:none;font-family:var(--font-display);font-weight:var(--fw-black);
+  font-size:1.4rem;line-height:1;opacity:.85;
+}
+.measure__body{font-size:var(--fs-body);line-height:var(--lh-normal);margin:0 0 18px}
+/* Illustration animée : canevas natif 1200×800 (3:2), fond quasi-noir
+   intégré au design. overflow:hidden + iframe mis à l'échelle en JS
+   (data-illus-frame, voir dispositif.js) → net et proportionnel à
+   n'importe quelle largeur de carte, y compris mobile. */
+.measure__illus{
+  margin-top:auto;aspect-ratio:3 / 2;border-radius:var(--r-md);
+  overflow:hidden;position:relative;background:#0b0e14;
+}
+.measure__illus iframe{
+  position:absolute;top:0;left:0;border:0;pointer-events:none;
+  width:1200px;height:800px;
+  transform-origin:top left;   /* échelle appliquée en JS */
+  opacity:0;transition:opacity .3s var(--ease);   /* masquée jusqu'au scale JS → pas de flash 1200px */
+}
+/* couleurs par mesure (brief) */
+.measure--tonus   .measure__title{color:var(--oc-yellow-deep)} .measure--tonus   .measure__body{color:var(--oc-ink)}
+.measure--cardiaque .measure__title{color:var(--oc-sensoriel)} .measure--cardiaque .measure__body{color:var(--oc-ink)}
+.measure--psychique .measure__title{color:var(--oc-cognitif)}  .measure--psychique .measure__body{color:var(--oc-ink)}
+/* Case 4 — pleine couleur bleue, texte blanc : signal de fin/complétude */
+.measure--plateforme{background:var(--oc-social);border-color:var(--oc-social);box-shadow:var(--shadow-md)}
+.measure--plateforme .measure__num{color:#fff}
+.measure--plateforme .measure__title{color:#fff}
+.measure--plateforme .measure__body{color:rgba(255,255,255,.9)}
+
+/* Flèches de défilement — la « next » est bien visible (brief) */
+.d-measures__nav{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
+  cursor:pointer;font-size:1.35rem;line-height:1;
+  transition:transform var(--dur) var(--ease),background var(--dur) var(--ease),box-shadow var(--dur) var(--ease),opacity var(--dur) var(--ease);
+}
+.d-measures__nav--prev{left:-66px;background:var(--oc-white);border:1.8px solid var(--oc-text);color:var(--oc-text);box-shadow:var(--shadow-md)}
+.d-measures__nav--prev:hover{transform:translateY(-50%) scale(1.06)}
+.d-measures__nav--next{right:-66px;background:var(--oc-yellow);border:none;color:var(--on-accent);box-shadow:var(--shadow-yellow)}
+.d-measures__nav--next:hover{transform:translateY(-50%) translateX(2px) scale(1.06);background:var(--oc-yellow-deep);box-shadow:0 14px 30px rgba(245,168,0,.42)}
+.d-measures__nav[disabled]{opacity:.32;cursor:default;pointer-events:none}
+.d-measures__nav[hidden]{display:none}   /* flèche gauche cachée au départ */
+.d-measures__count{display:none}   /* compteur « 1/4 » : mobile uniquement */
+
+/* Rangée réservée sous le carrousel : le hint est centré (horizontalement
+   ET verticalement) dans l'espace entre le bas des encarts et le bas
+   de la bulle — plus bas, plus posé. */
+.d-measures__hint-row{
+  display:flex;align-items:center;justify-content:center;
+  min-height:60px;margin-top:6px;
+}
+/* Hint « faites défiler ! » : texte courant (régulier, pas de gras ni glow) */
+.d-measures__hint{
+  display:flex;align-items:baseline;gap:4px;
+  font-size:var(--fs-sm);font-weight:var(--fw-regular);
+  color:var(--oc-yellow-deep);
+}
+.d-measures__hint em{font-style:normal}
+.d-measures__bang{font-weight:var(--fw-regular)}
+@keyframes d-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+
+/* Phrase de clôture centrée (2 lignes) — MÊME taille que le titre de la
+   section suivante (« Notre fonctionnement » = 32px). */
+/* Outro = message calme, aligné à GAUCHE, non gras, sans surligneur
+   (contraste volontaire avec le titre marqué de la section suivante). */
+.d-measures__outro{
+  text-align:left;max-width:62ch;margin:var(--sp-16) 0 0;
+  font-weight:var(--fw-regular);font-size:var(--fs-lead);   /* 19px */
+  line-height:var(--lh-normal);letter-spacing:normal;color:var(--oc-ink);
+}
+
+/* ============================================================
+   MOBILE / RESPONSIVE (≤760) — page « Le dispositif »
+   Squelette (grille 12→1 col, typo, corners) déjà géré par base.css.
+   Ici : héros photo-panneau, photos à hauteur explicite, rail « séance »,
+   4 plans (grille 2 col imbriquée), carrousel mesures (flèches hors-champ).
+   ============================================================ */
+@media (max-width:760px){
+  .d-section{padding-block:var(--sp-16)}
+  .d-section--tight{padding-block:var(--sp-12)}
+
+  /* 01 · HÉRO : panneau-photo absolu → bloc pleine largeur ; titre réduit */
+  .d-hero{min-height:0;padding-top:var(--sp-4);padding-bottom:var(--sp-12)}
+  .d-hero__title{font-size:clamp(1.9rem,6.4vw,2.6rem);line-height:1.15}
+  .d-hero__sub{margin-top:var(--sp-5)}
+  .d-hero__lead{margin-top:var(--sp-6);max-width:none}
+  .d-hero__photo{
+    position:static;width:auto;height:260px;margin:var(--sp-8) var(--page-pad) 0;
+    border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);
+  }
+
+  /* 02 · EN MOUVEMENT : la photo ne fait plus 520px de haut ; tab retirée */
+  .d-move__photo{min-height:0;height:240px}
+  .d-move__p--tab{margin-left:0}
+  .d-move__card{padding:var(--sp-6)}
+
+  /* 03 · RASSURÉS : photo (img absolue) sous les specs → hauteur explicite */
+  .d-safe__photo{height:240px;margin-top:var(--sp-8)}
+
+  /* 04 · SÉANCE (fond sombre) : rail resserré → textes rapprochés de la barre ;
+     1re ligne du titre centrée sur la bulle-icône ; « Étape N » → « N. » */
+  .d-steps__grid{grid-template-columns:16px minmax(0,1fr);gap:var(--sp-3)}
+  .d-steps__list{gap:var(--sp-12)}
+  .d-step{grid-template-columns:44px minmax(0,1fr);column-gap:var(--sp-4);align-items:start}
+  .d-step__icon{width:44px;height:44px}
+  .d-step__icon svg{width:24px;height:24px}
+  /* horaire TOUJOURS sous le titre (colonne) → rendu cohérent d'une étape à l'autre */
+  .d-step__head{flex-direction:column;align-items:flex-start;gap:var(--sp-2);margin-bottom:var(--sp-3)}
+  .d-etape-full{display:none}
+  .d-etape-mob{display:inline}
+
+  /* 05 · 4 PLANS : photo pleine largeur (hauteur définie) + cartes 1 colonne
+     (la grille imbriquée 2 col forçait 406px → débordait) */
+  .d-usage{margin-top:0;padding-top:var(--sp-16);padding-bottom:var(--sp-6)}
+  /* CTA final « Pourquoi votre structure… » : bloc raccourci (CTA rehaussé) + texte réduit */
+  .d-adapt{padding-block:var(--sp-2) var(--sp-10)}
+  .d-adapt__cta{font-size:var(--fs-body);line-height:1.35}   /* interlignage + clair sur 2 lignes */
+  .d-plans__photo{height:220px}
+  .d-plans__cards{grid-template-columns:1fr}
+  /* cartes centrées (picto + titre + corps), pictos réduits (comme la landing) */
+  .plan-card{display:flex;flex-direction:column;align-items:stretch;text-align:center;padding:var(--sp-6)}
+  .plan-card__picto{width:28px;height:28px;margin:0 auto var(--sp-3)}
+  .plan-card__picto svg{width:24px;height:24px}
+  .plan-card__title{text-align:center;margin:0 0 var(--sp-3)}
+  .plan-card__body{grid-column:auto;text-align:center;margin:0}
+  /* déroulé : « Moteur » + aperçu fondu du 2e plan + flèche jaune par-dessus */
+  .d-plans__col-cards{position:relative}
+  .d-plans__more{position:relative;display:block;overflow:hidden;max-height:104px;transition:max-height .45s var(--ease)}
+  .d-plans__more-clip{display:flex;flex-direction:column;gap:var(--sp-4)}
+  .d-plans__more::after{content:"";position:absolute;left:0;right:0;bottom:0;height:72px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,rgba(255,255,255,0),var(--oc-white) 82%);transition:opacity .3s var(--ease)}
+  .d-plans__col-cards.is-plans-open .d-plans__more{max-height:none}
+  .d-plans__col-cards.is-plans-open .d-plans__more::after{opacity:0}
+  .d-plans__toggle-wrap{display:flex;justify-content:center;position:relative;z-index:2;margin-top:calc(-1 * var(--sp-10));transition:margin-top .3s var(--ease)}
+  .d-plans__col-cards.is-plans-open .d-plans__toggle-wrap{margin-top:var(--sp-6)}
+  /* picto du 2e plan (vert Cognitif) atténué dans l'aperçu → glimpse discret */
+  .d-plans__col-cards:not(.is-plans-open) .plan-card--cognitif .plan-card__picto{opacity:.4}
+
+  /* MESURES (refonte mobile) : bulle blanche RETIRÉE (le titre passe sur le crème,
+     chaque mesure devient sa propre carte) ; illustration EN HAUT, texte dessous ;
+     flèches en bas (prev gauche / next droite) en CHEVRONS épais + compteur « 1/4 ». */
+  .d-measures{background:none;border:none;box-shadow:none;padding:0}
+  .d-measures__title{margin-bottom:var(--sp-8)}
+  .d-measures__carousel{position:relative;padding-bottom:var(--sp-20)}
+  .measure{flex-basis:86%;min-height:0}
+  .measure__illus{order:-1;margin-top:0;margin-bottom:var(--sp-5)}   /* illu remontée en tête */
+  /* flèches RAPPROCHÉES au centre (atteignables d'un pouce), sans ombre (pas de flottaison) */
+  .d-measures__nav{top:auto;bottom:0;transform:none;width:46px;height:46px;font-size:0;box-shadow:none}
+  .d-measures__nav--prev{left:calc(50% - 50px);right:auto}
+  .d-measures__nav--next{left:calc(50% + 4px);right:auto}
+  .d-measures__nav--prev:hover,.d-measures__nav--next:hover{transform:none;box-shadow:none}
+  /* chevron CENTRÉ dans le bouton (positionné en absolu au centre) */
+  .d-measures__nav::before{content:"";position:absolute;top:50%;left:50%;width:9px;height:9px;border-right:3px solid currentColor;border-bottom:3px solid currentColor}
+  .d-measures__nav--next::before{transform:translate(-50%,-50%) rotate(-45deg)}
+  .d-measures__nav--prev::before{transform:translate(-50%,-50%) rotate(135deg)}
+  /* pagination « 1/4 » CENTRÉE au-dessus des deux flèches, typo affinée */
+  .d-measures__count{display:block;position:absolute;left:0;right:0;bottom:56px;text-align:center;font-size:var(--fs-sm);font-weight:var(--fw-medium);color:var(--oc-ink)}
+}

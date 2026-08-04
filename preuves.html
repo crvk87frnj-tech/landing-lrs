@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nos preuves · Les Roues Solidaires</title>
+<meta name="description" content="Des résultats terrain : témoignages de directions, soignants, élus et résidents, mesures d'impact et partenaires institutionnels. La preuve d'un dispositif de cyclothérapie qui marche.">
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sections/01-header.css">
+<link rel="stylesheet" href="css/sections/09-footer.css">
+<link rel="stylesheet" href="css/pour-qui.css">
+<link rel="stylesheet" href="css/preuves.css">
+</head>
+<body>
+
+<!-- ========================================================
+     HEADER (sticky) — identique aux autres pages
+     ======================================================== -->
+<header class="site-header" id="site-header">
+  <div class="brand-switch" role="group" aria-label="Les Roues Solidaires, une marque OuiCycle">
+    <a href="index.html" class="brand-switch__item brand-switch__item--current" aria-label="Les Roues Solidaires, accueil">
+      <img src="assets/logos/lrs-noir.svg" alt="Les Roues Solidaires" class="brand-logo brand-logo--lrs">
+    </a>
+    <span class="brand-switch__divider" aria-hidden="true"></span>
+    <a href="#" class="brand-switch__item brand-switch__item--alt" aria-label="Aller sur le site OuiCycle (nouvel onglet)" target="_blank" rel="noopener">
+      <img src="assets/logos/ouicycle-jaune.svg" alt="OuiCycle" class="brand-logo brand-logo--oc">
+      <span class="brand-switch__ext" aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+    <a href="dispositif.html">Le dispositif</a>
+    <a href="pour-qui.html">Pour qui</a>
+    <a href="financement.html">Financement</a>
+    <a href="preuves.html" aria-current="page">Nos preuves</a>
+    <a href="le-ouicycle.html">Le OuiCycle</a>
+    <a href="a-propos.html">À propos</a>
+  </nav>
+
+  <div class="header-actions">
+    <a href="contact.html" class="btn btn--primary btn--sm">
+      <span class="cta-full">Prendre rendez-vous</span>
+      <span class="cta-short">Prendre RDV</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- ========================================================
+     01 · HERO — promesse de preuve + sommaire
+     ======================================================== -->
+<section class="pv-hero pq-hero" aria-labelledby="pv-hero-title">
+  <div class="container">
+
+    <p class="pq-label">Nos preuves</p>
+
+    <!-- Vue STANDARD -->
+    <div class="pq-hero__grid grid12">
+      <div class="pq-hero__col-text">
+        <h1 class="pq-hero__title" id="pv-hero-title">Une solution qui fait ses <span class="mark">preuves</span>.</h1>
+        <p class="pq-hero__lead">Notre conviction&#8239;: la légitimité d'un dispositif médico-social ne se proclame pas, elle se prouve.</p>
+
+        <nav class="pv-toc" aria-label="Sur cette page">
+          <p class="pv-toc__label">Sur cette page</p>
+          <ul class="pv-toc__list">
+            <li><a href="#temoignages">Témoignages</a></li>
+            <li><a href="#partenaires">Partenaires</a></li>
+            <li><a href="#mesures">Mesures d'impact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <figure class="pq-hero__photo">
+    <img src="assets/media/preuves-hero.jpg?v=1" alt="Le OuiCycle jaune en sortie sur un pont parisien : le conducteur-animateur montre l'horizon, des passagers souriants à bord.">
+  </figure>
+</section>
+
+
+<!-- ========================================================
+     02 · BANDEAU CHIFFRES-CLÉS — compteurs décerclés animés
+     ======================================================== -->
+<section class="pv-kpis" aria-label="Nos chiffres clés">
+  <div class="container">
+    <ul class="pv-kpis__grid">
+      <li class="pv-kpi">
+        <span class="pv-kpi__num" data-lit>21</span>
+        <span class="pv-kpi__label">établissements partenaires</span>
+      </li>
+      <li class="pv-kpi">
+        <span class="pv-kpi__num" data-lit data-count-to="400" data-count-from="350" data-suffix="+">350+</span>
+        <span class="pv-kpi__label">séances réalisées</span>
+      </li>
+      <li class="pv-kpi">
+        <span class="pv-kpi__num pv-kpi__num--ink">9</span>
+        <span class="pv-kpi__label">communes en&#160;Île-de-France</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========================================================
+     04 · TÉMOIGNAGES — segmented control par profil + bulles gris 700
+     ======================================================== -->
+<section class="pv-voices pv-section" id="temoignages" aria-labelledby="pv-voices-title">
+  <div class="container">
+    <h2 class="pv-h2 pv-title" id="pv-voices-title">La parole de celles et ceux qui <span class="mark">vivent</span> le dispositif.</h2>
+    <p class="pv-voices__intro">Cette page rassemble les témoignages recueillis sur nos sites de déploiement. Filtrez par profil pour entendre la voix qui vous parle. Les citations sont produites en partenariat avec les structures qui nous accueillent. Tous les témoignages sont diffusés avec l'accord écrit des intervenants.</p>
+
+    <div class="pv-tabs" data-tabs>
+      <div class="pv-tabs__nav" role="tablist" aria-label="Filtrer les témoignages par profil">
+        <button class="pv-tab is-active" role="tab" id="tab-dir" aria-controls="panel-dir" aria-selected="true" data-tab="dir" type="button">Directions</button>
+        <button class="pv-tab" role="tab" id="tab-soin" aria-controls="panel-soin" aria-selected="false" tabindex="-1" data-tab="soin" type="button">Soignants</button>
+        <button class="pv-tab" role="tab" id="tab-elus" aria-controls="panel-elus" aria-selected="false" tabindex="-1" data-tab="elus" type="button">Élus &amp; CCAS</button>
+        <button class="pv-tab" role="tab" id="tab-res" aria-controls="panel-res" aria-selected="false" tabindex="-1" data-tab="res" type="button">Résidents &amp; familles</button>
+      </div>
+
+      <div class="pv-tabs__panels">
+
+        <!-- Directions (sans Sihem : déplacée en §3) -->
+        <div class="pv-panel is-active" role="tabpanel" id="panel-dir" aria-labelledby="tab-dir" data-panel="dir">
+          <div class="pv-quotes">
+            <figure class="pq-quote">
+              <blockquote class="pq-quote__text">Intégrer Les Roues Solidaires à notre projet d'établissement a été simple et naturel&#8239;: les équipes se sont approprié les séances dès les premières semaines. Le dispositif est devenu un temps fort de notre programme d'animation, attendu autant par les résidents que par les soignants.</blockquote>
+              <figcaption class="pq-quote__author"><strong>Directeur d'EHPAD</strong>, établissement pilote</figcaption>
+            </figure>
+            <figure class="pq-quote">
+              <blockquote class="pq-quote__text">Les sorties créent une vraie dynamique collective&#8239;: les résidents se retrouvent autour d'un projet partagé, et beaucoup renouent avec une activité de plein air qu'ils pensaient hors de portée. C'est devenu un outil concret de prévention de la perte d'autonomie.</blockquote>
+              <figcaption class="pq-quote__author"><strong>Directeur de résidence autonomie</strong>, établissement pilote</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- Soignants -->
+        <div class="pv-panel" role="tabpanel" id="panel-soin" aria-labelledby="tab-soin" data-panel="soin" hidden>
+          <div class="pv-quotes">
+            <figure class="pq-quote">
+              <blockquote class="pq-quote__text">Les bénéfices sur la mobilité et le moral sont flagrants. C'est devenu le rendez-vous préféré de nos résidents.</blockquote>
+              <figcaption class="pq-quote__author"><strong>Dr. Philippe R.</strong>, Médecin coordinateur, EHPAD Bel Air</figcaption>
+            </figure>
+            <figure class="pq-quote">
+              <blockquote class="pq-quote__text">On observe un vrai regain d'envie et de participation. Même les résidents les plus réservés demandent à y retourner.</blockquote>
+              <figcaption class="pq-quote__author"><strong>Marie-Claire D.</strong>, Psychomotricienne, EHPAD Les Jardins</figcaption>
+            </figure>
+            <figure class="pq-quote">
+              <blockquote class="pq-quote__text">Après trois mois de séances régulières, nous constatons un maintien du tonus musculaire chez les participants, là où il déclinait auparavant.</blockquote>
+              <figcaption class="pq-quote__author"><strong>Laurent M.</strong>, Kinésithérapeute, EHPAD Bel Horizon</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- Élus & CCAS -->
+        <div class="pv-panel" role="tabpanel" id="panel-elus" aria-labelledby="tab-elus" data-panel="elus" hidden>
+          <div class="pv-quotes">
+            <figure class="pq-quote">
+              <blockquote class="pq-quote__text">Avec Les Roues Solidaires, nous donnons à nos aînés une raison de sortir, de retrouver le grand air et le lien aux autres. C'est une réponse concrète à l'isolement et un véritable outil de prévention, que nous étions fiers de déployer sur notre commune.</blockquote>
+              <figcaption class="pq-quote__author"><strong>Élu en charge des séniors et de l'inclusion</strong>, ville pilote</figcaption>
+            </figure>
+            <figure class="pq-quote">
+              <blockquote class="pq-quote__text">Le dispositif s'articule naturellement avec nos actions de soutien aux seniors isolés et nous permet de toucher des publics fragiles que nous identifions déjà au CCAS. Il complète notre offre sans la doublonner et renforce le lien entre nos services et les habitants.</blockquote>
+              <figcaption class="pq-quote__author"><strong>Directeur de CCAS</strong>, ville pilote</figcaption>
+            </figure>
+            <figure class="pq-quote">
+              <blockquote class="pq-quote__text">Une bulle écologique mobile qui fait sourire la ville&#8239;: 50 sorties, plus de 1&#160;000 personnes embarquées et plus de 25&#160;000 vues sur les réseaux. Le OuiCycle a réveillé une fierté locale et créé du lien là où on ne l'attendait pas.</blockquote>
+              <figcaption class="pq-quote__author"><strong>Ville de Saint-Ouen-sur-Seine</strong>, déploiement 2025</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- Résidents & familles -->
+        <div class="pv-panel" role="tabpanel" id="panel-res" aria-labelledby="tab-res" data-panel="res" hidden>
+          <div class="pv-quotes pv-quotes--short">
+            <figure class="pq-quote"><blockquote class="pq-quote__text">On pédale vers le paradis, mais ensemble, c'est inouï.</blockquote></figure>
+            <figure class="pq-quote"><blockquote class="pq-quote__text">Aujourd'hui, la vie est belle, on recommence demain&#8239;?</blockquote></figure>
+            <figure class="pq-quote"><blockquote class="pq-quote__text">Je revis&#8239;! C'est quand la prochaine séance&#8239;?</blockquote></figure>
+            <figure class="pq-quote"><blockquote class="pq-quote__text">Pédaler, comme dans mon enfance, c'est inoubliable.</blockquote></figure>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     05 · CO-CONSTRUCTION & SOUTIENS — mur de labels « liquid glass »
+     ======================================================== -->
+<section class="pv-support pv-section" id="partenaires" aria-labelledby="pv-support-title">
+  <div class="container">
+    <h2 class="pv-h2 pv-title" id="pv-support-title">Une solution co-construite avec les <span class="mark">acteurs publics</span>.</h2>
+    <p class="pv-support__intro">Les Roues Solidaires est un projet fédérateur&#8239;: c'est une démarche co-construite avec un ensemble d'acteurs publics et institutionnels qui valident, financent et accompagnent son développement.</p>
+
+    <div class="pv-glasswall">
+      <div class="pv-glass">
+        <p class="pv-glass__label">Co-construction &amp; validation scientifique</p>
+        <ul class="pv-glass__logos">
+          <li><img class="pv-logo pv-logo--ars" src="assets/logos/sup-ars.png?v=1" alt="ARS Île-de-France" loading="lazy"></li>
+          <li><img class="pv-logo pv-logo--gerondif" src="assets/logos/sup-gerondif.png?v=1" alt="Gérondif" loading="lazy"></li>
+          <li><img class="pv-logo pv-logo--cnsa" src="assets/logos/sup-cnsa.png?v=3" alt="CNSA" loading="lazy"></li>
+          <li><img class="pv-logo pv-logo--carsat" src="assets/logos/sup-carsat.png?v=1" alt="CARSAT" loading="lazy"></li>
+          <li><img class="pv-logo pv-logo--afnor" src="assets/logos/sup-afnor.png?v=2" alt="AFNOR" loading="lazy"></li>
+          <li><img class="pv-logo pv-logo--agircarrco" src="assets/logos/sup-agircarrco.png?v=1" alt="Agirc-Arrco" loading="lazy"></li>
+        </ul>
+      </div>
+
+      <div class="pv-glass">
+        <p class="pv-glass__label">Labels &amp; soutiens</p>
+        <ul class="pv-glass__logos">
+          <li><img class="pv-logo pv-logo--greentech" src="assets/logos/sup-greentech.png?v=1" alt="Greentech Innovation" loading="lazy"></li>
+          <li><img class="pv-logo pv-logo--bpifrance" src="assets/logos/sup-bpifrance.png?v=1" alt="i-Nov, Bpifrance" loading="lazy"></li>
+          <li><img class="pv-logo pv-logo--interreg" src="assets/logos/sup-interreg.png?v=1" alt="Interreg POCTEFA" loading="lazy"></li>
+          <li><img class="pv-logo pv-logo--ademe" src="assets/logos/sup-ademe.png?v=1" alt="ADEME" loading="lazy"></li>
+          <li><img class="pv-logo pv-logo--solar" src="assets/logos/sup-solarimpulse.png?v=1" alt="Solar Impulse" loading="lazy"></li>
+          <li><img class="pv-logo pv-logo--perqo" src="assets/logos/sup-perqo.png?v=1" alt="PERQO" loading="lazy"></li>
+          <li><img class="pv-logo pv-logo--parisco" src="assets/logos/sup-parisco.png?v=1" alt="Paris&amp;Co" loading="lazy"></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pv-support__cta">
+      <a href="contact.html" class="btn btn--primary">Devenir partenaire <span class="arrow" aria-hidden="true">&#8594;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     07 · RÉFÉRENCES CLIENTS — mur de logos par catégorie
+     ======================================================== -->
+<section class="pv-refs pv-section" id="refs" aria-labelledby="pv-refs-title">
+  <div class="container">
+    <h2 class="pv-h2 pv-title" id="pv-refs-title">Ils nous font <span class="mark">confiance</span>.</h2>
+
+    <!-- Tous les partenaires réunis sur une bande « liquid glass » ; au survol,
+         la bande défile (marquee) pour révéler l'ensemble. -->
+    <div class="pv-clients">
+      <div class="pv-clients__glass">
+        <ul class="pv-clients__track">
+          <li class="pv-clients__item"><img class="pv-clientlogo pv-clientlogo--univi" src="assets/logos/ref-univi.png?v=1" alt="Univi" loading="lazy"></li>
+          <li class="pv-clients__item"><img class="pv-clientlogo pv-clientlogo--domusvi" src="assets/logos/ref-domusvi.png?v=1" alt="DomusVi" loading="lazy"></li>
+          <li class="pv-clients__item"><img class="pv-clientlogo pv-clientlogo--korian" src="assets/logos/ref-korian.png?v=1" alt="Korian" loading="lazy"></li>
+          <li class="pv-clients__item"><img class="pv-clientlogo pv-clientlogo--clinalliance" src="assets/logos/ref-clinalliance.png?v=1" alt="Clinalliance" loading="lazy"></li>
+          <li class="pv-clients__item"><img class="pv-clientlogo pv-clientlogo--colombes" src="assets/logos/ref-colombes.png?v=1" alt="Ville de Colombes" loading="lazy"></li>
+          <li class="pv-clients__item"><img class="pv-clientlogo pv-clientlogo--emeis" src="assets/logos/ref-emeis.png?v=1" alt="Emeis" loading="lazy"></li>
+          <li class="pv-clients__item"><img class="pv-clientlogo pv-clientlogo--roguet" src="assets/logos/ref-roguet.png?v=1" alt="Fondation Roguet (Clichy)" loading="lazy"></li>
+          <li class="pv-clients__item"><img class="pv-clientlogo pv-clientlogo--idf" src="assets/logos/ref-idf.png?v=1" alt="Région Île-de-France" loading="lazy"></li>
+          <li class="pv-clients__item"><img class="pv-clientlogo pv-clientlogo--pfp" src="assets/logos/ref-pfp.png?v=1" alt="Fondation Petits Frères des Pauvres" loading="lazy"></li>
+
+          <!-- duplicata (boucle transparente au survol) -->
+          <li class="pv-clients__item" aria-hidden="true"><img class="pv-clientlogo pv-clientlogo--univi" src="assets/logos/ref-univi.png?v=1" alt="" loading="lazy"></li>
+          <li class="pv-clients__item" aria-hidden="true"><img class="pv-clientlogo pv-clientlogo--domusvi" src="assets/logos/ref-domusvi.png?v=1" alt="" loading="lazy"></li>
+          <li class="pv-clients__item" aria-hidden="true"><img class="pv-clientlogo pv-clientlogo--korian" src="assets/logos/ref-korian.png?v=1" alt="" loading="lazy"></li>
+          <li class="pv-clients__item" aria-hidden="true"><img class="pv-clientlogo pv-clientlogo--clinalliance" src="assets/logos/ref-clinalliance.png?v=1" alt="" loading="lazy"></li>
+          <li class="pv-clients__item" aria-hidden="true"><img class="pv-clientlogo pv-clientlogo--colombes" src="assets/logos/ref-colombes.png?v=1" alt="" loading="lazy"></li>
+          <li class="pv-clients__item" aria-hidden="true"><img class="pv-clientlogo pv-clientlogo--emeis" src="assets/logos/ref-emeis.png?v=1" alt="" loading="lazy"></li>
+          <li class="pv-clients__item" aria-hidden="true"><img class="pv-clientlogo pv-clientlogo--roguet" src="assets/logos/ref-roguet.png?v=1" alt="" loading="lazy"></li>
+          <li class="pv-clients__item" aria-hidden="true"><img class="pv-clientlogo pv-clientlogo--idf" src="assets/logos/ref-idf.png?v=1" alt="" loading="lazy"></li>
+          <li class="pv-clients__item" aria-hidden="true"><img class="pv-clientlogo pv-clientlogo--pfp" src="assets/logos/ref-pfp.png?v=1" alt="" loading="lazy"></li>
+        </ul>
+      </div>
+      <p class="pv-clients__hint"><span class="pv-clients__hint-arrow" aria-hidden="true">&#8593;</span> Survolez</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     06 · COMMENT ON MESURE L'IMPACT — 4 modalités illustrées
+     ======================================================== -->
+<section class="pv-measures pv-section" id="mesures" aria-labelledby="pv-measures-title">
+  <div class="container">
+    <h2 class="pv-h2 pv-title" id="pv-measures-title">Comment on mesure l'<span class="mark">impact</span>.</h2>
+    <p class="pv-measures__amorce">Parce qu'il n'y a pas de soin sans suivi. Pas de suivi sans méthode…</p>
+
+    <div class="pv-measures__carousel">
+      <div class="pv-measures__grid" data-pvm-track>
+      <article class="pv-measure pv-measure--tonus">
+        <div class="pv-measure__head"><span class="pv-measure__num">1</span><h3 class="pv-measure__title">Effort musculaire</h3></div>
+        <p class="pv-measure__body">Des capteurs de couple intégrés au pédalier mesurent l'effort de chaque bénéficiaire.</p>
+        <div class="pv-measure__illus" data-illus-frame>
+          <iframe src="assets/mesures/01-tonus-musculaire.html" width="1200" height="800" loading="lazy" tabindex="-1" aria-hidden="true" title="" sandbox="allow-scripts"></iframe>
+        </div>
+      </article>
+
+      <article class="pv-measure pv-measure--cardiaque">
+        <div class="pv-measure__head"><span class="pv-measure__num">2</span><h3 class="pv-measure__title">Rythme cardiaque</h3></div>
+        <p class="pv-measure__body">Un bracelet connecté pendant toute la sortie.</p>
+        <div class="pv-measure__illus" data-illus-frame>
+          <iframe src="assets/mesures/02-frequence-cardiaque.html" width="1200" height="800" loading="lazy" tabindex="-1" aria-hidden="true" title="" sandbox="allow-scripts"></iframe>
+        </div>
+      </article>
+
+      <article class="pv-measure pv-measure--bienetre">
+        <div class="pv-measure__head"><span class="pv-measure__num">3</span><h3 class="pv-measure__title">Bien-être</h3></div>
+        <p class="pv-measure__body">Un questionnaire post-séance rempli par l'équipe soignante, sur des grilles validées scientifiquement.</p>
+        <div class="pv-measure__illus" data-illus-frame>
+          <iframe src="assets/mesures/03-questionnaire-psychologique.html" width="1200" height="800" loading="lazy" tabindex="-1" aria-hidden="true" title="" sandbox="allow-scripts"></iframe>
+        </div>
+      </article>
+
+      <article class="pv-measure pv-measure--restitution">
+        <div class="pv-measure__head"><span class="pv-measure__num">4</span><h3 class="pv-measure__title">Restitution</h3></div>
+        <p class="pv-measure__body">Un rapport clair chaque mois, par bénéficiaire et par établissement.</p>
+        <div class="pv-measure__illus" data-illus-frame>
+          <iframe src="assets/mesures/04-plateforme-restitution.html" width="1200" height="800" loading="lazy" tabindex="-1" aria-hidden="true" title="" sandbox="allow-scripts"></iframe>
+        </div>
+      </article>
+      </div>
+      <button class="pv-measures__nav pv-measures__nav--prev" data-pvm-prev aria-label="Mesures précédentes" hidden></button>
+      <button class="pv-measures__nav pv-measures__nav--next" data-pvm-next aria-label="Mesures suivantes"></button>
+      <span class="pv-measures__count" data-pvm-count aria-hidden="true"></span>
+    </div>
+
+    <p class="pv-measures__transparence">Notre méthodologie est documentée dans un livret (rubrique Publications). Chaque année, au mois de mars, nous publions un rapport d'impact détaillé.</p>
+  </div>
+</section>
+
+<!-- ========================================================
+     08 · CTA FINAL — bloc encre + CTA jaune
+     ======================================================== -->
+<section class="pv-final" aria-labelledby="pv-final-title">
+  <div class="container">
+    <div class="pv-final__inner">
+      <h2 class="pv-final__title" id="pv-final-title">Envie d'en savoir plus&#8239;?</h2>
+      <p class="pv-final__sub">Organisons ensemble une première démonstration dans votre établissement.</p>
+      <div class="pv-final__cta">
+        <a href="contact.html" class="btn btn--on-dark">Prendre rendez-vous <span class="arrow" aria-hidden="true">&#8594;</span></a>
+      </div>
+      <p class="pv-final__reassure">Réponse sous 48h, promis&#8239;!</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ========================================================
+     FOOTER — identique aux autres pages
+     ======================================================== -->
+<footer class="footer" aria-label="Pied de page">
+  <div class="container">
+    <div class="footer__grid grid12">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="assets/logos/lrs-jaune.svg" alt="Les Roues Solidaires">
+        <p class="footer__tagline">La cyclothérapie inclusive, à bord du OuiCycle. Se remettre en mouvement, ensemble.</p>
+        <p class="footer__parent">Une marque <a href="#" target="_blank" rel="noopener">OuiCycle&nbsp;↗</a></p>
+      </div>
+
+      <nav class="footer__col footer__col--nav" aria-label="Navigation pied de page">
+        <p class="footer__title">Naviguer</p>
+        <ul class="footer__list">
+          <li><a href="dispositif.html">Le dispositif</a></li>
+          <li><a href="pour-qui.html">Pour qui</a></li>
+          <li><a href="preuves.html">Nos preuves</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col footer__col--contact">
+        <p class="footer__title">Contact</p>
+        <div class="footer__contact">
+          <a href="mailto:contact@ouicycle.fr">contact@ouicycle.fr</a>
+          <a href="contact.html" class="footer__cta">Réservez une démo <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__legal">
+      <span>© 2026 OuiCycle · Les Roues Solidaires. Tous droits réservés.</span>
+      <div class="footer__legal-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/preuves.js"></script>
+<script src="js/header.js"></script>
+</body>
+</html>

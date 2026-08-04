@@ -1,0 +1,50 @@
+/* ============================================================
+   07 · CTA FINAL — bandeau sombre de conversion (clôture de page)
+   Fond near-black (autorité, DS). Titre fort avec numéraux JAUNES
+   (signature DS : "numerals in yellow"). Un seul CTA primaire.
+   Bloc centré, max 860px — même logique que .plans__head.
+   ============================================================ */
+.final{
+  position:relative;overflow:hidden;
+  background:var(--oc-ink);
+  padding-block:var(--sp-24);   /* 96px — rythme des sections */
+}
+/* halo chaud discret : profondeur, sans bruit */
+.final::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(58% 115% at 50% 0%,rgba(255,195,0,.06),transparent 62%);
+}
+
+.final__inner{
+  position:relative;z-index:1;
+  max-width:860px;margin-inline:auto;text-align:center;
+}
+
+/* Titre : échelle h1 (44px) comme les autres titres de section →
+   cohérence stricte. La force vient du poids + des numéraux jaunes. */
+.final__title{
+  font-weight:var(--fw-extrabold);          /* 800 */
+  font-size:var(--fs-h1);                    /* 44px */
+  line-height:1.18;letter-spacing:-.015em;
+  color:var(--oc-text-on-dark);
+}
+.final__num{
+  font-weight:var(--fw-black);               /* 900 */
+  color:var(--oc-white);                     /* « en vrai » en blanc (plus jaune) */
+}
+
+.final__sub{
+  margin:var(--sp-5) auto 0;                 /* 20px */
+  max-width:560px;
+  font-size:var(--fs-lead);                  /* 19px */
+  line-height:var(--lh-normal);
+  color:rgba(247,244,236,.78);               /* on-dark atténué */
+}
+
+.final__cta{margin-top:var(--sp-10)}         /* 40px — bien détaché */
+
+/* ---- Mobile (≤760) : bloc CTA resserré, bouton pleine largeur ---- */
+@media (max-width:760px){
+  .final__sub{margin-top:var(--sp-4)}                 /* titre → sous-titre resserré */
+  .final__cta{margin-top:var(--sp-6);display:flex;width:100%;justify-content:center}
+}

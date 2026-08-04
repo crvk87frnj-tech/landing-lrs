@@ -69,5 +69,36 @@
 .audience-card__arrow span{transition:transform var(--dur) var(--ease)}
 .audience-card:hover .audience-card__arrow span{transform:translateX(4px)}
 
+/* ---- Carte « bientôt » (Collectivités) : surface grise opaque, non
+       cliquable, texte plein contraste (WCAG AA), pas de lévitation ---- */
+.audience-card--soon{
+  background:var(--oc-gray-100);border-color:var(--oc-border);cursor:default;
+  box-shadow:0 14px 30px -22px rgba(37,33,26,.16),inset 0 1px 0 rgba(255,255,255,.6);
+}
+.audience-card--soon:hover,
+.audience-card--soon:focus-visible{
+  transform:none;
+  box-shadow:0 14px 30px -22px rgba(37,33,26,.16),inset 0 1px 0 rgba(255,255,255,.6);
+}
+.audience-card--soon .audience-card__icon{background:var(--oc-gray-200);color:var(--oc-gray-600)}
+.audience-card--soon:hover .audience-card__icon{transform:none}
+.audience-card__soon{margin-top:auto;padding-top:18px}
+.audience-card__soon span{
+  display:inline-block;padding:5px 13px;border-radius:var(--r-pill);
+  background:var(--oc-gray-200);color:var(--oc-gray-700);
+  font-size:var(--fs-sm);font-weight:var(--fw-semibold);
+}
+
 /* ---- CTA élargi ---- */
 .structure__cta{text-align:center;margin-top:var(--sp-16)}
+
+/* ---- Mobile (≤760) : cartes empilées (collapse global) ---- */
+@media (max-width:760px){
+  .structure{padding-top:var(--sp-8)}
+  .structure__head{margin-bottom:var(--sp-10);text-align:center}
+  .rotor{min-width:0;padding:0 .35em}          /* la pilule s'ajuste au mot (pas de débordement) */
+  .structure__sub{font-size:var(--fs-lead)}
+  .structure__grid{gap:var(--sp-6)}
+  .audience-card{min-height:0;padding:var(--sp-8) var(--sp-6);border-radius:32px 12px 12px 12px}
+  .structure__cta{margin-top:var(--sp-12)}
+}

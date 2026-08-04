@@ -2,12 +2,15 @@
 # Serveur d'aperçu local — Les Roues Solidaires
 # Lancer :  python3 serve.py   (depuis le dossier landing-lrs)  -> http://localhost:8137
 # - Multi-thread (pas de blocage sur le streaming vidéo)
-# - HTML/CSS/JS : no-store (toujours frais)
-# - Médias (mp4, images, fonts) : cache 1 jour (rechargements rapides)
-import http.server, socketserver, os
+# - Écoute en loopback IPv4 (127.0.0.1) ET IPv6 (::1) : Safari résout souvent
+#   "localhost" en ::1 d'abord ; sans l'IPv6 la page ne s'ouvrait pas dans Safari.
+#   Reste strictement local (aucune exposition hors machine).
+# - HTML/CSS/JS : no-store (toujours frais) ; médias : cache 1 jour.
+import http.server, socketserver, os, socket, threading
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 CODE_EXT = (".html", ".css", ".js")
+PORT = 8137
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
@@ -22,10 +25,29 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, *args):
         pass
 
-class Threaded(socketserver.ThreadingMixIn, http.server.HTTPServer):
+class Threaded4(socketserver.ThreadingMixIn, http.server.HTTPServer):
     daemon_threads = True
     allow_reuse_address = True
+    address_family = socket.AF_INET
 
-with Threaded(("", 8137), Handler) as httpd:
-    print("Aperçu : http://localhost:8137  (Ctrl+C pour arrêter)")
-    httpd.serve_forever()
+class Threaded6(socketserver.ThreadingMixIn, http.server.HTTPServer):
+    daemon_threads = True
+    allow_reuse_address = True
+    address_family = socket.AF_INET6
+
+servers = [Threaded4(("127.0.0.1", PORT), Handler)]
+try:
+    servers.append(Threaded6(("::1", PORT), Handler))  # loopback IPv6 (Safari)
+except OSError as e:
+    print("IPv6 loopback indisponible (IPv4 seul) :", e)
+
+print(f"Aperçu : http://localhost:{PORT}  (IPv4 127.0.0.1 + IPv6 ::1, Ctrl+C pour arrêter)")
+threads = [threading.Thread(target=s.serve_forever, daemon=True) for s in servers]
+for t in threads:
+    t.start()
+try:
+    for t in threads:
+        t.join()
+except KeyboardInterrupt:
+    for s in servers:
+        s.shutdown()

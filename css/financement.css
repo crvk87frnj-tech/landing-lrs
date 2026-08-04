@@ -1,0 +1,291 @@
+/* ============================================================
+   PAGE — FINANCEMENT · tarifs & montage financier
+   Mêmes tokens, grille 12 col, échelle typo que la landing /
+   dispositif / pour-qui. Motif signature repris : « prix à gauche ·
+   filet vertical · puces à droite » (= .pq-tarif), décliné en CLAIR
+   (blocs blancs) et en SOMBRE (bande noire). Base tarifaire : 2h30.
+   Rien « à l'œil » : tout sur .container + .grid12.
+   ============================================================ */
+
+/* Reset marge par défaut des <figure> (non couverte par base.css) */
+figure{margin:0}
+
+/* Rythme vertical homogène (= .section landing : 96px) */
+.fin-section{padding-block:var(--sp-20)}
+.fin-section--white{background:var(--oc-white)}
+
+/* ------------------------------------------------------------
+   PRIMITIVES — titre de section + surligneur + liaison
+   (identiques à .pq-h2 / .pq-title .mark de « pour qui »)
+   ------------------------------------------------------------ */
+.fin-h2{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h1);   /* 44px */
+  line-height:1.2;letter-spacing:var(--ls-tight);color:var(--oc-ink);margin:0;
+}
+.fin-title .mark{
+  position:relative;isolation:isolate;color:var(--oc-ink);
+  padding:0 .18em;background:transparent;border-radius:0;
+}
+.fin-title .mark::before{
+  content:"";position:absolute;z-index:-1;left:0;right:0;top:17%;bottom:17%;
+  background:var(--oc-yellow);border-radius:var(--r-sm);
+}
+/* Phrase de liaison (sous-titre de bloc) : lead gris, bien détachée du titre. */
+.fin-liaison{
+  font-size:var(--fs-lead);line-height:var(--lh-normal);
+  color:var(--oc-text-muted);margin:var(--sp-6) 0 var(--sp-16);max-width:72ch;
+}
+
+/* ============================================================
+   00 · HERO — titre + chapô + CTA. Texte en avant (page informative) ;
+   roue de marque en filigrane, coupée par le bord droit (identité,
+   sans photo à produire). Alignement grille 12.
+   ============================================================ */
+.fin-hero{position:relative;overflow:hidden;padding-top:var(--sp-16);padding-bottom:var(--sp-24)}
+.fin-hero > .container{position:relative;z-index:1}
+.fin-hero__roue{
+  --roue-size:clamp(300px,32vw,480px);
+  position:absolute;z-index:0;
+  right:calc(var(--roue-size) / -2.4);top:50%;transform:translateY(-50%);
+  width:var(--roue-size);height:auto;opacity:.12;pointer-events:none;user-select:none;
+}
+/* eyebrow : gris-700 (le gris pâle de base .eyebrow échoue AA sur crème) — cf. hub */
+.fin-hero__eyebrow{margin:0 0 var(--sp-5);color:var(--oc-gray-700)}
+/* Titre = échelle hero (landing .hero__title) : display, black, near-black.
+   Pleine largeur (pas de max-width qui casserait en lignes courtes). */
+.fin-hero__title{
+  font-weight:var(--fw-black);
+  font-size:clamp(2.5rem,4.6vw,3.75rem);   /* → 60px desktop */
+  line-height:1.22;letter-spacing:-.01em;color:var(--oc-ink);margin:0;
+}
+.fin-hero__lead{
+  max-width:58ch;font-size:var(--fs-lead);line-height:var(--lh-normal);
+  color:var(--oc-text-muted);margin:var(--sp-8) 0 0;
+}
+.fin-hero__cta{margin-top:var(--sp-10)}
+
+/* ============================================================
+   MODULE SIGNATURE — « prix à gauche · filet vertical · puces à droite »
+   (= .pq-tarif décliné). Réutilisé Bloc 1 (clair) et Bloc 4 (sombre).
+   Rangées à hauteur égale + une ligne verticale continue (col fixe).
+   ============================================================ */
+.fin-module{margin-top:var(--sp-8)}
+.fin-module__grid{align-items:stretch}
+/* colonne gauche : le prix, isolé, centré verticalement */
+.fin-module__price{grid-column:1 / span 5;align-self:center}
+/* Variante « bulle sombre » : prix posé sur une tuile encre (forme signature,
+   coin bas-gauche carré). Chiffre jaune vif + texte blanc → pop maximal ET
+   plein contraste (jaune sur encre ≈ 11:1). La tuile hug son contenu. */
+.fin-module__price--dark{
+  position:relative;width:fit-content;
+  background:var(--oc-ink);
+  border-radius:var(--r-2xl) var(--r-2xl) var(--r-2xl) 0;
+  padding:32px 40px;box-shadow:var(--shadow-lg);
+}
+.fin-module__amount{
+  font-weight:var(--fw-black);font-size:clamp(2.75rem,4.6vw,3.75rem);   /* ~44→60px */
+  line-height:1;letter-spacing:-.02em;color:var(--oc-ink);margin:0;
+}
+.fin-module__unit{font-size:.5em;font-weight:var(--fw-bold);letter-spacing:0;white-space:nowrap;color:var(--oc-ink)}
+.fin-module__price--dark .fin-module__amount{color:var(--oc-yellow)}   /* chiffre jaune vif sur encre */
+.fin-module__price--dark .fin-module__unit{color:var(--oc-white)}
+.fin-module__price--dark .fin-module__per{color:var(--oc-yellow)}
+.fin-module__price--dark .fin-module__note{color:rgba(247,244,236,.78)}
+.fin-module__per{font-size:var(--fs-h4);font-weight:var(--fw-bold);color:var(--oc-text-muted);margin:var(--sp-3) 0 0}
+.fin-module__note{font-size:var(--fs-body);line-height:var(--lh-normal);color:var(--oc-text-muted);margin:var(--sp-4) 0 0}
+/* colonne droite : cases égales, filet vertical (gauche) + hairlines ink */
+.fin-module__cases{
+  grid-column:7 / span 6;list-style:none;margin:0;padding:0 0 0 var(--sp-10);
+  border-left:1.5px solid var(--oc-ink);
+  display:grid;grid-auto-rows:1fr;   /* cases à hauteur ÉGALE (calées sur la + grande) */
+}
+.fin-module__case{
+  display:flex;align-items:flex-start;gap:16px;padding:20px 0;   /* point aligné en haut */
+  border-top:1.5px solid var(--oc-ink);
+  font-size:var(--fs-lead);line-height:1.5;color:var(--oc-gray-800);
+}
+.fin-module__case:first-child{border-top:none}
+.fin-module__case::before{
+  content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--oc-yellow);margin-top:.55em;   /* sur la 1ʳᵉ ligne */
+}
+
+/* ------------------------------------------------------------
+   Mini-bloc « Des besoins ponctuels ? » — packs en cellules moonwalkers
+   (= .pq-capacity : rangée de cellules égales, filets verticaux ink).
+   ------------------------------------------------------------ */
+.fin-packs{margin-top:var(--sp-16)}
+.fin-packs__title{font-weight:var(--fw-bold);font-size:var(--fs-h3);color:var(--oc-ink);margin:0 0 var(--sp-8)}
+.fin-packs__row{
+  display:flex;
+  border-top:1.5px solid var(--oc-ink);border-bottom:1.5px solid var(--oc-ink);
+}
+.fin-pack{flex:1;padding:24px 28px}
+.fin-pack + .fin-pack{border-left:1.5px solid var(--oc-ink)}
+.fin-pack__name{font-size:var(--fs-body);font-weight:var(--fw-semibold);color:var(--oc-text-muted);margin:0 0 8px}
+.fin-pack__price{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h2);   /* 32px */
+  line-height:1;letter-spacing:-.015em;color:var(--oc-ink);margin:0;
+}
+.fin-pack__per{font-size:var(--fs-body);font-weight:var(--fw-medium);color:var(--oc-text-muted)}
+/* Économie : pastille jaune doux + texte encre (WCAG AA, touche de jaune). */
+.fin-pack__save{
+  display:inline-block;margin:12px 0 0;padding:3px 12px;border-radius:var(--r-pill);
+  background:var(--oc-yellow-soft);color:var(--oc-ink);
+  font-size:var(--fs-sm);font-weight:var(--fw-semibold);letter-spacing:.01em;
+}
+
+/* ============================================================
+   BLOC 2 · 3 FORMULES D'ABONNEMENT — fond crème
+   Cartes = composant .audience-card du hub (verre translucide, un seul
+   coin arrondi, lévitation). Le PRIX est l'élément focal ; la carte du
+   milieu (Hebdomadaire) est « mise en avant » : bordure jaune + badge.
+   ============================================================ */
+.fin-formules{margin-top:var(--sp-4)}
+.fin-formules__grid{align-items:stretch}
+.fin-formule{position:relative}   /* ancre le badge « Le plus choisi » */
+.fin-formule__name{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h3);   /* 24px */
+  letter-spacing:-.01em;color:var(--oc-ink);margin:0 0 var(--sp-4);
+}
+.fin-formule__price{
+  font-weight:var(--fw-black);font-size:2rem;   /* 32px */
+  line-height:1;letter-spacing:-.02em;color:var(--oc-ink);margin:0;
+}
+.fin-formule__pre{font-size:var(--fs-body);font-weight:var(--fw-semibold);color:var(--oc-text-muted);margin-right:.35em}
+.fin-formule__unit{font-size:.6em;font-weight:var(--fw-bold)}
+.fin-formule__cadence{font-size:var(--fs-sm);font-weight:var(--fw-medium);color:var(--oc-text-muted);margin:var(--sp-2) 0 0}
+.fin-formule__args{margin-top:var(--sp-8)}
+/* Carte mise en avant : bordure jaune + léger wash chaud + relief accru. */
+.audience-card--featured{
+  border:2.5px solid var(--oc-yellow);
+  background:linear-gradient(155deg,rgba(255,250,231,.96),rgba(255,244,212,.72));
+  box-shadow:0 28px 52px -22px rgba(37,33,26,.30),inset 0 1px 0 rgba(255,255,255,.9);
+}
+.audience-card--featured:hover{transform:translateY(-12px)}   /* lévitation accentuée (Hebdomadaire) */
+/* Badge « Le plus choisi » : pastille jaune posée à cheval sur le bord haut. */
+.fin-formule__badge{
+  position:absolute;top:-15px;left:50%;transform:translateX(-50%);white-space:nowrap;
+  padding:7px 18px;border-radius:var(--r-pill);
+  background:var(--oc-yellow);color:var(--oc-ink);
+  font-size:var(--fs-sm);font-weight:var(--fw-bold);letter-spacing:.01em;
+  box-shadow:var(--shadow-md);
+}
+
+/* ============================================================
+   BLOC 3 · COMMENT FONCTIONNE L'ABONNEMENT — fond blanc
+   Barre dégressive (dégradé de jaune, le plus foncé = le plus avantageux)
+   + 3 puces explicatives + encart « takeaway ».
+   ============================================================ */
+.fin-degress{margin-top:var(--sp-8)}   /* pleine largeur = aligne la jauge sur la rangée de cellules */
+.fin-degress__bar{
+  height:14px;border-radius:var(--r-pill);
+  /* dégradé de VERT (cognitif) : pâle (à la carte) → profond (hebdo = le plus avantageux) */
+  background:linear-gradient(90deg,var(--oc-cognitif-tint),var(--oc-cognitif) 60%,#20614A);
+  box-shadow:inset 0 1px 2px rgba(37,33,26,.10);
+}
+.fin-degress__labels{display:flex;justify-content:space-between;margin-top:var(--sp-3)}
+.fin-degress__lbl{font-size:var(--fs-body);font-weight:var(--fw-medium);color:var(--oc-text-muted)}
+.fin-degress__lbl:first-child{text-align:left}
+.fin-degress__lbl:last-child{text-align:right}
+.fin-degress__lbl--best{font-weight:var(--fw-bold);color:var(--oc-ink)}   /* le plus avantageux */
+
+/* 3 points explicatifs en cellules « moonwalkers » (= style packs du Bloc 1) :
+   3 espaces égaux, filets verticaux ink entre eux, hairlines haut/bas. */
+.fin-cells{
+  display:flex;margin-top:var(--sp-12);
+  border-top:1.5px solid var(--oc-ink);border-bottom:1.5px solid var(--oc-ink);
+}
+.fin-cell{
+  flex:1;padding:24px 28px;
+  display:flex;gap:12px;align-items:flex-start;   /* point + texte sur la même ligne */
+  font-size:var(--fs-body);line-height:var(--lh-normal);color:var(--oc-gray-800);
+}
+.fin-cell + .fin-cell{border-left:1.5px solid var(--oc-ink)}
+.fin-cell::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--oc-yellow);margin-top:.5em}   /* aligné sur la 1ʳᵉ ligne */
+
+/* Encart « takeaway » : bulle jaune pâle (forme signature), phrase clé en gras. */
+.fin-takeaway{
+  margin-top:var(--sp-16);max-width:660px;
+  background:var(--oc-yellow-wash);
+  border-radius:var(--r-lg) var(--r-lg) var(--r-lg) 0;
+  padding:18px 24px;
+  font-size:var(--fs-lead);line-height:1.45;color:var(--oc-ink);
+}
+
+/* ============================================================
+   BLOC 4 · PAR BÉNÉFICIAIRE, C'EST COMBIEN ? — fond crème
+   Réutilise le module signature (bulle noire « 16 € / résident » à
+   gauche · filet vertical · 4 puces à droite) = écho au Bloc 1.
+   Note + phrase de clôture discrètes en dessous.
+   ============================================================ */
+.fin-note{margin-top:var(--sp-8);font-size:var(--fs-sm);line-height:var(--lh-normal);color:var(--oc-text-muted);max-width:72ch}
+.fin-outro{margin-top:var(--sp-6);font-size:var(--fs-lead);line-height:var(--lh-normal);color:var(--oc-text-muted);max-width:82ch}
+.fin-section[aria-labelledby="fin-benef-title"]{padding-top:var(--sp-10)}   /* titre rehaussé (peek inter-blocs) */
+
+/* Deux bulles de prix empilées (contraste séance unique 32 € / hebdo 16 €).
+   La bulle « hebdo » reprend les codes de la carte featured : bordure jaune
+   + badge, chiffre jaune ; la bulle « séance unique » est dé-emphasée (blanc). */
+.fin-benef-stack{
+  grid-column:1 / span 5;align-self:center;
+  display:flex;flex-direction:column;gap:var(--sp-10);
+}
+.fin-benef-stack .fin-module__price--dark{padding:22px 30px}
+.fin-benef-stack .fin-module__amount{font-size:clamp(2.25rem,3.4vw,2.75rem)}   /* + petit : 2 bulles empilées */
+.fin-benef-stack .fin-module__note{font-weight:var(--fw-semibold)}
+.fin-benef--std .fin-module__amount{color:var(--oc-white)}   /* séance unique : chiffre blanc (dé-emphasé) */
+.fin-benef--best{border:2.5px solid var(--oc-yellow)}        /* hebdo : bordure jaune (= carte featured) */
+.fin-benef__badge{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;
+  padding:5px 13px;border-radius:var(--r-pill);
+  background:var(--oc-yellow);color:var(--oc-ink);
+  font-size:var(--fs-xs);font-weight:var(--fw-semibold);letter-spacing:.01em;
+  box-shadow:var(--shadow-md);
+}
+
+/* ============================================================
+   CTA FINAL — bande near-black (= .final landing / .pq-final)
+   ============================================================ */
+.fin-final{position:relative;overflow:hidden;background:var(--oc-ink)}
+.fin-final::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(58% 115% at 50% 0%,rgba(255,195,0,.12),transparent 62%);
+}
+.fin-final__inner{position:relative;z-index:1;max-width:860px;margin-inline:auto;text-align:center}
+.fin-final__title{
+  font-weight:var(--fw-extrabold);font-size:var(--fs-h1);   /* 44px */
+  line-height:1.18;letter-spacing:-.015em;color:var(--oc-text-on-dark);margin:0;
+}
+.fin-final__sub{
+  margin:var(--sp-5) auto 0;max-width:560px;
+  font-size:var(--fs-lead);line-height:var(--lh-normal);color:rgba(247,244,236,.78);
+}
+.fin-final__num{color:var(--oc-white)}   /* 48 h : blanc, graisse normale */
+.fin-final__cta{margin-top:var(--sp-10)}
+
+/* ============================================================
+   MOBILE / RESPONSIVE (≤760) — page « Financement »
+   Squelette géré par base.css. Ici : héros (roue déco + titre),
+   module signature (prix | filet | cases), et surtout les
+   « moonwalkers » horizontaux (packs, cells) → empilés.
+   ============================================================ */
+@media (max-width:760px){
+  .fin-section{padding-block:var(--sp-16)}
+
+  /* 00 · HÉRO : roue en filigrane discrète, titre réduit */
+  .fin-hero{padding-top:var(--sp-8);padding-bottom:var(--sp-16)}
+  .fin-hero__roue{--roue-size:clamp(200px,50vw,320px);opacity:.06}
+  .fin-hero__title{font-size:clamp(1.9rem,6.4vw,2.6rem);line-height:1.18}
+  .fin-hero__lead{max-width:none}
+
+  /* Module signature (prix · filet vertical · cases) : filet retiré, empilé */
+  .fin-module__price{align-self:start}
+  .fin-module__cases{padding-left:0;border-left:none;margin-top:var(--sp-6)}
+
+  /* Packs & points (moonwalkers horizontaux) → colonnes empilées, filet en HAUT */
+  .fin-packs__row{flex-direction:column}
+  .fin-pack{padding:var(--sp-5) 0}
+  .fin-pack + .fin-pack{border-left:none;border-top:1.5px solid var(--oc-ink)}
+  .fin-cells{flex-direction:column}
+  .fin-cell{padding:var(--sp-5) 0}
+  .fin-cell + .fin-cell{border-left:none;border-top:1.5px solid var(--oc-ink)}
+}

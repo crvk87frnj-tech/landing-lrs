@@ -59,3 +59,26 @@
 .plogo--pfp{max-height:clamp(32px,3.7vw,48px)}
 .plogo--ag2r{max-height:clamp(22px,2.5vw,32px)}
 .plogo--univi{max-height:clamp(32px,3.6vw,46px)}
+
+/* ---- Wrapper logos (l'ancienne flèche de défilement est masquée) ---- */
+.partners__row{flex:1;min-width:0;display:flex;align-items:center;gap:12px}
+.partners__next{display:none}
+
+/* ---- Mobile / responsive (≤760) : logos À PLAT, réduits, UNE ligne
+   (plus de dalle verre, plus de défilement) ---- */
+@media (max-width:760px){
+  .partners{margin-top:0;padding:var(--sp-3) var(--page-pad) var(--sp-6)}   /* sous la vidéo, mais rapproché (pas de chevauchement) */
+  .partners__glass{
+    flex-direction:column;align-items:stretch;gap:var(--sp-3);
+    padding:0;background:none;border:0;box-shadow:none;
+    -webkit-backdrop-filter:none;backdrop-filter:none;
+  }
+  .partners__label{text-align:left;font-size:0.625rem}   /* 10px : « Déjà déployé avec » réduit */
+  .partners__row{display:block;min-width:0}
+  .partners__logos{
+    grid-template-columns:repeat(6,1fr);display:grid;gap:8px;align-items:center;
+    overflow:visible;-webkit-mask-image:none;mask-image:none;
+  }
+  .partners__logos li{min-width:0}
+  .plogo{max-height:22px}
+}

@@ -1,0 +1,26 @@
+/* ============================================================
+   PAGE — POUR QUI ? · RÉSIDENCES AUTONOMIE — surcouche
+   Le style COMMUN aux sous-pages vit désormais dans « css/pour-qui.css »
+   (hero pleine hauteur, peek tarif, panneau mesures, coins parcours,
+   polaroïd conducteur…). Ce fichier ne garde QUE le spécifique résidence.
+   ============================================================ */
+
+/* --- Hero : la photo est PAYSAGE (16:9) ; dans le panneau pleine hauteur
+   (object-fit:cover), on cadre vers la droite pour garder la résidente
+   souriante (point focal humain) bien dans le champ. --- */
+.pq-hero__photo img{object-position:68% center}
+
+/* --- Bloc 3 · « à l'arrivée » : tant que la citation de droite n'est pas
+   fournie, le corps passe en une seule colonne (texte lisible, largeur
+   maîtrisée). Retirer .pq-arrival__body--solo dès qu'on ajoute la citation. --- */
+.pq-arrival__body--solo{grid-template-columns:1fr}
+.pq-arrival__body--solo .pq-arrival__text{max-width:64ch}
+.pq-arrival__p + .pq-arrival__p{margin-top:var(--sp-4)}
+
+/* --- Bloc 4 · ligne de clôture du conducteur-animateur (élément propre à la
+   résidence, sous le logo) : phrase de conclusion sobre, en encre foncée. --- */
+.pq-driver__close{
+  margin:var(--sp-6) 0 0;
+  font-size:var(--fs-body);line-height:var(--lh-normal);
+  color:var(--oc-ink);
+}
